@@ -8,8 +8,8 @@ function App() {
   return (
     <>
         <Header />                        {/* Custom Element */}
-        <Content />
-        <Footer />
+        <Content />                       {/* Custom Element */}
+        <Footer />                         {/* Custom Element */}
     </>
   )
 }
