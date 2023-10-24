@@ -7,16 +7,28 @@ const Content = () => {
         const int = Math.floor(Math.random() * 3)
             return names[int]
     }
-    
-    const handleClick = () => {
 
+    const handleClick = () => {
+        console.log("You click it");
     }
 
-  return (
-    <main>
-      Hello {handleNameChange()}
-    </main>
-  )
+    const handleClickOne = (names) => {
+        console.log(`${names} was clicked`);
+    }
+
+    const handleClickTwo = () => {
+        
+    }
+
+    return (
+        <main>
+            <p>
+                Hello {handleNameChange()}
+            </p>
+            <button onClick={handleClick}>Click Me!</button>
+            <button onClick={() => handleClickOne('Director')}>Click Name!</button>
+        </main>
+    )
 }
 
 export default Content
