@@ -7,6 +7,11 @@ const Content = () => {
         const int = Math.floor(Math.random() * 3)
             return names[int]
     }
+    
+    const handleClick = () => {
+
+    }
+
   return (
     <main>
       Hello {handleNameChange()}

@@ -11,7 +11,7 @@ const Header = () => {
     return (
         <header style={headerStyle}>
             <h1>WELCOME TO REACT IN DETAILS</h1>
-            <h2>WELCOME TO DLT-AFRICA BOOTCAMP</h2>
+            <h2 style={{color: 'yellow'}}>WELCOME TO DLT-AFRICA BOOTCAMP</h2>
         </header>
     )
 }
