@@ -16,8 +16,8 @@ const Content = () => {
         console.log(`${names} was clicked`);
     }
 
-    const handleClickTwo = () => {
-        
+    const handleClickTwo = (e) => {
+        console.log(e.target.innerText);
     }
 
     return (
@@ -27,6 +27,7 @@ const Content = () => {
             </p>
             <button onClick={handleClick}>Click Me!</button>
             <button onClick={() => handleClickOne('Director')}>Click Name!</button>
+            <button onClick={(e) => handleClickTwo(e)}>Click Now</button>
         </main>
     )
 }
