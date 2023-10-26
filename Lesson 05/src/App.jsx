@@ -3,12 +3,14 @@ import Content from './Content'
 import Footer from './Footer'
 import Header from './Header'
 import AddItem from './AddItem'
+import SearchItem from './SearchItem'
 // import ListComponent from './ListComponent'
 
 
 function App() {
   const [newItem, setNewItem] = useState('')
   const [items, setItems] = useState(JSON.parse(localStorage.getItem('Shoppinglist')) || [])
+  const [search, setSearch] = useState('')
 
     const setAndSaveItems = (newItem) => {
       setItems(newItem)
@@ -43,6 +45,7 @@ function App() {
     <div className='App'>
         <Header title="Cohort 3 List"/>                        {/* Custom Element */}
         <AddItem newItem={newItem} setNewItem={setNewItem} handleSubmit={handleSubmit} />
+        <SearchItem />
         <Content  items={items} handleCheck={handleCheck} handleDelete={handleDelete}/>                       {/* Custom Element */}
         <Footer length={items.length}/>                         {/* Custom Element */}
     </div>
