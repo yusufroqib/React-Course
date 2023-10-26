@@ -45,8 +45,8 @@ function App() {
     <div className='App'>
         <Header title="Cohort 3 List"/>                        {/* Custom Element */}
         <AddItem newItem={newItem} setNewItem={setNewItem} handleSubmit={handleSubmit} />
-        <SearchItem />
-        <Content  items={items} handleCheck={handleCheck} handleDelete={handleDelete}/>                       {/* Custom Element */}
+        <SearchItem search={search} setSearch={setSearch} />
+        <Content  items={items.filter(item =>((item.item).toLowerCase()).includes(search.toLocaleLowerCase()))} handleCheck={handleCheck} handleDelete={handleDelete}/>                       {/* Custom Element */}
         <Footer length={items.length}/>                         {/* Custom Element */}
     </div>
   )

@@ -7,7 +7,7 @@ const AddItem = ({newItem, setNewItem, handleSubmit}) => {
       <label htmlFor="addItem">Add Item</label>
       <input id='addItem' 
             type='text' 
-            placeholder='add Item' 
+            placeholder='Add Item' 
             required 
             value={newItem} 
             onChange={(e) => setNewItem(e.target.value)} 
