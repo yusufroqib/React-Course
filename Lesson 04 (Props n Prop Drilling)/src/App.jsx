@@ -15,7 +15,7 @@ function App() {
     },
     {
         id: 2,
-        checked: true,
+        checked: false,
         item: 'Javascript'
     },
     {
