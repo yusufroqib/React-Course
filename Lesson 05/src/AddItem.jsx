@@ -1,11 +1,18 @@
 import React from 'react'
+import { FaPlus } from 'react-icons/fa'
 
-const AddItem = () => {
+const AddItem = ({newItem, setNewItem, handleSubmit}) => {
   return (
-    <form className='addForm'>
+    <form className='addForm' onSubmit={handleSubmit}>
       <label htmlFor="addItem">Add Item</label>
-      <input id='addItem' type='text' placeholder='add Item' required />
-      <button type='submit' aria-label='Add Item'></button>
+      <input id='addItem' 
+            type='text' 
+            placeholder='add Item' 
+            required 
+            value={newItem} 
+            onChange={(e) => setNewItem(e.target.value)} 
+      />
+      <button type='submit' aria-label='Add Item'> <FaPlus /> </button>
     </form>
   )
 }
