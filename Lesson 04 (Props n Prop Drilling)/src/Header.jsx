@@ -1,19 +1,16 @@
 import React from 'react'
 
-const Header = () => {
-    // const headerStyle = {
-    //     backgroundColor: "black",
-    //     color: "#fff",
-    //     borderRadius: "10px",
-    //     padding: "1px 20px"
-    // }
-
+const Header = (props) => {     //First method using props
     return (
         <header>
-            <h1>WELCOME TO REACT IN DETAILS</h1>
-            {/* <h2 style={{color: 'yellow'}}>WELCOME TO DLT-AFRICA BOOTCAMP</h2> */}
+            <h1>{props.title}</h1>
         </header>
     )
+}
+
+//If the parent does not have the property
+Header.defaultProps = {
+    title: "Default Title"
 }
 
 export default Header
