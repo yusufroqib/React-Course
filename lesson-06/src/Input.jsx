@@ -3,13 +3,13 @@ import colorNames from 'colornames'
 
 const Input = ({ colorValue, setColorValue, setHexValue, isDarkText, setDarkText}) => {
   return (
-    <form onSubmit={(e) => e.preventDefault()}>
+    <form className='inputForm' onSubmit={(e) => e.preventDefault()}>
         <label>Add Color Name</label>
         <input 
             autoFocus
             type="text" 
             required
-            placeholder='Add color name:'
+            placeholder='Add color name'
             value={ colorValue }
             onChange={ (e) => {
                 setColorValue(e.target.value)

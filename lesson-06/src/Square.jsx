@@ -5,8 +5,8 @@ const Square = ({ colorValue, hexValue, isDarkText }) => {
     <section 
         className='square' 
         style={{ 
-            backgroundColor: colorValue,
-            color: isDarkText ? "#000" : "#FFF" 
+            backgroundColor: hexValue || colorValue,
+            color: isDarkText ? "#FFF" : "#000" 
         }}
         >
 
@@ -18,7 +18,7 @@ const Square = ({ colorValue, hexValue, isDarkText }) => {
 }
 
 Square.defaultProps = {
-    colorValue: "Empty color value"
+    colorValue: "Empty color value",
 }
 
 export default Square
