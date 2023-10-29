@@ -14,7 +14,7 @@ const AddItem = ({newItem, setNewItem, handleSubmit}) => {
             type='text' 
             placeholder='Add Item' 
             required 
-            value={newItem} 
+            value={newItem}     //To allow setNewItem effect when input field is cleared
             onChange={(e) => setNewItem(e.target.value)} 
       />
       <button type='submit' aria-label='Add Item'> <FaPlus /> </button>
