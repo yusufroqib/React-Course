@@ -1,6 +1,6 @@
 import React from 'react'
 import { FaPlus } from 'react-icons/fa'
-import { useRef } from "react";
+import { useRef } from "react";   // Mainly used to Set autofocus back to input field
 
 const AddItem = ({newItem, setNewItem, handleSubmit}) => {
     const inputRef = useRef()
@@ -10,7 +10,7 @@ const AddItem = ({newItem, setNewItem, handleSubmit}) => {
       <label htmlFor="addItem">Add Item</label>
       <input id='addItem'
         autoFocus
-        ref={inputRef} 
+        ref={inputRef} //useRef was used here
         type='text' 
         placeholder='Add Item' 
         required 
@@ -20,7 +20,7 @@ const AddItem = ({newItem, setNewItem, handleSubmit}) => {
       <button 
         type='submit' 
         aria-label='Add Item' 
-        onClick={() => inputRef.current.focus()}
+        onClick={() => inputRef.current.focus()}    //Set autofocus back to input field
       > 
         <FaPlus /> 
       </button>
