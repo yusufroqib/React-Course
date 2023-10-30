@@ -55,9 +55,22 @@ function App() {
   };
 
 
-  const handleCheck = (id) => {
+  const handleCheck = async (id) => {
     const listItems = items.map((item) => item.id === id ? { ...item, checked: !item.checked } : item)
     setItems(listItems)
+
+    const myItem = listItems.filter((item) => item.id === id)
+    const updateOptions = {
+      method: 'PUT',
+      Headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({checked: myItem[0].checked})
+    }
+
+    const reqUrl = `${API_URL}/${id}`
+    const result = await apiRequest(reqUrl, updateOptions)
+    if(result) setFetchError(result)
   }
 
   const handleDelete = (id) => {
