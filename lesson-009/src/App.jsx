@@ -58,7 +58,7 @@ function App() {
   const handleCheck = async (id) => {
     const listItems = items.map((item) => item.id === id ? { ...item, checked: !item.checked } : item)
     setItems(listItems)
-
+    
     const myItem = listItems.filter((item) => item.id === id)
     const updateOptions = {
       method: 'PUT',
