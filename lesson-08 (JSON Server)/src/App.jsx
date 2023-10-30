@@ -13,6 +13,7 @@ function App() {
   const [items, setItems] = useState([])
   const [search, setSearch] = useState('')
   const [fetchError, setFetchError] = useState(null)
+  const [isLoading, setIsLoading] = useState(true)
 
     //**********useEffect syntax**********
     useEffect(() => {
@@ -21,14 +22,17 @@ function App() {
           const response = await fetch(API_URL)
           if(!response.ok) throw Error('Did not receive expected data')
           const listItems = await response.json();
-          console.log(listItems);
+          // console.log(listItems);
           setItems(listItems)
         } catch (err) {
           setFetchError(err.message)
-        } 
+        } finally {
+          setIsLoading(false)
+        }
       }
-
-      (async () => fetchItems())()
+      setTimeout(() => {
+        (async () => fetchItems())()
+      }, 2000);
     }, [])
     
 
@@ -71,12 +75,14 @@ function App() {
         />
 
         <main>
+          {isLoading && <p>Loading Items...</p> }
           {fetchError && <p style={{color: "red"}}>{`Error: ${fetchError}`}</p>}
+          {!fetchError && !isLoading &&
         <Content  
           items={items.filter(item =>((item.item).toLowerCase()).includes(search.toLocaleLowerCase()))} 
           handleCheck={handleCheck} 
           handleDelete={handleDelete}
-        />                       {/* Custom Element */}
+        /> }                      {/* Custom Element */}
         </main>
         <Footer length={items.length}/>                         {/* Custom Element */}
     </div>
