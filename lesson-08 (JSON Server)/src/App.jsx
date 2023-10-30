@@ -12,18 +12,23 @@ function App() {
   const [newItem, setNewItem] = useState('')
   const [items, setItems] = useState([])
   const [search, setSearch] = useState('')
+  const [fetchError, setFetchError] = useState(null)
 
     //**********useEffect syntax**********
-
-
     useEffect(() => {
       const fetchItems = async () => {
         try {
-          
+          const response = await fetch(API_URL)
+          if(!response.ok) throw Error('Did not receive expected data')
+          const listItems = await response.json();
+          console.log(listItems);
+          setItems(listItems)
         } catch (err) {
-          console.log();
-        }
+          setFetchError(err.message)
+        } 
       }
+
+      (async () => fetchItems())()
     }, [])
     
 
@@ -64,11 +69,15 @@ function App() {
           search={search} 
           setSearch={setSearch} 
         />
+
+        <main>
+          {fetchError && <p style={{color: "red"}}>{`Error: ${fetchError}`}</p>}
         <Content  
           items={items.filter(item =>((item.item).toLowerCase()).includes(search.toLocaleLowerCase()))} 
           handleCheck={handleCheck} 
           handleDelete={handleDelete}
         />                       {/* Custom Element */}
+        </main>
         <Footer length={items.length}/>                         {/* Custom Element */}
     </div>
   )

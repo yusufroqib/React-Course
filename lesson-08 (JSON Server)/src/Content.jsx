@@ -5,7 +5,7 @@ import ItemList from './ItemList'
 const Content = ({items, handleCheck, handleDelete}) => {       //Another method using object destructuring
     
     return (
-        <main>
+        <>
             {items.length? (
 
             <ItemList 
@@ -16,7 +16,7 @@ const Content = ({items, handleCheck, handleDelete}) => {       //Another method
             ) : (
                 <p style={{marginTop: "2rem", fontWeight: 'bold', fontSize: '2rem'}}>Your list is Empty</p>
             )}
-        </main>
+        </>
     
     )
 }
