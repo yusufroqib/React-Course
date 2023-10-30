@@ -1,11 +1,6 @@
 {
   "items": [
     {
-      "id": 1,
-      "checked": false,
-      "item": "JavaScript"
-    },
-    {
       "id": 2,
       "checked": false,
       "item": "Chrome"
@@ -14,11 +9,6 @@
       "id": 3,
       "checked": false,
       "item": "ChinChin"
-    },
-    {
-      "id": 4,
-      "checked": false,
-      "item": "React"
     }
   ]
 }
