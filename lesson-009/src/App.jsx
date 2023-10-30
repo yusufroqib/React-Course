@@ -45,7 +45,7 @@ function App() {
 
     const postOptions = {
       method: 'POST',
-      Headers: {
+      headers: {
         "Content-Type": "application/json"
       },
       body: JSON.stringify(myNewItem)
@@ -62,7 +62,7 @@ function App() {
     const myItem = listItems.filter((item) => item.id === id)
     const updateOptions = {
       method: 'PUT',
-      Headers: {
+      headers: {
         "Content-Type": "application/json"
       },
       body: JSON.stringify({checked: myItem[0].checked})
