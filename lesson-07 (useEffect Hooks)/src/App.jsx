@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Content from './Content'
 import Footer from './Footer'
 import Header from './Header'
@@ -8,8 +8,21 @@ import SearchItem from './SearchItem'
 
 function App() {
   const [newItem, setNewItem] = useState('')
-  const [items, setItems] = useState(JSON.parse(localStorage.getItem('Shoppinglist')) || [])
+  const [items, setItems] = useState([])
   const [search, setSearch] = useState('')
+
+    //**********useEffect syntax**********
+    // useEffect(() => {
+    //   //the function
+    // }, [dependencies])
+
+    console.log('before');
+
+    useEffect(() => {
+      JSON.parse(localStorage.getItem('Shoppinglist'));
+    }, [items])
+    
+    console.log('after');
 
     const setAndSaveItems = (newItem) => {
       setItems(newItem)
