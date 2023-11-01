@@ -38,9 +38,12 @@ const App = () => {
     }
   ])
   const [searchResult, setSearchResult] = useState([])
+  const navigate = useNavigate()
 
-  const handleDelete = () => {
-
+  const handleDelete = (id) => {
+    const postList = posts.filter(post => post.id !== id)
+    setPosts(postList)
+    navigate('/')
   }
 
   return (
