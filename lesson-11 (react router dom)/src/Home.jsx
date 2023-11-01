@@ -1,13 +1,16 @@
 import Feed from './Feed'
 
-const Home = ({ posts }) => {
+const Home = ({ posts, isLoading, fetchError }) => {
   return (
     <main className='Home'>
-        {posts.length ? (
+        {isLoading && <p>Loading Pots...</p>}
+        {fetchError && <p style={{ color: "red" }}>{`Error: ${fetchError}`}</p>}
+        {!fetchError && !isLoading &&
+        (posts.length ? (
           <Feed posts={ posts }/>
         ) : (
           <p style={{marginTop: "2rem"}}>Nothing to Display</p>
-        ) }
+        ) )}
     </main>
   )
 }
