@@ -4,11 +4,11 @@ import Nav from './Nav'
 import Footer from './Footer'
 
 
-const HomeLayout = () => {
+const HomeLayout = ({ search, setSearch }) => {
   return (
     <div className='App'>
         <Header title= 'DLT Student Blog' />
-        <Nav />
+        <Nav search={search} setSearch={setSearch} />
         <Outlet />
         <Footer />   
     </div>
