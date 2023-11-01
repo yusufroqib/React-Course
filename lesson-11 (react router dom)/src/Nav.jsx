@@ -11,7 +11,7 @@ const Nav = ({ search, setSearch }) => {
 
         <input
           type="text"
-          id='search' placeholder='SearchPosts'
+          id='search' placeholder='Search posts'
           value={search}
           onChange={(e) => setSearch(e.target.value)}
         />
