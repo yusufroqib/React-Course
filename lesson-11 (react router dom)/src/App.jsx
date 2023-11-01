@@ -42,7 +42,12 @@ const App = () => {
   const [postBody, setPostBody] = useState("");
 
   useEffect(() => {
-    
+    const filterResult = posts.filter(post => 
+      post.body.toLowerCase().includes(search.toLowerCase()) 
+      || 
+      post.title.toLowerCase().includes(search.toLowerCase()))
+      setSearchResult(filterResult.reverse())
+
   }, [posts, search])
   
 
@@ -72,7 +77,7 @@ const App = () => {
         path="/"
         element={<HomeLayout search={search} setSearch={setSearch} />}
       >
-        <Route index element={<Home posts={posts} />} />
+        <Route index element={<Home posts={searchResult} />} />
         <Route path="/post">
           <Route
             index
