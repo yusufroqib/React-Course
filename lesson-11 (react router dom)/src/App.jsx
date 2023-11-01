@@ -89,7 +89,15 @@ const App = () => {
         path="/"
         element={<HomeLayout search={search} setSearch={setSearch} />}
       >
-        <Route index element={<Home posts={searchResult} isLoading={isLoading} fetchError={fetchError} />} 
+        <Route
+          index
+          element={
+            <Home
+              posts={searchResult}
+              isLoading={isLoading}
+              fetchError={fetchError}
+            />
+          }
         />
         <Route path="/post">
           <Route
