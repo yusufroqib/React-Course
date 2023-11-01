@@ -7,7 +7,9 @@ const Post = ({ post }) => {
                 <h2>{ post.title }</h2>
                 <p className="postDate"> { post.date }</p>
             </Link>
-            <p className="postBody">{post.body}</p>
+            <p className="postBody">
+                {post.body.length <= 24? post.body : `${post.body.slice(0, 24)}...`}
+            </p>
         </article>
     )
 }
