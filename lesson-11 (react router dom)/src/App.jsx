@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Routes, Route, useNavigate } from "react-router-dom";
+import { format } from "date-fns";
 
 import Home from "./Home";
 import NewPost from "./NewPost";
@@ -40,6 +41,11 @@ const App = () => {
   const [postTitle, setPostTitle] = useState("");
   const [postBody, setPostBody] = useState("");
 
+  useEffect(() => {
+    
+  }, [posts, search])
+  
+
   const navigate = useNavigate();
 
   const handleDelete = (id) => {
@@ -50,6 +56,14 @@ const App = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
+    const id = posts.length ? posts[posts.length - 1].id + 1 : 1;
+    const date = format(new Date(), 'MMMM dd, yyyy pp');
+    const newPost = { id, title: postTitle, date, body: postBody}
+    const allPost = [...posts, newPost]
+    setPosts(allPost)
+    setPostTitle('')
+    setPostBody('')
+    navigate("/")
   }
 
   return (
