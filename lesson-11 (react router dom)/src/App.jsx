@@ -1,4 +1,4 @@
-import  { useState } from 'react'
+import { useState } from 'react'
 import { Routes, Route, useNavigate } from 'react-router-dom'
 
 import Home from './Home'
@@ -39,18 +39,23 @@ const App = () => {
   ])
   const [searchResult, setSearchResult] = useState([])
 
+  const handleDelete = () => {
+
+  }
+
   return (
-  
-      <Routes >
-        <Route path='/' element={<HomeLayout search={search} setSearch={setSearch} />}>
-            <Route index element={<Home posts={ posts } />} />
-            <Route path='/post' element={<NewPost />} >
-                <Route path=':id' element={<PostPage />} /> 
-            </Route>
-            <Route path='/about' element={<About />} />
-            <Route path='*' element={<Missing />} />
+
+    <Routes >
+      <Route path='/' element={<HomeLayout search={search} setSearch={setSearch} />}>
+        <Route index element={<Home posts={posts} />} />
+        <Route path='/post'>
+          <Route index element={<NewPost />} />
+          <Route path=':id' element={<PostPage posts={posts} handleDelete={handleDelete} />} />
         </Route>
-      </Routes>
+        <Route path='/about' element={<About />} />
+        <Route path='*' element={<Missing />} />
+      </Route>
+    </Routes>
   )
 }
 
