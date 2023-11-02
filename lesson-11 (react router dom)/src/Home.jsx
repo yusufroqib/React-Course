@@ -3,7 +3,7 @@ import Feed from './Feed'
 const Home = ({ posts, isLoading, fetchError }) => {
   return (
     <main className='Home'>
-        {isLoading && <p>Loading Pots...</p>}
+        {isLoading && <p style={{ display: "grid", placeContent: "center" }}>Loading Posts...</p>}
         {fetchError && <p style={{ color: "red" }}>{`Error: ${fetchError}`}</p>}
         {!fetchError && !isLoading &&
         (posts.length ? (
