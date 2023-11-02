@@ -211,9 +211,17 @@ body {
   border-radius: 0.25rem;
   padding: 0.5rem;
   font-size: 1rem;
-  background-color: red;
+  margin-right: 0.5rem;
   color: #fff;
   cursor: pointer;
+}
+
+.editButton {
+  background-color: #333;
+}
+
+.deleteButton {
+  background-color: red;
 }
 
 .statusMsg {
