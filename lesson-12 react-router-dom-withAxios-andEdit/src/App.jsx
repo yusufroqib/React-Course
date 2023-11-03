@@ -9,6 +9,8 @@ import About from "./About";
 import HomeLayout from "./HomeLayout";
 import api from "./api/posts";
 import EditPost from "./EditPost";
+import useWindowSize from "./hooks/useWindowSize";
+
 
 const App = () => {
   const [posts, setPosts] = useState([]);
