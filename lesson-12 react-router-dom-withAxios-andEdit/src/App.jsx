@@ -45,7 +45,7 @@ const App = () => {
       }
     };
     fetchPost();
-  }, []);
+  }, []);   
 
   const navigate = useNavigate();
 
