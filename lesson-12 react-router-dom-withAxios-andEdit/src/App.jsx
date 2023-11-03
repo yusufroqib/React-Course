@@ -27,7 +27,6 @@ const App = () => {
 
   useEffect(() => {
     setPosts(data)
-    
   }, [data]);
   
 
