@@ -1,3 +1,6 @@
+import { useContext } from "react";
+import DataContext from "./context/DataContext";
+
 const NewPost = ({
   postTitle,
   postBody,
