@@ -91,9 +91,7 @@ const App = () => {
       <Routes>
         <Route
           path="/"
-          element={
-            <HomeLayout search={search} setSearch={setSearch} width={width} />
-          }
+          element={<HomeLayout search={search} setSearch={setSearch} />}
         >
           <Route
             index
