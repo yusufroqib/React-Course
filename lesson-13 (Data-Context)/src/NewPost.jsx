@@ -1,35 +1,10 @@
 import { useContext, useState } from "react";
-import { format } from "date-fns";
 import DataContext from "./context/DataContext";
-import { useNavigate } from "react-router-dom";
-import api from "./api/posts";
 
 const NewPost = () => {
   const [postTitle, setPostTitle] = useState("");
   const [postBody, setPostBody] = useState("");
-
-  const navigate = useNavigate();
-
-  const { posts, setPosts } = useContext(DataContext)
-  
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const id = posts.length ? posts[posts.length - 1].id + 1 : 1;
-    const date = format(new Date(), "MMMM dd, yyyy pp");
-    const newPost = { id, title: postTitle, date, body: postBody };
-    try {
-      const response = await api.post("/posts", newPost);
-      const allPost = [...posts, response.data];
-      setPosts(allPost);
-      setPostTitle("");
-      setPostBody("");
-      navigate("/");
-    } catch (error) {
-      console.log(`Error: ${error.message}`);
-    }
-  };
-
+  const { handleSubmit } = useContext(DataContext)
   return (
     <main className="NewPost">
       <h2>New Post</h2>
