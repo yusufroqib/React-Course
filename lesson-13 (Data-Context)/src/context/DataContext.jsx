@@ -84,7 +84,8 @@ export const DataProvider = ({ children }) => {
         <DataContext.Provider value={{
             width, search, setSearch,    //header and nav
             posts, fetchError, isLoading, searchResult,  //Home
-            postTitle, setPostTitle, postBody, setPostBody, handleSubmit //NewPost
+            postTitle, setPostTitle, postBody, setPostBody, handleSubmit, //NewPost
+            handleDelete //PostPage
         }}>
             {children}
         </DataContext.Provider>
