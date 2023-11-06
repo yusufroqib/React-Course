@@ -93,11 +93,7 @@ const App = () => {
           <Route index element={ <Home /> } />
           <Route path="/post">
             <Route index  element={<NewPost />} />
-
-            <Route
-              path=":id"
-              element={<PostPage posts={posts} handleDelete={handleDelete} />}
-            />
+            <Route path=":id" element={<PostPage />}/>
           </Route>
           <Route
             path="/edit/:id"
