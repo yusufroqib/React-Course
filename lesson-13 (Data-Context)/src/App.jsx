@@ -89,20 +89,8 @@ const App = () => {
   return (
     <DataProvider>
       <Routes>
-        <Route
-          path="/"
-          element={<HomeLayout search={search} setSearch={setSearch} />}
-        >
-          <Route
-            index
-            element={
-              <Home
-                posts={searchResult}
-                fetchError={fetchError}
-                isLoading={isLoading}
-              />
-            }
-          />
+        <Route path="/" element={<HomeLayout />}>
+          <Route index element={ <Home /> } />
           <Route path="/post">
             <Route
               index
