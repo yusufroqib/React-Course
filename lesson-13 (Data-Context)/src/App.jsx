@@ -95,19 +95,7 @@ const App = () => {
             <Route index  element={<NewPost />} />
             <Route path=":id" element={<PostPage />}/>
           </Route>
-          <Route
-            path="/edit/:id"
-            element={
-              <EditPost
-                posts={posts}
-                handleEdit={handleEdit}
-                editTitle={editTitle}
-                editBody={editBody}
-                setEditBody={setEditBody}
-                setEditTitle={setEditTitle}
-              />
-            }
-          />
+          <Route path="/edit/:id" element={<EditPost />} />
           <Route path="/about" element={<About />} />
           <Route path="*" element={<Missing />} />
         </Route>
