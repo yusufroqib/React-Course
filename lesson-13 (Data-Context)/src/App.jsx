@@ -11,7 +11,7 @@ import api from "./api/posts";
 import EditPost from "./EditPost";
 import useWindowSize from "./hooks/useWindowSize";
 import useAxiosFetch from "./hooks/useAxiosFetch";
-
+import { DataProvider } from "./context/DataContext";
 
 const App = () => {
   const [posts, setPosts] = useState([]);
@@ -22,13 +22,14 @@ const App = () => {
   const [postBody, setPostBody] = useState("");
   const [editTitle, setEditTitle] = useState("");
   const [editBody, setEditBody] = useState("");
-  const { width } = useWindowSize()
-  const {data, fetchError, isLoading } = useAxiosFetch('http://localhost:3500/posts')
+  const { width } = useWindowSize();
+  const { data, fetchError, isLoading } = useAxiosFetch(
+    "http://localhost:3500/posts"
+  );
 
   useEffect(() => {
-    setPosts(data)
+    setPosts(data);
   }, [data]);
-  
 
   useEffect(() => {
     const filterResult = posts.filter(
@@ -55,7 +56,7 @@ const App = () => {
   //     }
   //   };
   //   fetchPost();
-  // }, []);   
+  // }, []);
 
   const navigate = useNavigate();
 
@@ -104,57 +105,61 @@ const App = () => {
   };
 
   return (
-    <Routes>
-      <Route
-        path="/"
-        element={<HomeLayout search={search} setSearch={setSearch} width={ width }/>}
-      >
-        <Route 
-          index 
+    <DataProvider>
+      <Routes>
+        <Route
+          path="/"
           element={
-            <Home 
-              posts={searchResult} 
-              fetchError={fetchError}
-              isLoading={isLoading}
-            />
-          } 
-        />
-        <Route path="/post">
+            <HomeLayout search={search} setSearch={setSearch} width={width} />
+          }
+        >
           <Route
             index
             element={
-              <NewPost
-                postTitle={postTitle}
-                setPostTitle={setPostTitle}
-                postBody={postBody}
-                setPostBody={setPostBody}
-                handleSubmit={handleSubmit}
+              <Home
+                posts={searchResult}
+                fetchError={fetchError}
+                isLoading={isLoading}
               />
             }
           />
-
-          <Route
-            path=":id"
-            element={<PostPage posts={posts} handleDelete={handleDelete} />}
-          />
-        </Route>
-        <Route
-          path="/edit/:id"
-          element={
-            <EditPost
-              posts={posts}
-              handleEdit={handleEdit}
-              editTitle={editTitle}
-              editBody={editBody}
-              setEditBody={setEditBody}
-              setEditTitle={setEditTitle}
+          <Route path="/post">
+            <Route
+              index
+              element={
+                <NewPost
+                  postTitle={postTitle}
+                  setPostTitle={setPostTitle}
+                  postBody={postBody}
+                  setPostBody={setPostBody}
+                  handleSubmit={handleSubmit}
+                />
+              }
             />
-          }
-        />
-        <Route path="/about" element={<About />} />
-        <Route path="*" element={<Missing />} />
-      </Route>
-    </Routes>
+
+            <Route
+              path=":id"
+              element={<PostPage posts={posts} handleDelete={handleDelete} />}
+            />
+          </Route>
+          <Route
+            path="/edit/:id"
+            element={
+              <EditPost
+                posts={posts}
+                handleEdit={handleEdit}
+                editTitle={editTitle}
+                editBody={editBody}
+                setEditBody={setEditBody}
+                setEditTitle={setEditTitle}
+              />
+            }
+          />
+          <Route path="/about" element={<About />} />
+          <Route path="*" element={<Missing />} />
+        </Route>
+      </Routes>
+    </DataProvider>
   );
 };
 
