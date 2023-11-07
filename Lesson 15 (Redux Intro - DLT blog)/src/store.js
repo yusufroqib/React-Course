@@ -37,6 +37,48 @@ export default createStore({
         state.searchResults = payload
     }),
 
-    setPostCount: computed((state) => state.posts.length)
-    getPostId: 
+    setPostCount: computed((state) => state.posts.length),
+
+    getPostById: computed((id) => {   
+        return state.posts.find(post => post.id.toString() === id)
+    }),
+
+    savePost: thunk(async(actions, newPost, helpers) => {
+        const {posts} = helpers.getState()
+        try {
+            const response = await api.post("/posts", newPost); 
+            actions.setPosts([...posts, response.data]);
+            actions.setPostTitle("");
+            actions.setPostBody("");
+          } catch (error) {
+            console.log(`Error: ${error.message}`);
+          }
+    }),
+
+    deletePost: thunk(async(actions, id, helpers) => {
+        const {posts} = helpers.getState()
+        try {
+            await api.delete(`/posts/${id}`);
+            actions.setPosts(posts.filter((post) => post.id !== id));
+          } catch (error) {
+            console.log(`Error: ${error.message}`);
+          }
+
+    }),
+
+    editPost: thunk(async(actions, updatedPost, helpers) => {
+        const {posts} = helpers.getState()
+        const {id} = updatedPost;
+        try {
+            const response = await api.put(`/posts/${id}`, updatedPost);
+            setPosts(
+              posts.map((post) => (post.id === id ? { ...response.data } : post))
+            );
+            setEditTitle("");
+            setEditBody("");
+            navigate("/");
+          } catch (error) {
+            console.log(`Error: ${error.message}`);
+          }
+    })
 })
