@@ -7,8 +7,10 @@ const PostPage = () => {
 
   const deletePost = useStoreActions((action) => action.deletePost)
   const getPostById = useStoreState((state) => state.getPostById)
+  const post = getPostById(id)
 
   const handleDelete = async (id) => {
+      deletePost(id)
       navigate("/");
   };
     

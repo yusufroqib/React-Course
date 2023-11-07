@@ -13,12 +13,6 @@
       "body": " consectetur adipisicing elit. Amet corrupti facere dignissimos laborum! Numquam autem inventore vel architecto nam iure id placeat? Iste, "
     },
     {
-      "id": 5,
-      "title": "Modular",
-      "date": "November 02, 2023 12:30:32 AM",
-      "body": "With the function-per-file style, you can pick just what you need and stop bloating your project with useless functionality.\n\nIt works well with modern module bundlers such as webpack, Browserify, and Rollup and also supports tree-shaking."
-    },
-    {
       "id": 9,
       "title": "Check it out",
       "date": "November 02, 2023 10:42:32 AM",
