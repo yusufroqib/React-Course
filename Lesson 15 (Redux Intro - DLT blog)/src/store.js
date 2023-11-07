@@ -39,8 +39,8 @@ export default createStore({
 
     setPostCount: computed((state) => state.posts.length),
 
-    getPostById: computed((id) => {   
-        return state.posts.find(post => post.id.toString() === id)
+    getPostById: computed((state) => {   
+        return (id) => state.posts.find(post => post.id.toString() === id)
     }),
 
     savePost: thunk(async(actions, newPost, helpers) => {
@@ -71,12 +71,11 @@ export default createStore({
         const {id} = updatedPost;
         try {
             const response = await api.put(`/posts/${id}`, updatedPost);
-            setPosts(
+            actions.setPosts(
               posts.map((post) => (post.id === id ? { ...response.data } : post))
             );
-            setEditTitle("");
-            setEditBody("");
-            navigate("/");
+            actions.setEditTitle("");
+            actions.setEditBody("");
           } catch (error) {
             console.log(`Error: ${error.message}`);
           }
