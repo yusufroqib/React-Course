@@ -1,5 +1,5 @@
 import { useStoreState } from "easy-peasy"
-import Feed  from "../components/Feed"
+import {Feed}  from "../components/index"
 
 const Home = ({fetchError, isLoading}) => {
   const searchResults = useStoreState((state) => state.searchResults)
