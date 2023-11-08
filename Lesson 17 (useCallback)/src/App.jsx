@@ -19,7 +19,7 @@ const App = () => {
         value={userInput} 
         onChange={(e) => setUserInput(e.target.value)} 
       />
-      <h1>Output: {userInput || "..."}</h1>
+      <h1>Output: <span style={{color: "#3584de"}}>{userInput || "..."}</span></h1>
     </main>
   )
 }
