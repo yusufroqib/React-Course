@@ -15,7 +15,7 @@ const App = () => {
   return (
     <main className='App'>
       <input type="text" 
-        placeholder='input' 
+        placeholder='Input' 
         value={userInput} 
         onChange={(e) => setUserInput(e.target.value)} 
       />
