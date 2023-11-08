@@ -1,8 +1,26 @@
-import Counter from './Counter'
+import { useState, useEffect } from 'react'
 
 const App = () => {
+  const [userInput, setUserInput] = useState("")
+  const [num1] = useState(4)
+  const [num2] = useState(5)
+
+  const sum = () => num1 + num2
+
+  useEffect(() => {
+    console.log(`New sum. Value: ${sum()}`);
+  }, [sum])
+  
+
   return (
-    <Counter />
+    <main className='App'>
+      <input type="text" 
+        placeholder='input' 
+        value={userInput} 
+        onChange={(e) => setUserInput(e.target.value)} 
+      />
+      <h1>Output: {userInput || "..."}</h1>
+    </main>
   )
 }
 
