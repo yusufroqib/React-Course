@@ -6,15 +6,23 @@ const App = () => {
   
   const renders = useRef(0)
   const inputRef = useRef()
+  const timerId = useRef()
 
-  const handleInputChange = () => {
+  const startTimer = () => {
+    timerId.current = setInterval(() => {
+      renders.current++
+      setSeconds(prev => prev + 1)
+    }, 1000)
+  }
+
+  const handleInputChange = (e) => {
     setRandomInput(e.target.value)
     renders.current++
   }
 
-  const focusOnInput = () => {
-    inputRef.current.focus()
-  }
+  // const focusOnInput = () => {
+  //   inputRef.current.focus()
+  // }
 
   return (
     <main className="App">
