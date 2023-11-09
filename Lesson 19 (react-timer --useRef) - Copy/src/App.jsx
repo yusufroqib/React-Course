@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 const App = () => {
-  const [useInput, setUseInput] = useState('')
+  const [userInput, setUserInput] = useState('')
   const [count, setCount] = useState(0)
   const [color, setColor] = useState(false)
 
@@ -10,17 +10,17 @@ const App = () => {
     <main className="App" style={{color: color ? '#fff' : '#fff92'}}>
       <input
         type="text"
-        value={randomInput}
-        placeholder="Type anything"
-        onChange={handleInputChange}
+        value={userInput}
+        onChange={(e) => setUserInput(e.target.value)}
       />
-      <p>Renders: {renders.current}</p>
 
       <br />
       <br />
+
+      <p>{count}</p>
 
       <section>
-        {/* <button onClick={focusOnInput}>Focus</button> */}
+        <button onClick={focusOnInput}>Focus</button>
         <button onClick={stopTimer}>Stop</button>
         <button onClick={startTimer}>Start</button>
       </section>
