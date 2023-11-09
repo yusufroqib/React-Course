@@ -7,7 +7,7 @@ const App = () => {
 
 
   return (
-    <main className="App" style={{color: color ? '#fff' : '#fff92'}}>
+    <main className="App" style={{color: color ? '#fff' : '#fff952'}}>
       <input
         type="text"
         value={userInput}
@@ -25,17 +25,11 @@ const App = () => {
         <button onClick={(() => setColor(prev => !prev))}>Color</button>
       </section>
 
-      <button onClick={resetTimer}>Reset</button>
-
+      
       <br />
       <br />
 
-      <p>Seconds: {seconds}</p>
-
-      <br />
-      <br />
-
-      <p>{randomInput}</p>
+      <p>{userInput}</p>
 
     </main>
   );
