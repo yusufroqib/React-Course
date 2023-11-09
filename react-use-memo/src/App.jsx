@@ -28,10 +28,15 @@ const App = () => {
     <main className='App'>
       <label >Fibonaci Sequence:</label>
       <input type="text" 
-        placeholder='Input' 
+        placeholder='Position' 
         value={userInput} 
         onChange={(e) => setUserInput(e.target.value)} 
       />
+      <p>Number: {fibNumber || "--"}</p>
+      
+      <br />
+      <br />
+
       <h1>Output: <span style={{color: "#3584de", fontSize: "40px"}}>{userInput || "..."}</span></h1>
     </main>
   )
