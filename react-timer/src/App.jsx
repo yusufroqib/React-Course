@@ -3,6 +3,7 @@ import { useState, useRef } from "react";
 const App = () => {
   const [randomInput, setRandomInput] = useState("");
   const [seconds, setSeconds] = useState(0)
+  const renders = useRef()
 
   return (
     <main className="App">
@@ -10,7 +11,7 @@ const App = () => {
         type="text"
         value={randomInput}
         placeholder="Type anything"
-        onChange={(e) => setRandomInput(e.target.value)}
+        
       />
       <p>Renders: {randomInput}</p>
 
