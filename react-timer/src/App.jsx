@@ -1,7 +1,8 @@
-import { useState, useEffect } from "react";
+import { useState, useRef } from "react";
 
 const App = () => {
   const [randomInput, setRandomInput] = useState("");
+  const [seconds, setSeconds] = useState(0)
 
   return (
     <main className="App">
