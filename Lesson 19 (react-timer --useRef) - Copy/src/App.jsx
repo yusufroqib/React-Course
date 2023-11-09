@@ -29,11 +29,11 @@ const App = () => {
       <br />
       <br />
 
-      <p>{count}</p>
+      <p>{state.count}</p>
 
       <section>
-        <button onClick={(() => setCount(prev => prev - 1))}>-</button>
-        <button onClick={(() => setCount(prev => prev + 1))}>+</button>
+        <button onClick={(() => dispatch({type: 'decrement'}))}>-</button>
+        <button onClick={(() => dispatch({type: 'increment'}))}>+</button>
         <button onClick={(() => setColor(prev => !prev))}>Color</button>
       </section>
 
