@@ -1,7 +1,9 @@
 import { useState } from "react";
 
 const App = () => {
-  
+  const [useInput, setUseInput] = useState('')
+  const [count, setCount] = useState(0)
+  const [color, setColor] = useState(false)
 
 
   return (
