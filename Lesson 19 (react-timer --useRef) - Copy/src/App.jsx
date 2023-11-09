@@ -7,7 +7,7 @@ const App = () => {
 
 
   return (
-    <main className="App">
+    <main className="App" style={{color: color ? '#fff' : '#fff92'}}>
       <input
         type="text"
         value={randomInput}
