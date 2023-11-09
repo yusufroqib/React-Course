@@ -14,7 +14,7 @@ const App = () => {
     console.log(`New sum. Value: ${buildArray()}`);
     setResult(buildArray())
   }, [buildArray])
-  
+
 
   return (
     <main className='App'>
