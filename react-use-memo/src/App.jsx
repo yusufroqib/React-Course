@@ -17,9 +17,16 @@ const App = () => {
 
   const fibNumber = useMemo(() => fib(userInput), [userInput, fib])
 
+  const myArray = useMemo(() => getArray(), [])
+
+  useEffect(() => {
+    console.log("New Array");
+  }, [myArray])
+
 
   return (
     <main className='App'>
+      <label >Fibonaci Sequence:</label>
       <input type="text" 
         placeholder='Input' 
         value={userInput} 
