@@ -24,9 +24,8 @@ const App = () => {
         value={randomInput}
         placeholder="Type anything"
         onChange={handleInputChange}
-        
       />
-      <p>Renders: {randomInput}</p>
+      <p>Renders: {renders.current}</p>
 
       <br />
       <br />
