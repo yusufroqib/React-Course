@@ -28,6 +28,11 @@ const App = () => {
 
       <p>Seconds: </p>
 
+      <br />
+      <br />
+
+      <p>{randomInput}</p>
+
     </main>
   );
 };
