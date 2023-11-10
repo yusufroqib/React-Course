@@ -83,7 +83,7 @@ const Register = () => {
 
         <p
           id="uidnote"
-          className={userFocus && user && !validName ? "instruction" : "offscreen"}
+          className={userFocus && user && !validName ? "instructions" : "offscreen"}
         >
           <FontAwesomeIcon icon={faInfoCircle} />
           3 to 23 characters <br />
