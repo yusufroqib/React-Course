@@ -3,9 +3,9 @@ import Register from "./Register";
 
 const App = () => {
   return (
-    <main className="App">
-      <Register />
-    </main>
+   <main className="App">
+       <Register/>
+   </main>
   )
 }
 
