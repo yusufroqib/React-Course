@@ -22,6 +22,15 @@ const Register = () => {
     const [errMsg, setErrMsg] = useState("")
     const [success, setSuccess] = useState(false)
   
+    useEffect(() => {
+        useRef.current.focus()
+    }, [])
+
+    useEffect(() => {
+        setValidName(USER_REGEX.test(user))
+    }, [user])
+    
+
   return (
     <div>Register</div>
   )
