@@ -7,13 +7,26 @@ const App = () => {
   const [num2] = useState(5)
 
 
-  const sum = useCallback(() => num1 + num2, [num1, num2])
+  const sum = () => num1 + num2
+
+  // useEffect(() => {
+  //   console.log(` Value: ${sum()}`);
+  //   // setResult(buildArray())
+  // }, [sum])
+
+  // const sum = useCallback(() => num1 + num2, [num1, num2])
+
+  const buildArray = useCallback(() => [num1, num2], [num1, num2])
+
   useEffect(() => {
     console.log(`New sum. Value: ${buildArray()}`);
     setResult(buildArray())
   }, [buildArray])
 
-  // const sum = useCallback(() => num1 + num2, [num1, num2])
+  // useEffect(() => {
+  //   console.log(`New sum. Value: ${sum()}`);
+  //   setResult(sum())
+  // }, [sum])
 
   // const buildArray = useCallback(() => [num1, num2], [num1, num2])
 
