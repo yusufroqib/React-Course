@@ -47,6 +47,12 @@ const Register = () => {
     setErrMsg("");
   }, [user, pwd, matchPwd]);
 
+  const handleSubmit = () => {
+    e.preventDefault();
+    const v1 = USER_REGEX.test(user);
+    const v2 = PWD_REGEX.test(pwd);
+  }
+
   return (
     <section>
       <p
@@ -58,7 +64,7 @@ const Register = () => {
       </p>
 
       <h1>Register</h1>
-      
+
       <form onSubmit={handleSubmit}>
           <label htmlFor="username">
             username:
