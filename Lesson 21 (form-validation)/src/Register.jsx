@@ -47,7 +47,7 @@ const Register = () => {
   }, [user, pwd, matchPwd]);
 
   return (
-    <>
+    <section>
       <p
         ref={errRef}
         className={errMsg ? "errmsg" : "offscreen"}
@@ -132,11 +132,20 @@ const Register = () => {
         <label htmlFor="confirm_pwd">
           Confirm Password:
           <FontAwesomeIcon icon={faCheck} className={validMatch && matchPwd ? "valid" : "hide"} />
-          <FontAwesomeIcon icon={faTimes} className={validMatch && matchPwd ? "valid" : "hide"} />
+          <FontAwesomeIcon icon={faTimes} className={validMatch || !matchPwd ? "hide" : "invalid"} />
         </label>
+        <input 
+          type="password" 
+          id="confirm_pwd"
+          onChange={(e) => setMatchPwd(e.target.value)}
+          value={matchPwd}
+          required
+          aria-invalid={validMatch? "false" : "true"}
+          aria-describedby="confirmnote"
+        />
 
       </form>
-    </>
+    </section>
   );
 };
 
