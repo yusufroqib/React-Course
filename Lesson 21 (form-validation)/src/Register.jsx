@@ -7,7 +7,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import axios from "./api/axios"
 
-const USER_REGEX = /^[A-Z][A-Z0-9-_]{3,23}$/;
+const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 const REGISTER_URL = "/register";
 
@@ -60,11 +60,11 @@ const Register = () => {
           username:
           <FontAwesomeIcon
             icon={faCheck}
-            className={validMatch && matchPwd ? "valid" : "hide"}
+            className={validName ? "valid" : "hide"}
           />
           <FontAwesomeIcon
             icon={faTimes}
-            className={validMatch || matchPwd ? "hide" : "invalid"}
+            className={validName || !user ? "hide" : "invalid"}
           />
         </label>
         <input
