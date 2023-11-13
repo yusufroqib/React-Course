@@ -40,6 +40,7 @@ const Register = () => {
 
   useEffect(() => {
     setValidPwd(PWD_REGEX.test(pwd));
+    setValidMatch(pwd === matchPwd)
   }, [pwd, matchPwd]);
 
   useEffect(() => {
@@ -140,9 +141,18 @@ const Register = () => {
           onChange={(e) => setMatchPwd(e.target.value)}
           value={matchPwd}
           required
-          aria-invalid={validMatch? "false" : "true"}
+          aria-invalid={validMatch ? "false" : "true"}
           aria-describedby="confirmnote"
+          onFocus={() => setMatchFocus(true)}
+          onBlur={() => setMatchFocus(false)}
         />
+        <p
+          id="confirmnote"
+          className={matchFocus  && !validMatch ? "instructions" : "offscreen"}
+        >
+          <FontAwesomeIcon icon={faInfoCircle} />
+          Must match the first password input field.
+        </p>
 
       </form>
     </section>
