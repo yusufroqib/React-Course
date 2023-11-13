@@ -23,6 +23,7 @@ function Login() {
          setErrMsg("Username and password are required");
          return;
       }
+      console.log(username, password);
       setSuccess(true);
       setUsername("");
       setPassword("");
