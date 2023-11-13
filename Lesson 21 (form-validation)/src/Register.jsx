@@ -128,6 +128,12 @@ const Register = () => {
           <span aria-label="dollar sign">$</span>
           <span aria-label="percent">%</span>
         </p>
+
+        <label htmlFor="confirm_pwd">
+          Confirm Password:
+          
+        </label>
+
       </form>
     </>
   );
