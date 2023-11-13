@@ -56,6 +56,7 @@ const Register = () => {
       >
         {errMsg}
       </p>
+      <h1>Register</h1>
       <form>
         <label htmlFor="username">
           username:
@@ -155,6 +156,12 @@ const Register = () => {
         </p>
         <button disabled={!validName || !validPwd ? true : false}>Sign Up</button>
       </form>
+      <p>
+        Already Registered? <br />
+        <span className="line">
+          
+        </span>
+      </p>
     </section>
   );
 };
