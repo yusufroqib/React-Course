@@ -56,7 +56,10 @@ function Login() {
                 </button>
             </form>
             <p>
-                Need an Acount?
+                Need an Acount? <br />
+                <span>
+                <a href="#">Sign Up</a>
+                </span>
             </p>
         </section>
     </>
