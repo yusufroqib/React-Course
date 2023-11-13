@@ -159,7 +159,7 @@ const Register = () => {
       <p>
         Already Registered? <br />
         <span className="line">
-          
+          <a href="#">Sign In</a>
         </span>
       </p>
     </section>
