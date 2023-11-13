@@ -30,7 +30,8 @@ function Login() {
             <form >
                 <label>
                     Username:
-                    <input
+                </label>
+                <input
                         type="text"
                         id='username'
                         ref={userRef}
@@ -38,22 +39,25 @@ function Login() {
                         value={username}
                         onChange={(e) => setUsername(e.target.value)}
                         required
-                    />
-                </label>
+                />
+                
                 <label>
                     Password:
-                    <input
-                        type="password"
-                        id='password'
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        required
-                    />
                 </label>
+                <input
+                    type="password"
+                    id='password'
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    required
+                />
                 <button >
                     Sign In
                 </button>
             </form>
+            <p>
+                Need an Acount?
+            </p>
         </section>
     </>
   )
