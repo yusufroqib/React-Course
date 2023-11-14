@@ -1,12 +1,14 @@
-import React, { useEffect, useRef, useState, useContext } from "react";
-import AuthContext from "../context/AuthProvider";
+import React, { useEffect, useRef, useState} from "react";
 import axios from "../api/axios";
+import useAuth from "../hooks/useAuth";
+import { useNavigate, Link } from "react-router-dom";
 
 
 function Login() {
    const LOGIN_URL = '/auth'
-   const {setAuth} = useContext(AuthContext)
+   const {setAuth} = useAuth()
 
+   const navigate = useNavigate()
    const userRef = useRef();
    const errRef = useRef();
 
@@ -59,13 +61,7 @@ function Login() {
    };
 
    return (
-      <>
-         {success ? (
-            <section>
-               <h1>Login Successful</h1>
-               <a href="/">Home</a>
-            </section>
-         ) : (
+      
             <section>
                <p
                   ref={errRef}
@@ -104,8 +100,7 @@ function Login() {
                   </span>
                </p>
             </section>
-         )}
-      </>
+        
    );
 }
 
