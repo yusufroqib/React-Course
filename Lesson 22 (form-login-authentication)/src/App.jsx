@@ -8,6 +8,7 @@ import Home from "./components/Home";
 import Admin from "./components/Admin"
 import Lounge from "./components/Lounge";
 import Editor from "./components/Editor";
+import Missing from "./components/Missing";
 
 
 const App = () => {
@@ -25,6 +26,9 @@ const App = () => {
             <Route path='editor' element={<Editor />} />
             <Route path='admin' element={<Admin />} />
             <Route path='lounge' element={<Lounge />} />
+
+            {/* catch all */}
+            <Route path="*" element={<Missing />} />
          </Route>
       </Routes>
    );
