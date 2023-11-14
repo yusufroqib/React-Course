@@ -1,0 +1,32 @@
+h3 {
+    font-size: 30px; font-weight: 900;
+}
+
+img{
+    width: 500;
+    margin: 0 auto;
+}
+
+.btn {
+    padding-inline: 8px;
+    padding-block: 8px;
+    border: 1px solid green;
+    border-radius: 10px;
+    outline: none;
+    background: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: .2rem;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 15px;
+    color: #396c39;
+}
+
+.btn:hover {
+    transition-duration: 800ms;
+    transform: translateY(-2px);
+    border: none;
+    border-bottom: 1px solid #396c39;
+}

@@ -1,8 +1,6 @@
 import React, { useEffect, useRef, useState, useContext } from "react";
-import AuthContext from "./context/AuthProvider";
-import axios from "./api/axios";
-
-
+import AuthContext from "../context/AuthProvider";
+import axios from "../api/axios";
 
 
 function Login() {
