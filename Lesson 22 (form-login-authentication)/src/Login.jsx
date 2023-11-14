@@ -28,11 +28,30 @@ function Login() {
    const handleSubmit = async (e) => {
       e.preventDefault();
       try {
-         setSuccess(true);
-         setUser("");
-         setPwd("");
-      } catch (err) {
-         
+         const response = await axios.post(LOGIN_URL, JSON.stringify({user, pwd}), {
+            headers: {'Content-Type': 'application/json'},
+            withCredentials: true
+         })
+      console.log(JSON.stringify(response?.data));
+      const accessToken = response?.data?.accessToken
+      const roles = response?.data?.roles
+
+      setAuth({user, pwd, roles, accessToken})
+
+      setSuccess(true);
+      setUser("");
+      setPwd("");
+      } catch (error) {
+         if (!error.response) {
+            setErrMsg("No Server Response");
+         } else if (error.response?.status === 400){
+            setErrMsg('Missing Username or Password')
+         } else if (error.response?.status === 401){
+            setErrMsg('Unauthorized')
+         } else {
+            setErrMsg('Login Failed')
+         }
+         errRef.current.focus()
       }
       // if (user === "" || pwd === "") {
       //    setErrMsg("User and pwd are required");
