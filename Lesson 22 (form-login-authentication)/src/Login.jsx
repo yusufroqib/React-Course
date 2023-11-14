@@ -3,6 +3,8 @@ import AuthContext from "./context/AuthProvider";
 
 
 function Login() {
+   const {setAuth} = useContext(AuthContext)
+
    const userRef = useRef();
    const errRef = useRef();
 
