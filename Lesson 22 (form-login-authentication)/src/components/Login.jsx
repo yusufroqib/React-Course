@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState} from "react";
 import axios from "../api/axios";
 import useAuth from "../hooks/useAuth";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, Link, useLocation } from "react-router-dom";
 
 
 function Login() {
@@ -9,13 +9,15 @@ function Login() {
    const {setAuth} = useAuth()
 
    const navigate = useNavigate()
+   const location = useLocation()
+   const from = location.state?.from?.pathname || '/'
+
    const userRef = useRef();
    const errRef = useRef();
 
    const [user, setUser] = useState("");
    const [pwd, setPwd] = useState("");
    const [errMsg, setErrMsg] = useState("");
-   const [success, setSuccess] = useState(false);
 
    useEffect(() => {
       userRef.current.focus();
@@ -38,9 +40,9 @@ function Login() {
 
       setAuth({user, pwd, roles, accessToken})
 
-      setSuccess(true);
       setUser("");
       setPwd("");
+      navigate(from, {replace: true})
       } catch (error) {
          if (!error.response) {
             setErrMsg("No Server Response");
@@ -95,8 +97,8 @@ function Login() {
                </form>
                <p>
                   Need an Acount? <br />
-                  <span>
-                     <a href="#">Sign Up</a>
+                  <span className="line">
+                     <Link to='/register'>Sign Up</Link>
                   </span>
                </p>
             </section>
