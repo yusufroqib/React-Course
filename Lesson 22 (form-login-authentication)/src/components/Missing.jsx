@@ -18,7 +18,7 @@ const Missing = () => {
           gap: "4rem",
         }}
       >
-        <a href="/" class="btn">
+        <a href="/" className="btn">
           HOME
           <ion-icon name="home-outline"></ion-icon>
         </a>
@@ -26,7 +26,7 @@ const Missing = () => {
         <a
           href="https://snakegamexenzia.netlify.app/"
           target="_blank"
-          class="btn"
+          className="btn" rel="noreferrer"
         >
           Game Mode
           <ion-icon name="game-controller-outline"></ion-icon>
