@@ -7,11 +7,9 @@ const useAxiosPrivate = () => {
     const refresh = useRefreshToken()
     const {auth} = useAuth()
     useEffect(() => {
-        
+
     }, [auth, refresh])
-  return (
-    <div>useAxiosPrivate</div>
-  )
+  return axiosPrivate
 }
 
 export default useAxiosPrivate
