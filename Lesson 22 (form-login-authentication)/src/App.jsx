@@ -12,9 +12,9 @@ import Missing from "./components/Missing";
 import RequireAuth from "./components/RequireAuth";
 
 const ROLES = {
-  'User' : 2001,
+  'User' : 4000,
   'Editor' : 1984,
-  'Admin' : 5158
+  'Admin' : 5150
 }
 
 const App = () => {
