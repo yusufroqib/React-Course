@@ -15,6 +15,7 @@ const useAxiosPrivate = () => {
                 return config
             }, (error) => Promise.reject(error)
         )
+        
         const responseIntercept = axiosPrivate.interceptors.response.use(
             response => response, 
             async (error) => {

@@ -26,6 +26,10 @@ body {
   padding: 1rem 0.5rem;
 }
 
+ul {
+    list-style-type: none;
+}
+
 section {
     width: 100%;
     max-width: 420px;
