@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import axios from "../api/axios";
-import useRefreshToken from "../hooks/useRefreshToken";
 
 const Users = () => {
    const [users, setUsers] = useState([]);
@@ -18,8 +17,8 @@ const Users = () => {
             isMounted && setUsers(response.data);
          } catch (err) {
             console.log(err);
-         }
-      };
+         } 
+      }; 
       getUsers();
       return () => {
          isMounted = false;
@@ -39,6 +38,7 @@ const Users = () => {
          ) : (
             <p>No user to display</p>
          )}
+         <br />
       </article>
    );
 };
