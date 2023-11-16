@@ -3,7 +3,7 @@ import useAuth from "./useAuth"
 
 const useLogout = () => {
     const {setAuth} = useAuth();
-    const logOut = async => {
+    const logOut = async () => {
         setAuth({})
         try {
             const response = await axios('/logout', {
