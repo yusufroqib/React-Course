@@ -91,8 +91,7 @@ function Login() {
                id="username"
                ref={userRef}
                autoComplete="off"
-               value={user}
-               onChange={(e) => resetUser(e.target.value)}
+               {...userAttribs}
                required
             />
 
