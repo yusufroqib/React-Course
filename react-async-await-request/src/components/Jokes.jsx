@@ -3,7 +3,7 @@ import useAxios from '../hooks/useAxios'
 import axios from '../apis/dadjokes'
 
 const Jokes = () => {
-    const [joke, error, loading] = useAxios({
+    const [joke, loading, error] = useAxios({
         axiosInstance : axios,
         url : '/',
         method : 'GET',
@@ -13,6 +13,7 @@ const Jokes = () => {
             }
         }
     })
+
   return (
     <article>
         <h2>Random Dad Jokes</h2>
