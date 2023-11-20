@@ -45,7 +45,7 @@ function Login() {
 
          setAuth({ user, pwd, roles, accessToken });
 
-         setUser("");
+         resetUser("");
          setPwd("");
          navigate(from, { replace: true });
       } catch (error) {
@@ -92,7 +92,7 @@ function Login() {
                ref={userRef}
                autoComplete="off"
                value={user}
-               onChange={(e) => setUser(e.target.value)}
+               onChange={(e) => resetUser(e.target.value)}
                required
             />
 
