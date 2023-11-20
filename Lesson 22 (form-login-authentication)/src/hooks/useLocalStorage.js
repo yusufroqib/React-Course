@@ -8,14 +8,16 @@ const getLocalValue = (key, initValue) => {
     if (localValue) return localValue
 
     //return result of a function
-    if (initValue instanceof Function) return initValue
+    if (initValue instanceof Function) return initValue()
 
     return initValue
 }
 
 
 const useLocalStorage = (key, initValue) => {
-    const [value, setValue] = useState(JSON.parse(localStorage.getItem(key)) || initValue)
+    const [value, setValue] = useState(() => {
+        return getLocalValue(key, initValue)
+    })
 
     useEffect(() => {
         localStorage.setItem(key, JSON.stringify(value))
