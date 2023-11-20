@@ -22,7 +22,7 @@ const Jokes = () => {
         {!loading && !error && joke && <p>{joke?.joke}</p> }
         {!loading && !error && !joke && <p>No Joke to Display! 😞</p> }
 
-        <button>Refetch</button>
+        <button onClick={() => refetch()}>Get Joke</button>
     </article>
   )
 }
