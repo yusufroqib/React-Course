@@ -57,6 +57,7 @@ button {
     font-size: 22px;
     padding: 0.25rem;
     border-radius: 0.5rem;
+    cursor: pointer;
 }
 
 .row {
