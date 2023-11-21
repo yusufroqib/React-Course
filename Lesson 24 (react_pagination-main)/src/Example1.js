@@ -7,12 +7,9 @@ const Example1 = () => {
     const [posts, setPosts] = useState([])
 
     useEffect(() => {
+       getPostsPage(page).then((json) => setPosts(json));
+    }, [page]);
 
-        getPostsPage(page).then(json => setPosts(json))
-
-    }, [page])
-
-    const content = posts.map(post => <Post key={post.id} post={post} />)
 
     const nextPage = () => setPage(prev => prev + 1)
 
@@ -24,7 +21,8 @@ const Example1 = () => {
                 <button onClick={prevPage} disabled={page === 1}>Prev Page</button>
                 <button onClick={nextPage} disabled={!posts.length}>Next Page</button>
             </nav>
-            {content}
+            {posts.map(post => <Post key={post.id} post={post} />)
+}
         </>
     )
 }
