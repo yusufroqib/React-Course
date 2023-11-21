@@ -1,4 +1,5 @@
 import Jokes from "./components/Jokes"
+import Posts from "./components/Posts"
 
 function App() {
 
@@ -6,6 +7,7 @@ function App() {
    <main className="App">
       <h1>useAxios Hooks</h1>
       <Jokes />
+      <Posts />
    </main>
   )
 }

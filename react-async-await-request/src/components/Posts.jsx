@@ -3,7 +3,7 @@ import axios from "../apis/jsonPH";
 import useAxiosFunction from "../hooks/useAxiosFunction";
 
 const Posts = () => {
-   const [posts, loading, error, axiosFetch] = useAxiosFunction;
+   const [posts, loading, error, axiosFetch] = useAxiosFunction();
    const getData = () => {
       axiosFetch({
          axiosInstance: axios,
@@ -49,6 +49,7 @@ const Posts = () => {
                 }
             </ul>
          )}
+         {!loading && !error && posts?.length && posts?.data}
          {!loading && !error && !posts?.length && <p>No Post to Display! 😞</p>}
 
       </article>
