@@ -49,7 +49,7 @@ const Posts = () => {
                 }
             </ul>
          )}
-         {!loading && !error && posts?.data && 
+         {!loading && !error && !posts?.length && posts?.data && 
             <p>
                 userId: {posts.data?.userId},  title: {posts.data?.title}, body: {posts.data?.body}
             </p>
