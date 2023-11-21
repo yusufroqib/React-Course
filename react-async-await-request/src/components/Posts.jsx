@@ -35,7 +35,7 @@ const Posts = () => {
       <article>
          <h2>Posts</h2>
          <div className="row">
-            <button onClick={() => handleSubmit()}>Submit</button>
+            <button onClick={handleSubmit}>Submit</button>
          </div>
 
          {loading && <p>Loading...</p>}
@@ -49,8 +49,12 @@ const Posts = () => {
                 }
             </ul>
          )}
-         {!loading && !error && posts?.length && posts?.data}
-         {!loading && !error && !posts?.length && <p>No Post to Display! 😞</p>}
+         {!loading && !error && posts?.data && 
+            <p>
+                userId: {posts.data?.userId},  title: {posts.data?.title}, body: {posts.data?.body}
+            </p>
+         }
+         {!loading && !error && !posts && <p>No Post to Display! 😞</p>}
 
       </article>
    );
