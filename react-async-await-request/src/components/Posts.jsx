@@ -34,6 +34,9 @@ const Posts = () => {
    return (
       <article>
          <h2>Posts</h2>
+         <div className="row">
+            <button onClick={() => handleSubmit()}>Submit</button>
+         </div>
 
          {loading && <p>Loading...</p>}
          {!loading && error && <p className="errMsg">{error}</p>}
