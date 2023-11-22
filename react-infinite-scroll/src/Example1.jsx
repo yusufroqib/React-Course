@@ -14,20 +14,36 @@ const Example1 = () => {
 
       if (intObserver.current) intObserver.current.disconnect();
 
+      const confirmLoad = () => {
+         confirmAlert({
+            title: "Confirm Load More",
+            message: "Are you sure you want to load more posts?",
+            buttons: [
+               {
+                  label: "Yes",
+                  onClick: () => {
+                     setPageNum(prev => prev + 1);
+                  }
+               },
+               {label: "No"}
+            ]
+         })
+      }
+
      intObserver.current = new IntersectionObserver((post) => {
         if (post[0].isIntersecting && hasNextPage) {
            console.log("we are near the last post");
-           setPageNum((prev) => prev + 1);
-        }
+            confirmLoad();}
      });
-     
+
       if (post) intObserver.current.observe(post)
-   });
+   }, [loading, hasNextPage]);
 
    const content = results.map((post, i) => {
       if(results.length === i + 1) {
-
+         return <Post ref={lastPostRef} key={post.id} post={post} />
       }
+      
       return <Post key={post.id} post={post} />
    })
    

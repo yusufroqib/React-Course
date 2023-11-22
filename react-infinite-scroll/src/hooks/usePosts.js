@@ -14,7 +14,7 @@ const usePosts = (pageNum = 1) => {
        setError({});
 
        const controller = new AbortController();
-       const { signal } = controller.signal;
+       const { signal } = controller
        getPostsPage(pageNum, { signal })
           .then((data) => {
              setResults((prev) => [...prev, ...data]);
@@ -24,7 +24,7 @@ const usePosts = (pageNum = 1) => {
           .catch((e) => {
              setLoading(false);
              if(signal.aborted) return 
-             
+
              setIsError(true)
              setError({message: e.message})
           });
