@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { getPostsPage } from "../api/axios";
 
-const usePosts = (pageNum) => {
+const usePosts = (pageNum = 1) => {
     const [results, setResults] = useState([])
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState({})
