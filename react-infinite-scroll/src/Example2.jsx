@@ -3,6 +3,7 @@ import { confirmAlert } from "react-confirm-alert";
 import 'react-confirm-alert/src/react-confirm-alert.css'
 import Post from "./Post";
 import { useInfiniteQuery } from "react-query";
+import { getPostsPage } from "./api/axios";
 
 const Example2 = () => {
    const [pageNum, setPageNum] = useState(1)
