@@ -4,6 +4,9 @@ import { confirmAlert } from "react-confirm-alert";
 import 'react-confirm-alert/src/react-confirm-alert.css'
 
 const Example1 = () => {
+   const [pageNum, setPageNum] = useState(1)
+   const {loading, isError, error, results, hasNextPage} = usePosts(pageNum)
+   if (isError) return <p className="center">Error: {error.message}</p>
   return (
      <>
         <h1 id="top">
