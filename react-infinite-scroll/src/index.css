@@ -12,26 +12,33 @@ html {
 }
 
 body {
-  background-color: #000;
+  background-color: rgb(145, 140, 140);
   font-family: 'Nunito', sans-serif;
 }
 
 p {
-  color: whitesmoke;
+  color: rgb(255, 255, 255);
   margin: 1em 0 0;
 }
 
 article {
   margin: 1em;
   padding: 1em;
-  background-color: rebeccapurple;
+  background-color: rgb(49, 27, 49);
   color: whitesmoke;
   border-radius: 15px;
+  box-shadow: 0 20px 40px rgba(38, 33, 61, 0.2);
+  border: 3px solid rgb(255, 255, 255);
+
+}
+
+h2 {
+  color: rgb(235, 246, 255);
 }
 
 h1 {
-  margin: 1rem;
-  color: whitesmoke;
+  margin: 1rem ;
+  color: rgb(3, 0, 2);
 }
 
 h2::first-letter,
