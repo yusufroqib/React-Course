@@ -8,7 +8,11 @@ const Example1 = () => {
    const [pageNum, setPageNum] = useState(1)
    const {loading, isError, error, results, hasNextPage} = usePosts(pageNum)
    if (isError) return <p className="center">Error: {error.message}</p>
-   const lastPostRef = useRef()
+
+   const intObserver = useRef()
+   const lastPostRef = useCallback((post) => {
+      
+   })
 
    const content = results.map((post, i) => {
       if(results.length === i + 1) {
@@ -24,6 +28,8 @@ const Example1 = () => {
            <br />
            &infin; Ex. 1 - React Only
         </h1>
+
+        {content}
 
         <p className="center">Loading more posts...</p>
 
