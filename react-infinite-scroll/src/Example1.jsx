@@ -2,6 +2,7 @@ import { useCallback, useRef, useState } from "react";
 import usePosts from "./hooks/usePosts";
 import { confirmAlert } from "react-confirm-alert";
 import 'react-confirm-alert/src/react-confirm-alert.css'
+import Post from "./Post";
 
 const Example1 = () => {
    const [pageNum, setPageNum] = useState(1)
@@ -11,10 +12,11 @@ const Example1 = () => {
 
    const content = results.map((post, i) => {
       if(results.length === i + 1) {
-         
+
       }
       return <Post key={post.id} post={post} />
    })
+
   return (
      <>
         <h1 id="top">
