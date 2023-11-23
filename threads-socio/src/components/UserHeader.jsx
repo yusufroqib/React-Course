@@ -65,7 +65,7 @@ const UserHeader = () => {
                     </MenuButton>
                     <Portal>
                         <MenuList bg={"gray.dark"}>
-                            <MenuItem bg={"gray.dark"}>Click here</MenuItem>
+                            <MenuItem bg={"gray.dark"} onClick={copyURL}>Click here</MenuItem>
                         </MenuList>
                     </Portal>
                 </Menu>
