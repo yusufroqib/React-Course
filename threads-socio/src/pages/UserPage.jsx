@@ -1,9 +1,11 @@
-import UserHeader from "../components/UserHeader"
+import UserHeader from "../components/UserHeader";
 
 const UserPage = () => {
-  return (
-    <UserHeader/>
-  )
-}
+   return (
+      <>
+         <UserHeader />
+      </>
+   );
+};
 
-export default UserPage
+export default UserPage;
