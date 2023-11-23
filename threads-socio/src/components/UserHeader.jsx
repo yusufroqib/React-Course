@@ -4,8 +4,25 @@ import { Portal } from "@chakra-ui/portal";
 import { Avatar } from "@chakra-ui/react";
 import { BsInstagram } from "react-icons/bs";
 import { CgMoreO } from "react-icons/cg";
+import { useToast } from '@chakra-ui/toast'
 
 const UserHeader = () => {
+
+    const toast = useToast()
+
+    const copyURL = () => {
+        const currentURL = window.location.href;
+        navigator.clipboard.writeText(currentURL).then(() => {
+            toast({
+                title: "URL Copied",
+                description: "Profile link copied",
+                status: "success",
+                duration: 3000,
+                isClosable: true,
+            })
+        })
+    }
+
    return (
       <VStack gap={4} alignItems={"start"}>
          <Flex justifyContent={"space-between"} w={"full"}>
