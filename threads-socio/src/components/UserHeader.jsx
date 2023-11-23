@@ -37,10 +37,10 @@ const UserHeader = () => {
             </Flex>
             <Flex gap={2}>
                <Box>
-                  <BsInstagram />
+                  <BsInstagram size={24} cursor={"pointer"}/>
                </Box>
                <Box>
-                  <CgMoreO />
+                  <CgMoreO size={24} cursor={"pointer"}/>
                </Box>
             </Flex>
          </Flex>
