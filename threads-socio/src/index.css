@@ -1,0 +1,11 @@
+.icon-container {
+    height: 40px;
+    width: 40px;
+    padding: 8px;
+    border-radius: 50%;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.icon-container:hover {
+    background-color: #616161;
+}
