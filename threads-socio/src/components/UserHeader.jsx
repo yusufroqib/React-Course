@@ -1,5 +1,7 @@
 import { Box, Flex, Text, VStack, Link } from "@chakra-ui/layout";
-import { Avatar, Menu, MenuButton } from "@chakra-ui/react";
+import { Menu, MenuButton, MenuItem, MenuList } from "@chakra-ui/menu";
+import { Portal } from "@chakra-ui/portal";
+import { Avatar } from "@chakra-ui/react";
 import { BsInstagram } from "react-icons/bs";
 import { CgMoreO } from "react-icons/cg";
 
@@ -44,6 +46,11 @@ const UserHeader = () => {
                     <MenuButton>
                       <CgMoreO size={24} cursor={"pointer"}/>
                     </MenuButton>
+                    <Portal>
+                        <MenuList bg={"gray.dark"}>
+                            <MenuItem bg={"gray.dark"}>Click here</MenuItem>
+                        </MenuList>
+                    </Portal>
                 </Menu>
                </Box>
             </Flex>
