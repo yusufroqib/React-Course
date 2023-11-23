@@ -2,9 +2,10 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
 import "./index.css";
-import { ChakraProvider } from "@chakra-ui/react";
+import { ChakraProvider, ColorModeScript } from "@chakra-ui/react";
 import {mode } from "@chakra-ui/theme-tools"
 import { extendTheme } from '@chakra-ui/theme-utils'
+import { BrowserRouter } from "react-router-dom";
 
 
 const styles = {
@@ -28,11 +29,16 @@ const colors = {
   }
 }
 
+const theme = extendTheme({config, styles, colors})
+
 
 ReactDOM.createRoot(document.getElementById("root")).render(
    <React.StrictMode>
-      <ChakraProvider>
-         <App />
-      </ChakraProvider>
+      <BrowserRouter>
+         <ChakraProvider theme={theme}>
+            <ColorModeScript initialColorMode={theme.config.initialColorMode} />
+            <App />
+         </ChakraProvider>
+      </BrowserRouter>
    </React.StrictMode>
 );
