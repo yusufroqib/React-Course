@@ -10,7 +10,6 @@ const Header = () => {
   // }
   return (
     <header>
-      {/* <h1>WELCOME TO <span>REACT</span> IN DETAILS</h1> */}
       <h2 >WELCOME TO <span>DLT-AFRICA</span> BOOT CAMP</h2>
     </header>
   )

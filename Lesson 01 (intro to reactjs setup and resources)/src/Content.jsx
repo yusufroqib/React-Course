@@ -3,6 +3,10 @@ const Content = () => {
     const handleNameChange = () => {
         const names = ["Ali 👋", "Dave 👋", "Brisa 👋"];
         const int = Math.floor(Math.random() * 3)
+        //Math.random btw 0.0000000000001 to 0.999999999999999 * 3
+        //from 0.00008 to 2.99999999999
+        //0 to 2  (0, 1, 2)
+        // names[0]
         return names[int]
     }
 
