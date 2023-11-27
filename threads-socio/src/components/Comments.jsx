@@ -32,7 +32,7 @@ const Comments = ({ comment, createdAt, likes, username, userAvater }) => {
               <Text fontSize={"sm"} color={"gray.light"}>
                 {createdAt}
               </Text>
-              <Menu>
+              <Menu >
                 <MenuButton>
                   <BsThreeDots cursor={"pointer"} />
                 </MenuButton>
@@ -50,7 +50,7 @@ const Comments = ({ comment, createdAt, likes, username, userAvater }) => {
                     <MenuItem color={"red"}>Report</MenuItem>
                   </MenuGroup>
                 </MenuList>
-              </Menu>{" "}
+              </Menu>
             </Flex>
           </Flex>
           <Text>{comment}</Text>
