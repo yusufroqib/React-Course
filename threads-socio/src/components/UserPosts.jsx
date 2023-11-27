@@ -7,7 +7,6 @@ import { useState } from "react";
 const UserPosts = ({likes, replies, postTitle, postImg}) => {
    const [liked, setLiked] = useState(false)
    
-
    return (
       <Link to={"/aliumusa/post/1"}>
          <Flex gap={3} mb={4} py={5}>
@@ -64,16 +63,16 @@ const UserPosts = ({likes, replies, postTitle, postImg}) => {
                   border={"1px solid"}
                   borderColor={"gray.light"}
                >
-                  <Image src="/aliumusa.jpeg" width={"full"} />
+                  <Image src={postImg} width={"full"} />
                </Box>
                <Flex>
                   <Actions liked={liked} setLiked={setLiked} />
                </Flex>
 
                <Flex gap={2} color={"gray.light"} fontSize={"sm"} alignItems={"center"}>
-                  <Text>12 replies</Text>
+                  <Text>{replies} replies</Text>
                   <Box w={0.5} h={0.5} bg={"gray.light"} borderRadius={"full"}></Box>
-                  <Text>200 likes</Text>
+                  <Text>{likes} likes</Text>
                </Flex>
             </Flex>
          </Flex>
