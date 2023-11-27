@@ -56,7 +56,7 @@ const UserPosts = ({likes, replies, postTitle, postImg}) => {
                   </Flex>
                </Flex>
 
-               <Text fontSize={"sm"}> Hello Thread!!</Text>
+               <Text fontSize={"sm"}>{postTitle}</Text>
                <Box
                   overflow={"hidden"}
                   borderRadius={6}

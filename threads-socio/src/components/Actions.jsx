@@ -7,7 +7,7 @@ const Actions = ({ liked, setLiked }) => {
          <Flex cursor={"pointer"} gap={3} my={2} onClick={(e) => e.preventDefault()}>
             <svg
                aria-label="Unlike"
-               class="x1lliihq x1n2onr6 x18l41xo"
+               className="x1lliihq x1n2onr6 x18l41xo"
                fill={liked ? "rgb(237, 73, 86)" : "transparent"}
                color={liked ? "rgb(237, 73, 86)" : ""}
                height="20"
@@ -20,13 +20,13 @@ const Actions = ({ liked, setLiked }) => {
                <path
                   d="M1.2 7.328c0 3.66 3.118 7.269 7.99 10.347.27.163.592.325.81.325.226 0 .548-.162.81-.325 4.87-3.078 7.99-6.687 7.99-10.347C18.8 4.189 16.595 2 13.737 2c-1.655 0-2.953.753-3.738 1.881C9.233 2.761 7.926 2 6.262 2c-2.85 0-5.063 2.19-5.063 5.328Z"
                   stroke="currentColor"
-                  stroke-width="1.75"
+                  strokeWidth="1.75"
                ></path>
             </svg>
 
             <svg
                aria-label="Reply"
-               class="x1lliihq x1n2onr6 x1yxark7"
+               className="x1lliihq x1n2onr6 x1yxark7"
                fill="currentColor"
                height="20"
                role="img"
@@ -38,14 +38,14 @@ const Actions = ({ liked, setLiked }) => {
                   d="M20.656 17.008a9.993 9.993 0 1 0-3.59 3.615L22 22Z"
                   fill="none"
                   stroke="currentColor"
-                  stroke-linejoin="round"
-                  stroke-width="2"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
                ></path>
             </svg>
 
             <svg
                aria-label="Repost"
-               class="x1lliihq x1n2onr6 x1yxark7"
+               className="x1lliihq x1n2onr6 x1yxark7"
                fill="currentColor"
                height="20"
                role="img"
@@ -58,7 +58,7 @@ const Actions = ({ liked, setLiked }) => {
 
             <svg
                aria-label="Share"
-               class="x1lliihq x1n2onr6 x1yxark7"
+               className="x1lliihq x1n2onr6 x1yxark7"
                fill="currentColor"
                height="20"
                role="img"
@@ -69,8 +69,8 @@ const Actions = ({ liked, setLiked }) => {
                <line
                   fill="none"
                   stroke="currentColor"
-                  stroke-linejoin="round"
-                  stroke-width="2"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
                   x1="22"
                   x2="9.218"
                   y1="3"
@@ -80,8 +80,8 @@ const Actions = ({ liked, setLiked }) => {
                   fill="none"
                   points="11.698 20.334 22 3.001 2 3.001 9.218 10.084 11.698 20.334"
                   stroke="currentColor"
-                  stroke-linejoin="round"
-                  stroke-width="2"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
                ></polygon>
             </svg>
          </Flex>
