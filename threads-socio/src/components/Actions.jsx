@@ -7,7 +7,6 @@ const Actions = ({ liked, setLiked }) => {
          <Flex cursor={"pointer"} gap={3} my={2} onClick={(e) => e.preventDefault()}>
             <svg
                aria-label="Unlike"
-               className="x1lliihq x1n2onr6 x18l41xo"
                fill={liked ? "rgb(237, 73, 86)" : "transparent"}
                color={liked ? "rgb(237, 73, 86)" : ""}
                height="20"
@@ -26,7 +25,6 @@ const Actions = ({ liked, setLiked }) => {
 
             <svg
                aria-label="Reply"
-               className="x1lliihq x1n2onr6 x1yxark7"
                fill="currentColor"
                height="20"
                role="img"
@@ -45,7 +43,6 @@ const Actions = ({ liked, setLiked }) => {
 
             <svg
                aria-label="Repost"
-               className="x1lliihq x1n2onr6 x1yxark7"
                fill="currentColor"
                height="20"
                role="img"
@@ -58,7 +55,6 @@ const Actions = ({ liked, setLiked }) => {
 
             <svg
                aria-label="Share"
-               className="x1lliihq x1n2onr6 x1yxark7"
                fill="currentColor"
                height="20"
                role="img"

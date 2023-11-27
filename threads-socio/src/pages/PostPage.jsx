@@ -5,6 +5,12 @@ import {
   Divider,
   Flex,
   Image,
+  Menu,
+  MenuButton,
+  MenuDivider,
+  MenuGroup,
+  MenuItem,
+  MenuList,
   Text,
 } from "@chakra-ui/react";
 import React, { useState } from "react";
@@ -36,7 +42,25 @@ const PostPage = () => {
           >
             2day
           </Text>
-          <BsThreeDots />
+          <Menu>
+            <MenuButton>
+              <BsThreeDots cursor={"pointer"} onClick={e => e.preventDefault()} />
+            </MenuButton>
+            <MenuList>
+              <MenuGroup>
+                <MenuItem color={"gray.light"}>Mute</MenuItem>
+              </MenuGroup>
+              <MenuDivider />
+              <MenuGroup>
+                <MenuItem color={"red"}>Block</MenuItem>
+                <MenuItem color={"gray.light"}>Hide</MenuItem>
+              </MenuGroup>
+              <MenuDivider />
+              <MenuGroup>
+                <MenuItem color={"red"}>Report</MenuItem>
+              </MenuGroup>
+            </MenuList>
+          </Menu>
         </Flex>
       </Flex>
 
@@ -69,9 +93,27 @@ const PostPage = () => {
       </Flex>
       <Divider my={4} />
 
-      <Comments comment={"This is amazing"} createdAt={"2 min ago"} userAvater={"https://bit.ly/ryan-florence"} likes={12} username={"JohnDoe"}/>
-      <Comments comment={" This is an amazing post. Thanks for the update"} userAvater={"/directorPro.jpeg"} createdAt={"5 min ago"} likes={13} username={"Aliumusa"}/>
-      <Comments comment={"Hello World!"} createdAt={"10 min ago"} userAvater={"https://bit.ly/ryan-florence"} likes={18} username={"Muha"}/>
+      <Comments
+        comment={"This is amazing"}
+        createdAt={"2 min ago"}
+        userAvater={"https://bit.ly/ryan-florence"}
+        likes={12}
+        username={"JohnDoe"}
+      />
+      <Comments
+        comment={" This is an amazing post. Thanks for the update"}
+        userAvater={"/directorPro.jpeg"}
+        createdAt={"5 min ago"}
+        likes={13}
+        username={"Aliumusa"}
+      />
+      <Comments
+        comment={"Hello World!"}
+        createdAt={"10 min ago"}
+        userAvater={"https://bit.ly/ryan-florence"}
+        likes={18}
+        username={"Muha"}
+      />
     </>
   );
 };
