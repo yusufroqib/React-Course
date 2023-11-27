@@ -1,8 +1,10 @@
 import { Avatar, Flex, Text } from "@chakra-ui/react";
-import React from "react";
+import React, { useState } from "react";
 import { BsThreeDots } from "react-icons/bs";
+import Actions from "./Actions";
 
 const Comments = ({ comment, createdAt, likes, username, userAvater }) => {
+    const [liked, setLiked] = useState(false)
   return (
     <>
       <Flex gap={4} my={2} py={2} w={"full"}>
@@ -25,6 +27,8 @@ const Comments = ({ comment, createdAt, likes, username, userAvater }) => {
               <BsThreeDots />
             </Flex>
           </Flex>
+          <Text> This is an amazing post. Thanks for the update</Text>
+          <Actions liked={liked} setLiked={setLiked} />
         </Flex>
       </Flex>
     </>
