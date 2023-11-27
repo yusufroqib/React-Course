@@ -68,8 +68,10 @@ const PostPage = () => {
         <Button>Get</Button>
       </Flex>
       <Divider my={4} />
-      
-      <Comments/>
+
+      <Comments comment={"This is amazing"} createdAt={"2 min ago"} userAvater={"https://bit.ly/ryan-florence"} likes={12} username={"JohnDoe"}/>
+      <Comments comment={" This is an amazing post. Thanks for the update"} userAvater={"https://bit.ly/ryan-florence"} createdAt={"5 min ago"} likes={13} username={"Rocco"}/>
+      <Comments comment={"Hello World!"} createdAt={"2 min ago"} userAvater={"https://bit.ly/ryan-florence"} likes={18} username={"Muha"}/>
     </>
   );
 };

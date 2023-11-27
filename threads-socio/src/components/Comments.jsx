@@ -9,9 +9,9 @@ const Comments = ({ comment, createdAt, likes, username, userAvater }) => {
     <>
       <Flex gap={4} my={2} py={2} w={"full"}>
         <Avatar
-          src="https://bit.ly/ryan-florence"
+        src={userAvater}
           size={"sm"}
-          name="Ryan Florence"
+          name={username}
         />
         <Flex flexDir={"column"} gap={1} w={"full"}>
           <Flex
@@ -20,16 +20,16 @@ const Comments = ({ comment, createdAt, likes, username, userAvater }) => {
             w={"full"}
           >
             <Text fontSize={"sm"} fontWeight={"bold"}>
-              JohnDoe
+              {username}
             </Text>
             <Flex gap={2} alignItems={"center"}>
-              <Text fontSize={"sm"} color={"gray.light"}>2 min ago</Text>
+              <Text fontSize={"sm"} color={"gray.light"}>{createdAt}</Text>
               <BsThreeDots />
             </Flex>
           </Flex>
-          <Text> This is an amazing post. Thanks for the update</Text>
+          <Text>{comment}</Text>
           <Actions liked={liked} setLiked={setLiked} />
-          <Text>{12 + (liked ? 1 : 0)} likes</Text>
+          <Text>{likes + (liked ? 1 : 0)} likes</Text>
         </Flex>
       </Flex>
     </>
