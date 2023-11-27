@@ -1,4 +1,5 @@
 import { Avatar, Box, Flex, Image, Text } from "@chakra-ui/react";
+import { BsThreeDots } from "react-icons/bs";
 import { Link } from "react-router-dom";
 
 const UserPosts = () => {
@@ -43,6 +44,10 @@ const UserPosts = () => {
               <Flex alignItems={"center"} w={"full"}>
                   <Text>Aliu Musa</Text>
                   <Image src="/verified.png" ml={1} w={4} h={4}/>
+              </Flex>
+              <Flex alignItems={"center"} gap={4}>
+                  <Text>1 day</Text>
+                  <BsThreeDots />
               </Flex>
             </Flex>
 
