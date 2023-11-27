@@ -40,20 +40,24 @@ const UserPosts = () => {
                </Box>
             </Flex>
 
-            <Flex flex={1} flexDir={"column"} w={"full"}>
-              <Flex alignItems={"center"} w={"full"}>
-                  <Text>Aliu Musa</Text>
-                  <Image src="/verified.png" ml={1} w={4} h={4}/>
-              </Flex>
-              <Flex alignItems={"center"} gap={4}>
-                  <Text>1 day</Text>
-                  <BsThreeDots />
-              </Flex>
+            <Flex flex={1} flexDir={"column"} gap={2} >
+               <Flex w={"full"} justifyContent={"space-between"}>
+                  <Flex alignItems={"center"} w={"full"}>
+                     <Text>Aliu Musa</Text>
+                     <Image src="/verified.png" ml={1} w={4} h={4} />
+                  </Flex>
+                  <Flex alignItems={"center"} gap={4}>
+                     <Text>1days</Text>
+                     <BsThreeDots />
+                  </Flex>
+               </Flex>
             </Flex>
-
+            <Flex>
+               
+            </Flex>
          </Flex>
       </Link>
-   )
-}
+   );
+};
 
 export default UserPosts;
