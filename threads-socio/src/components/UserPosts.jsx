@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import Actions from "./Actions";
 import { useState } from "react";
 
-const UserPosts = () => {
+const UserPosts = ({likes, replies, postTitle, postImg}) => {
    const [liked, setLiked] = useState(false)
    
 
@@ -52,21 +52,27 @@ const UserPosts = () => {
                      <Image src="/verified.png" ml={1} w={4} h={4} />
                   </Flex>
                   <Flex alignItems={"center"} gap={4}>
-                     <Text>1days</Text>
+                     <Text>1day</Text>
                      <BsThreeDots />
                   </Flex>
                </Flex>
 
                <Text fontSize={"sm"}> Hello Thread!!</Text>
-               <Box overflow={"hidden"} borderRadius={6} border={"1px solid"} borderColor={"gray.light"}>
+               <Box
+                  overflow={"hidden"}
+                  borderRadius={6}
+                  border={"1px solid"}
+                  borderColor={"gray.light"}
+               >
                   <Image src="/aliumusa.jpeg" width={"full"} />
                </Box>
                <Flex>
-                  <Actions liked={liked} setLiked={setLiked}/>
+                  <Actions liked={liked} setLiked={setLiked} />
                </Flex>
 
-               <Flex>
+               <Flex gap={2} color={"gray.light"} fontSize={"sm"} alignItems={"center"}>
                   <Text>12 replies</Text>
+                  <Box w={0.5} h={0.5} bg={"gray.light"} borderRadius={"full"}></Box>
                   <Text>200 likes</Text>
                </Flex>
             </Flex>
