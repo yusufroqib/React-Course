@@ -29,6 +29,7 @@ const Comments = ({ comment, createdAt, likes, username, userAvater }) => {
           </Flex>
           <Text> This is an amazing post. Thanks for the update</Text>
           <Actions liked={liked} setLiked={setLiked} />
+          <Text>{12 + (liked ? 1 : 0)} likes</Text>
         </Flex>
       </Flex>
     </>
