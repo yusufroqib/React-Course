@@ -28,6 +28,8 @@ const PostPage = () => {
           <BsThreeDots />
         </Flex>
       </Flex>
+
+      <Text my={3}>Hello gbogbo aye!!!</Text>
     </>
   );
 };
