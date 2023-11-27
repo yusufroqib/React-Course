@@ -4,24 +4,23 @@ import { Portal } from "@chakra-ui/portal";
 import { Avatar } from "@chakra-ui/react";
 import { BsInstagram } from "react-icons/bs";
 import { CgMoreO } from "react-icons/cg";
-import { useToast } from '@chakra-ui/toast'
+import { useToast } from "@chakra-ui/toast";
 
 const UserHeader = () => {
+   const toast = useToast();
 
-    const toast = useToast()
-
-    const copyURL = () => {
-        const currentURL = window.location.href;
-        navigator.clipboard.writeText(currentURL).then(() => {
-            toast({
-                title: "URL Copied",
-                description: "Profile link copied",
-                status: "success",
-                duration: 3000,
-                isClosable: true,
-            })
-        })
-    }
+   const copyURL = () => {
+      const currentURL = window.location.href;
+      navigator.clipboard.writeText(currentURL).then(() => {
+         toast({
+            title: "Success",
+            description: "Profile link copied",
+            status: "success",
+            duration: 3000,
+            isClosable: true,
+         });
+      });
+   };
 
    return (
       <VStack gap={4} alignItems={"start"}>
@@ -56,22 +55,50 @@ const UserHeader = () => {
             </Flex>
             <Flex gap={2}>
                <Box className="icon-container">
-                  <BsInstagram size={24} cursor={"pointer"}/>
+                  <BsInstagram size={24} cursor={"pointer"} />
                </Box>
                <Box className="icon-container">
-                <Menu>
-                    <MenuButton>
-                      <CgMoreO size={24} cursor={"pointer"}/>
-                    </MenuButton>
-                    <Portal>
+                  <Menu>
+                     <MenuButton>
+                        <CgMoreO size={24} cursor={"pointer"} />
+                     </MenuButton>
+                     <Portal>
                         <MenuList bg={"gray.dark"}>
-                            <MenuItem color={"white"} bg={"gray.dark"} onClick={copyURL}>Click here</MenuItem>
+                           <MenuItem
+                              color={"white"}
+                              bg={"gray.dark"}
+                              onClick={copyURL}
+                           >
+                              Click here
+                           </MenuItem>
                         </MenuList>
-                    </Portal>
-                </Menu>
+                     </Portal>
+                  </Menu>
                </Box>
-            </Flex>
+            </Flex>           
          </Flex>
+         <Flex w={'full'}>
+               <Flex
+                  flex={1}
+                  borderBottom={"1.5px solid white"}
+                  justifyContent={"center"}
+                  pb={"3"}
+                  cursor={"pointer"}
+               >
+                  <Text fontWeight={"bold"}>Thread</Text>
+               </Flex>
+
+               <Flex
+                  flex={1}
+                  borderBottom={"1.5px solid gray"}
+                  justifyContent={"center"}
+                  color={"gray.light"}
+                  pb={"3"}
+                  cursor={"pointer"}
+               >
+                  <Text fontWeight={"bold"}> Replies</Text>
+               </Flex>
+            </Flex>
       </VStack>
    );
 };
