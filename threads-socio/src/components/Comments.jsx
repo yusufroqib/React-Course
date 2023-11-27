@@ -21,8 +21,8 @@ const Comments = ({ comment, createdAt, likes, username, userAvater }) => {
               JohnDoe
             </Text>
             <Flex gap={2} alignItems={"center"}>
-                <Text>2 min ago</Text>
-                <BsThreeDots />
+              <Text>2 min ago</Text>
+              <BsThreeDots />
             </Flex>
           </Flex>
         </Flex>
