@@ -1,4 +1,4 @@
-import { Avatar, Box, Flex } from "@chakra-ui/react";
+import { Avatar, Box, Flex, Image, Text } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 
 const UserPosts = () => {
@@ -38,9 +38,17 @@ const UserPosts = () => {
                   />
                </Box>
             </Flex>
+
+            <Flex flex={1} flexDir={"column"} w={"full"}>
+              <Flex alignItems={"center"} w={"full"}>
+                  <Text>Aliu Musa</Text>
+                  <Image src="/verified.png" ml={1} w={4} h={4}/>
+              </Flex>
+            </Flex>
+
          </Flex>
       </Link>
-   );
-};
+   )
+}
 
 export default UserPosts;
