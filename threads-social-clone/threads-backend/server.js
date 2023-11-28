@@ -2,9 +2,10 @@ import express from "express";
 import dotenv from 'dotenv'
 import cookieParser from "cookie-parser";
 import mongoose from "mongoose";
-import connectDB from "./db/connectDB";
+import connectDb from "./db/connectDB";
 
 dotenv.config()
+connectDb()
 const app = express()
 
 const PORT = process.env.PORT || 5000;
