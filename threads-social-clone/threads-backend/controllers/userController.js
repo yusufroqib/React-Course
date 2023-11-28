@@ -21,14 +21,21 @@ const signUpUser = async (req, res) => {
         });
         
         await newUser.save();
+        if(newUser) {
+            res.status(201).json({
+                _id: newUser._id,
+                name: newUser.name,
+                email: newUser.email,
+                username: newUser.username,
+            })
+        } else { 
+            res.status(400).json({ message: "Invalid user data" });
+        }
 
 	} catch (error) {
         res.status(500).json({ message: error.message });
         console.log("Error in sugnupUser: ", error.message)
     }
 };
-
-
-
 
 module.exports = { signUpUser };
