@@ -2,10 +2,9 @@ import express from "express";
 import dotenv from 'dotenv'
 import cookieParser from "cookie-parser";
 import mongoose from "mongoose";
-import connectDb from "./db/connectDB";
+// import connectDb from "./db/connectDB";
 
 dotenv.config()
-connectDb()
 const app = express()
 
 const PORT = process.env.PORT || 5000;
@@ -19,5 +18,9 @@ app.get("/", (req, res) => {
     res.send("Welcome Home 🏡")
 })
 
-
-app.listen(PORT, () => console.log(`Server running on PORT ${PORT}`))
+mongoose.connect(process.env.MONGO_URI)
+.then(() => {
+    app.listen(PORT, () => console.log(`Server running on PORT ${PORT}`))
+}).catch((err) => {
+    console.log(err)
+})
