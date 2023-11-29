@@ -15,31 +15,50 @@ const signUpUser = async (req, res) => {
 
 		const newUser = new User({
 			name,
-            email, 
-            username,
-            password: hashedPassword
-        });
-        
-        await newUser.save();
+			email,
+			username,
+			password: hashedPassword,
+		});
 
-        if(newUser) {
+		await newUser.save();
 
-            generateTokenAndSetCookie(newUser._id, res)
+		if (newUser) {
+			generateTokenAndSetCookie(newUser._id, res);
 
-            res.status(201).json({
-                _id: newUser._id,
-                name: newUser.name,
-                email: newUser.email,
-                username: newUser.username,
-            })
-        } else { 
-            res.status(400).json({ message: "Invalid user data" });
-        }
-
+			res.status(201).json({
+				_id: newUser._id,
+				name: newUser.name,
+				email: newUser.email,
+				username: newUser.username,
+			});
+		} else {
+			res.status(400).json({ message: "Invalid user data" });
+		}
 	} catch (error) {
-        res.status(500).json({ message: error.message });
-        console.log("Error in sugnupUser: ", error.message)
-    }
+		res.status(500).json({ message: error.message });
+		console.log("Error in sugnupUser: ", error.message);
+	}
 };
 
-module.exports = { signUpUser };
+const loginUser = async (req, res) => {
+	try {
+		const { username, password } = req.body;
+		const user = await User.findOne({ username });
+		const isPasswordCorrect = await bcrypt.compare(
+			password,
+			user?.password || ""
+		);
+		if (!user || !isPasswordCorrect) {
+			return res.status(400).json({ errors: "Invalid username or password" });
+		}
+		if (user.isFrozen) {
+			user.isFrozen = false;
+			await user.save();
+		}
+	} catch (error) {
+		res.status(500).json({ message: error.message });
+		console.log("Error in loginUser: ", error.message);
+	}
+};
+
+module.exports = { signUpUser, loginUser };
