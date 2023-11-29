@@ -1,8 +1,20 @@
 const User = require("../models/userModel");
 const bcrypt = require("bcryptjs");
 const generateTokenAndSetCookie = require("../utils/helper/generateTokenAndSetCookie");
+const mongoose = require("mongoose");
 
-const getUserProfile = async () => {};
+const getUserProfile = async (req, res) => {
+	//We fetch the user profile either by username or userId
+	//query is either username or userId
+
+	const { query } = req.params;
+
+	try {
+		let user;
+		//query is userId
+		if(mongoose.Types.ObjectId.isValid(query))
+	} catch (error) {}
+};
 
 const signUpUser = async (req, res) => {
 	try {
@@ -118,7 +130,6 @@ const followUnFollowUser = async (req, res) => {
 		console.log("Error in followUnFollowUser: ", err.message);
 	}
 };
-
 
 module.exports = {
 	followUnFollowUser,
