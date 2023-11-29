@@ -12,7 +12,9 @@ const getUserProfile = async (req, res) => {
 	try {
 		let user;
 		//query is userId
-		if(mongoose.Types.ObjectId.isValid(query))
+		if(mongoose.Types.ObjectId.isValid(query)){
+			user = await User.findOne({_id: query})
+		}
 	} catch (error) {}
 };
 
