@@ -49,15 +49,27 @@ const loginUser = async (req, res) => {
 			user?.password || ""
 		);
 		if (!user || !isPasswordCorrect) {
-			return res.status(400).json({ errors: "Invalid username or password" });
+			return res.status(400).json({ error: "Invalid username or password" }); //bad request
 		}
+		
 		if (user.isFrozen) {
 			user.isFrozen = false;
 			await user.save();
 		}
-	} catch (error) {
-		res.status(500).json({ message: error.message });
-		console.log("Error in loginUser: ", error.message);
+
+        generateTokenAndSetCookie(user._id, res)
+
+		res.status(200).json({
+			_id: user._id,
+			name: user.name,
+			email: user.email,
+			username: user.username,
+			bio: user.bio,
+			profilePic: user.profilePic
+		});
+	} catch (err) {
+		res.status(500).json({ message: err.message }); //Internal server error
+		console.log("Error in loginUser: ", err.message);
 	}
 };
 
