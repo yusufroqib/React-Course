@@ -83,4 +83,17 @@ const logoutUser = (req, res) => {
 	}
 }
 
-module.exports = { signUpUser, loginUser, logoutUser };
+const followUnFollowUser = async (req, res) => {
+	try {
+		const {id} = req.params
+		const userToModify = await User.findById(id)
+		const currentUser = await User.findById(req.user._id)
+		if (id === req.user._id.toString()){
+			return res.status(400).json({error: })
+		}
+	} catch (error) {
+		
+	}
+}
+
+module.exports = { followUnFollowUser, signUpUser, loginUser, logoutUser };
