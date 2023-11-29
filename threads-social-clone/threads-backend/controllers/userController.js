@@ -73,4 +73,14 @@ const loginUser = async (req, res) => {
 	}
 };
 
-module.exports = { signUpUser, loginUser };
+const logoutUser = (req, res) => {
+	try {
+		res.cookie("jwt", "", {maxAge: 1})
+		res.status(200).json({message: "User logged out successfully"})
+	} catch (err) {
+		res.status(500).json({ message: err.message }); //Internal server error
+		console.log("Error in logout", err.message);
+	}
+}
+
+module.exports = { signUpUser, loginUser, logoutUser };
