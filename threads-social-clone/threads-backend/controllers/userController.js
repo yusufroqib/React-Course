@@ -108,7 +108,8 @@ const followUnFollowUser = async (req, res) => {
 			res.status(200).json({mesage: "User followed Successfully"})
 		}
 	} catch (error) {
-		
+		res.status(500).json({ message: err.message }); //Internal server error
+		console.log("Error in followUnFollowUser", err.message);
 	}
 }
 
