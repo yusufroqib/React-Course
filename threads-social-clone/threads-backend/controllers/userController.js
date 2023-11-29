@@ -43,7 +43,7 @@ const signUpUser = async (req, res) => {
 const loginUser = async (req, res) => {
 	try {
 		const { username, password } = req.body;
-		const user = await User.findOne({ username });
+		const user = await User.findOne({ username: username });
 		const isPasswordCorrect = await bcrypt.compare(
 			password,
 			user?.password || ""
@@ -88,6 +88,7 @@ const followUnFollowUser = async (req, res) => {
 		const {id} = req.params
 		const userToModify = await User.findById(id)
 		const currentUser = await User.findById(req.user._id)
+
 		if (id === req.user._id.toString()){
 			return res.status(400).json({error: 'You can not follow/unfollow yourself' })
 		}
@@ -96,18 +97,18 @@ const followUnFollowUser = async (req, res) => {
 		}
 
 		const isFollowing = currentUser.following.includes(id)
-		if(!isFollowing) {
+		if(isFollowing) {
 			//Unfollow User
 			await User.findByIdAndUpdate(id, {$pull: {followers: req.user._id}})
-			await User.findByIdAndUpdate(req.user._id, {$pull: {followers: id}})
+			await User.findByIdAndUpdate(req.user._id, {$pull: {following: id}})
 			res.status(200).json({mesage: "User unfollowed Successfully"})
 		} else {
 			//FOLLOW USER
 			await User.findByIdAndUpdate(id, {$push: {followers: req.user._id}})
-			await User.findByIdAndUpdate(req.user._id, {$push: {followers: id}})
+			await User.findByIdAndUpdate(req.user._id, {$push: {following: id}})
 			res.status(200).json({mesage: "User followed Successfully"})
 		}
-	} catch (error) {
+	} catch (err) {
 		res.status(500).json({ message: err.message }); //Internal server error
 		console.log("Error in followUnFollowUser: ", err.message);
 	}
