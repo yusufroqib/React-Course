@@ -162,6 +162,15 @@ const updateUser = async (req, res) => {
 			const hashedPassword = await bcrypt.hash(password, salt);
 			user.password = hashedPassword;
 		}
+
+		user.name = name || user.name;
+		user.email = email || user.email;
+		user.username = username || user.username;
+		user.bio = bio || user.bio;
+		user.profilePic = profilePic || user.profilePic;
+		
+		await user.save();
+
 	} catch (error) {
 		res.status(500).json({ message: error.message }); //Internal server error
 		console.log("Error in updateUser: ", error.message);
