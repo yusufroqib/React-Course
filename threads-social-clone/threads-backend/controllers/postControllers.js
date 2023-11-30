@@ -112,7 +112,7 @@ const replyToPost = async (req, res) => {
 		if (!post) {
 			return res.status(404).json({ message: "Post not found" });
 		}
-        const reply = {userId, text, userProfilePic, username}
+		const reply = { userId, text, userProfilePic, username };
 
 		post.replies.push(reply);
 		await post.save();
@@ -125,16 +125,24 @@ const replyToPost = async (req, res) => {
 };
 
 const getFeedPost = async (req, res) => {
-    try {
+	try {
 		const userId = req.user._id;
+		const user = await User.findById(userId);
+
+		if (!user) {
+			return res.status(404).json({ message: "User not found" });
+		}
+
 		const following = req.user.following;
-		const posts = await Post.find({ postedBy: { $in: following } }).sort({ createdAt: -1 });
+		const posts = await Post.find({ postedBy: { $in: following } }).sort({
+			createdAt: -1,
+		});
 		res.status(200).json({ posts });
 	} catch (error) {
 		res.status(500).json({ message: error.message }); //Internal server error
 		console.log("Error in getFeedPost: ", error.message);
 	}
-}
+};
 
 module.exports = {
 	createPost,
@@ -142,5 +150,5 @@ module.exports = {
 	deletePost,
 	likeUnlikePost,
 	replyToPost,
-    getFeedPost
+	getFeedPost,
 };
