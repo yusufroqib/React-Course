@@ -1,10 +1,10 @@
 const express = require("express")
-const { createPost } = require("../controllers/postControllers")
+const { createPost, getPost } = require("../controllers/postControllers")
 const protectRoute = require("../middleware/protectRoutes")
 
 const router = express.Router()
 
-router.get("/", getPost)
+router.get("/:id", getPost)
 
 router.post("/create", protectRoute, createPost)
 
