@@ -12,19 +12,22 @@ const getUserProfile = async (req, res) => {
 	try {
 		let user;
 		//query is userId
-		if(mongoose.Types.ObjectId.isValid(query)){
-			user = await User.findOne({_id: query}).select("-password").select("-updatedAt")
+		if (mongoose.Types.ObjectId.isValid(query)) {
+			user = await User.findOne({ _id: query })
+				.select("-password")
+				.select("-updatedAt");
 		} else {
 			//query is username
-			user = await User.findOne({username: query}).select("-password").select("-updatedAt")
+			user = await User.findOne({ username: query })
+				.select("-password")
+				.select("-updatedAt");
 		}
 
-		if(!user) {
-			return res.status(400).json({error: "User not found"})
+		if (!user) {
+			return res.status(400).json({ error: "User not found" });
 		} else {
-			return res.status(200).json(user)
+			return res.status(200).json(user);
 		}
-
 	} catch (error) {
 		res.status(500).json({ error: error.message });
 		console.log("Error in getUserProfile: ", error.message);
@@ -126,7 +129,7 @@ const followUnFollowUser = async (req, res) => {
 		if (!userToModify || !currentUser) {
 			return res.status(400).json({ error: "User not Found" });
 		}
-		
+
 		const isFollowing = currentUser.following.includes(id);
 
 		if (isFollowing) {
@@ -147,18 +150,23 @@ const followUnFollowUser = async (req, res) => {
 };
 
 const updateUser = async (req, res) => {
-
 	const { name, bio, profilePic, username, email, password } = req.body;
 	const userId = req.user._id;
 
 	try {
-		
+		let user = await User.findById(userId);
+		if (!user) return res.status(400).json({ message: "User not found" });
+
+		if(password) {
+			const salt = await bcrypt.genSalt(10);
+			const hashedPassword = await bcrypt.hash(password, salt);
+			user.password = hashedPassword;
+		}
 	} catch (error) {
 		res.status(500).json({ message: error.message }); //Internal server error
 		console.log("Error in updateUser: ", error.message);
 	}
-}
-
+};
 
 module.exports = {
 	followUnFollowUser,
@@ -166,5 +174,5 @@ module.exports = {
 	loginUser,
 	logoutUser,
 	getUserProfile,
-	updateUser
+	updateUser,
 };
