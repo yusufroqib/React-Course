@@ -134,7 +134,6 @@ const getFeedPost = async (req, res) => {
 		res.status(500).json({ message: error.message }); //Internal server error
 		console.log("Error in getFeedPost: ", error.message);
 	}
-
 }
 
 module.exports = {
@@ -143,4 +142,5 @@ module.exports = {
 	deletePost,
 	likeUnlikePost,
 	replyToPost,
+    getFeedPost
 };
