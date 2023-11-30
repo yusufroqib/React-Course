@@ -124,6 +124,19 @@ const replyToPost = async (req, res) => {
 	}
 };
 
+const getFeedPost = async (req, res) => {
+    try {
+		const userId = req.user._id;
+		const following = req.user.following;
+		const posts = await Post.find({ postedBy: { $in: following } }).sort({ createdAt: -1 });
+		res.status(200).json({ posts });
+	} catch (error) {
+		res.status(500).json({ message: error.message }); //Internal server error
+		console.log("Error in getFeedPost: ", error.message);
+	}
+
+}
+
 module.exports = {
 	createPost,
 	getPost,
