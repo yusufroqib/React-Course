@@ -54,8 +54,13 @@ const deletePost = async (req, res) => {
         if (!post) {
             return res.status(404).json({ message: "Post not found" });
         }
-        
-		await post.remove();
+
+        if (post.postedBy.toString() !== req.user._id.toString()) {
+            return res.status(401).json({ message: "Unauthorized to delete this post" }); //Unauthorized
+
+        }
+
+		await post.findByIdAndDelete(req.params.id);
 		res.status(200).json({ message: "Post deleted successfully" });
 	} catch (error) {
 		res.status(500).json({ message: error.message }); //Internal server error
