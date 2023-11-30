@@ -112,11 +112,12 @@ const replyToPost = async (req, res) => {
 		if (!post) {
 			return res.status(404).json({ message: "Post not found" });
 		}
+        const reply = {userId, text, userProfilePic, username}
 
-		post.replies.push({ userId, text });
+		post.replies.push(reply);
 		await post.save();
 
-		res.status(200).json({ message: "Reply added successfully" });
+		res.status(200).json({ message: "Reply added successfully", post });
 	} catch (error) {
 		res.status(500).json({ message: error.message }); //Internal server error
 		console.log("Error in replyToPost: ", error.message);
