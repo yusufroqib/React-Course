@@ -60,7 +60,7 @@ const deletePost = async (req, res) => {
 
         }
 
-		await post.findByIdAndDelete(req.params.id);
+		await Post.findByIdAndDelete(req.params.id);
 		res.status(200).json({ message: "Post deleted successfully" });
 	} catch (error) {
 		res.status(500).json({ message: error.message }); //Internal server error
