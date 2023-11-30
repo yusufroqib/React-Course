@@ -157,7 +157,7 @@ const updateUser = async (req, res) => {
 		let user = await User.findById(userId);
 		if (!user) return res.status(400).json({ message: "User not found" });
 
-		if(password) {
+		if (password) {
 			const salt = await bcrypt.genSalt(10);
 			const hashedPassword = await bcrypt.hash(password, salt);
 			user.password = hashedPassword;
@@ -168,9 +168,11 @@ const updateUser = async (req, res) => {
 		user.username = username || user.username;
 		user.bio = bio || user.bio;
 		user.profilePic = profilePic || user.profilePic;
-		
+
 		await user.save();
 
+		res.status(200).json({ message: "Profile updated successfully", user });
+		
 	} catch (error) {
 		res.status(500).json({ message: error.message }); //Internal server error
 		console.log("Error in updateUser: ", error.message);
