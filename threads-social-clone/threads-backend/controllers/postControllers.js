@@ -69,8 +69,13 @@ const deletePost = async (req, res) => {
 
 }
 
+const likeUnlikePost = async (req, res) => {
+    
+}
+
 module.exports = {
 	createPost,
     getPost,
-    deletePost
+    deletePost,
+    likeUnlikePost
 };
