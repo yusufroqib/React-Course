@@ -133,11 +133,11 @@ const getFeedPost = async (req, res) => {
 			return res.status(404).json({ message: "User not found" });
 		}
 
-		const following = req.user.following;
-		const posts = await Post.find({ postedBy: { $in: following } }).sort({
+		const following = user.following;
+		const feedPosts = await Post.find({ postedBy: { $in: following } }).sort({
 			createdAt: -1,
 		});
-		res.status(200).json({ posts });
+		res.status(200).json({ feedPosts });
 	} catch (error) {
 		res.status(500).json({ message: error.message }); //Internal server error
 		console.log("Error in getFeedPost: ", error.message);
