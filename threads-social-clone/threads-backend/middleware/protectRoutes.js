@@ -10,7 +10,7 @@ const protectRoute = async (req, res, next) => {
 		req.user = user;
 		next();
 	} catch (error) {
-		res.status(500).json({ message: error.message });
+		res.status(500).json({ message: error.message });	//internal server
 		console.log("Error while signing up user: ", error.message);
 	}
 };
