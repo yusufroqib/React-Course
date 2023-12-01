@@ -5,13 +5,13 @@ const {
 	deletePost,
 	likeUnlikePost,
 	replyToPost,
-    getFeedPost
+	getFeedPost,
 } = require("../controllers/postControllers");
 const protectRoute = require("../middleware/protectRoutes");
 
 const router = express.Router();
 
-router.get("/feed", protectRoute, getFeedPost )
+router.get("/feed", protectRoute, getFeedPost);
 router.get("/:id", getPost);
 router.post("/create", protectRoute, createPost);
 router.delete("/:id", protectRoute, deletePost);
