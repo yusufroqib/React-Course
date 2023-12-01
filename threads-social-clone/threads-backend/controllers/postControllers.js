@@ -87,7 +87,7 @@ const likeUnlikePost = async (req, res) => {
 		} else {
 			post.likes.push(userId);
 			await post.save();
-			res.status(200).json({ message: "Post liked successfully" }); 
+			res.status(200).json({ message: "Post liked successfully" });
 		}
 	} catch (error) {
 		res.status(500).json({ message: error.message }); //Internal server error
@@ -135,7 +135,7 @@ const getFeedPost = async (req, res) => {
 
 		const following = user.following;
 		const feedPosts = await Post.find({ postedBy: { $in: following } }).sort({
-			createdAt: -1
+			createdAt: -1,
 		});
 		res.status(200).json({ feedPosts });
 	} catch (error) {
