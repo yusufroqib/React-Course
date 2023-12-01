@@ -20,7 +20,6 @@ app.get("/", (req, res) => {
 	res.send("Welcome Home 🏡");
 });
 
-
 mongoose
 	.connect(process.env.MONGO_URI)
 	.then(() => {
