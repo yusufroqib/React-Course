@@ -74,7 +74,7 @@ export default function LoginCard() {
 						</Stack>
 						<Stack pt={6}>
 							<Text align={"center"}>
-								Don&apos;t have an account? <Link color={"blue.400"}>Sign Up</Link>
+								Don&apos;t have an account? {" "}<Link color={"blue.400"}>Sign Up</Link>
 							</Text>
 						</Stack>
 					</Stack>
