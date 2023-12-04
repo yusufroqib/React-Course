@@ -71,7 +71,7 @@ export default function SignupCard() {
 					<Stack spacing={4}>
 						<HStack>
 							<Box>
-								<FormControl id="firstName" isRequired>
+								<FormControl isRequired>
 									<FormLabel>First Name</FormLabel>
 									<Input type="text" />
 								</FormControl>
