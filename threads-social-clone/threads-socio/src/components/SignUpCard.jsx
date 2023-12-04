@@ -35,7 +35,12 @@ export default function SignupCard() {
 
   const handleSignup = async () => {
     try {
-      const res = await fetch()
+      const res = await fetch("/api/users/signup", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        }
+      })
     } catch (error) {
       showToast("Error", error, "error")
     }
