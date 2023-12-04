@@ -35,7 +35,7 @@ export default function SignupCard() {
 
   const handleSignup = async () => {
     try {
-      
+      const res = await fetch()
     } catch (error) {
       showToast("Error", error, "error")
     }
