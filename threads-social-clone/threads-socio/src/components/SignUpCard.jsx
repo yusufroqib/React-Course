@@ -47,6 +47,8 @@ export default function SignupCard() {
         showToast("Error", data.error, "error")
         return;
       }
+      localStorage.setItem("user-threads", JSON.stringify(data))
+      setUser(data)
     } catch (error) {
       showToast("Error", error, "error")
     }
