@@ -69,12 +69,12 @@ export default function LoginCard() {
 									bg: useColorModeValue("gray.600", "gray.800"),
 								}}
 							>
-								Sign up
+								Login
 							</Button>
 						</Stack>
 						<Stack pt={6}>
 							<Text align={"center"}>
-								Already a user? <Link color={"blue.400"}>Login</Link>
+								Don&apos;t have an account? <Link color={"blue.400"}>Sign Up</Link>
 							</Text>
 						</Stack>
 					</Stack>
