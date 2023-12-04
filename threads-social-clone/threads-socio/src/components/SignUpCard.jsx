@@ -21,10 +21,7 @@ export default function SignupCard() {
 	const [showPassword, setShowPassword] = useState(false);
 
 	return (
-		<Flex
-			align={"center"}
-			justify={"center"}
-		>
+		<Flex align={"center"} justify={"center"}>
 			<Stack spacing={8} mx={"auto"} maxW={"lg"} py={12} px={6}>
 				<Stack align={"center"}>
 					<Heading fontSize={"4xl"} textAlign={"center"}>
@@ -33,7 +30,7 @@ export default function SignupCard() {
 				</Stack>
 				<Box
 					rounded={"lg"}
-					bg={useColorModeValue("white", "gray.700")}
+					bg={useColorModeValue("white", "gray.dark")}
 					boxShadow={"lg"}
 					p={8}
 				>
@@ -76,10 +73,10 @@ export default function SignupCard() {
 							<Button
 								loadingText="Submitting"
 								size="lg"
-								bg={"blue.400"}
+								bg={useColorModeValue("gray.600", "gray.700")}
 								color={"white"}
 								_hover={{
-									bg: "blue.500",
+									bg: useColorModeValue("gray.600", "gray.800"),
 								}}
 							>
 								Sign up
