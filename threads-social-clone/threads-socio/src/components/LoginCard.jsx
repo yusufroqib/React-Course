@@ -13,7 +13,7 @@ import {
 	Text,
 	useColorModeValue,
 	Link,
-    NumberInputStepper,
+	NumberInputStepper,
 } from "@chakra-ui/react";
 import { useState } from "react";
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
@@ -22,11 +22,11 @@ import authScreenAtom from "../atoms/authAtom";
 
 export default function LoginCard() {
 	const [showPassword, setShowPassword] = useState(false);
-    const setAuthScreen = useSetRecoilState(authScreenAtom)
+	const setAuthScreen = useSetRecoilState(authScreenAtom);
 
 	return (
 		<Flex align={"center"} justify={"center"}>
-			<Stack spacing={8} mx={"auto"}  maxW={"lg"} py={12} px={6}>
+			<Stack spacing={8} mx={"auto"} maxW={"lg"} py={12} px={6}>
 				<Stack align={"center"}>
 					<Heading fontSize={"4xl"} textAlign={"center"}>
 						Login
@@ -37,15 +37,24 @@ export default function LoginCard() {
 					bg={useColorModeValue("white", "gray.dark")}
 					boxShadow={"lg"}
 					p={8}
-                    w={{
-                        base: "full",
-                        sm: "400px"
-                    }}
+					w={{
+						base: "full",
+						sm: "400px",
+					}}
 				>
 					<Stack spacing={4}>
 						<FormControl isRequired>
 							<FormLabel>username</FormLabel>
-							<Input type="text" value={inputs.username} onChange={(e) => setInputs((inputs) => ({...inputs, username: e.target.value}))} />
+							<Input
+								type="text"
+								value={inputs.username}
+								onChange={(e) =>
+									setInputs((inputs) => ({
+										...inputs,
+										username: e.target.value,
+									}))
+								}
+							/>
 						</FormControl>
 						<FormControl isRequired>
 							<FormLabel>Password</FormLabel>
@@ -72,14 +81,20 @@ export default function LoginCard() {
 								_hover={{
 									bg: useColorModeValue("gray.600", "gray.800"),
 								}}
-                                onClick={handleLogin}
+								onClick={handleLogin}
 							>
 								Login
 							</Button>
 						</Stack>
 						<Stack pt={6}>
 							<Text align={"center"}>
-								Don&apos;t have an account? {" "}<Link color={"blue.400"} onClick={() => setAuthScreen("signup")}>Sign Up</Link>
+								Don&apos;t have an account?{" "}
+								<Link
+									color={"blue.400"}
+									onClick={() => setAuthScreen("signup")}
+								>
+									Sign Up
+								</Link>
 							</Text>
 						</Stack>
 					</Stack>
