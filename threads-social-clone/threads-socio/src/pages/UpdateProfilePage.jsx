@@ -13,7 +13,7 @@ import {
 
 export default function UpdateProfilePage() {
 	return (
-		<Flex align={"center"} justify={"center"}>
+		<Flex align={"center"} justify={"center"} my={6}>
 			<Stack
 				spacing={4}
 				w={"full"}
@@ -22,7 +22,6 @@ export default function UpdateProfilePage() {
 				rounded={"xl"}
 				boxShadow={"lg"}
 				p={6}
-				my={12}
 			>
 				<Heading lineHeight={1.1} fontSize={{ base: "2xl", sm: "3xl" }}>
 					User Profile Edit
@@ -89,11 +88,11 @@ export default function UpdateProfilePage() {
 						Cancel
 					</Button>
 					<Button
-						bg={"blue.400"}
+						bg={"green.400"}
 						color={"white"}
 						w="full"
 						_hover={{
-							bg: "blue.500",
+							bg: "green.500",
 						}}
 					>
 						Submit
