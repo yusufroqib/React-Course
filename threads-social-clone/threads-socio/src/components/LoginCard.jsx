@@ -13,6 +13,7 @@ import {
 	Text,
 	useColorModeValue,
 	Link,
+    NumberInputStepper,
 } from "@chakra-ui/react";
 import { useState } from "react";
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
@@ -44,7 +45,7 @@ export default function LoginCard() {
 					<Stack spacing={4}>
 						<FormControl isRequired>
 							<FormLabel>username</FormLabel>
-							<Input type="text" />
+							<Input type="text" value={inputs.username} onChange={(e) => setInputs((inputs) => ({...inputs, username: e.target.value}))} />
 						</FormControl>
 						<FormControl isRequired>
 							<FormLabel>Password</FormLabel>
