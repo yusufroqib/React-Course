@@ -16,6 +16,7 @@ const LogoutButton = () => {
                     "Content-Type": "application/json"
                 }
             })
+            const data = await res.json()
         } catch (error) {
             
         }
