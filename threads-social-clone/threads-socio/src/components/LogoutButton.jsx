@@ -20,7 +20,7 @@ const LogoutButton = () => {
             const data = await res.json()
 
             if(data.error) {
-                showToast("Error", error, "error")
+                showToast("Error", data.error, "error")
                 return;
             }
             localStorage.removeItem("user-threads")
