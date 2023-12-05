@@ -51,6 +51,7 @@ export default function LoginCard() {
                 showToast("Error", data.error, "error")
                 return;
             }
+            console.log(data)
             localStorage.setItem("user-threads", JSON.stringify(data))
         } catch (error) {
             showToast("Error", error, "error")
