@@ -2,6 +2,7 @@ const User = require("../models/userModel");
 const bcrypt = require("bcryptjs");
 const generateTokenAndSetCookie = require("../utils/helper/generateTokenAndSetCookie");
 const mongoose = require("mongoose");
+const cloudinary = require("cloudinary").v2;	
 
 const getUserProfile = async (req, res) => {
 	//We fetch the user profile either by username or userId
@@ -152,7 +153,9 @@ const followUnFollowUser = async (req, res) => {
 };
 
 const updateUser = async (req, res) => {
-	const { name, bio, profilePic, username, email, password } = req.body;
+	const { name, bio, username, email, password } = req.body;
+	let {profilePic} = req.body;
+
 	const userId = req.user._id;
 
 	try {
@@ -166,6 +169,14 @@ const updateUser = async (req, res) => {
 			const salt = await bcrypt.genSalt(10);
 			const hashedPassword = await bcrypt.hash(password, salt);
 			user.password = hashedPassword;
+		}
+
+		if (profilePic) {
+			if(user.profilePic){
+				await cloudinary.uploader.destroy(user.profilePic.split("/").pop().split(".")[0])
+			}
+			const uploadedResponse = await cloudinary.uploader.upload(profilePic)
+			profilePic = uploadedResponse.secure_url;
 		}
 
 		user.name = name || user.name;
