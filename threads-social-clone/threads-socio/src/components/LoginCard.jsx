@@ -20,6 +20,7 @@ import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 import { useSetRecoilState } from "recoil";
 import authScreenAtom from "../atoms/authAtom";
 
+
 export default function LoginCard() {
 	const [showPassword, setShowPassword] = useState(false);
 	const setAuthScreen = useSetRecoilState(authScreenAtom);
@@ -27,6 +28,14 @@ export default function LoginCard() {
         username: "",
         password: "",
     })
+
+    const handleLogin = async () => {
+        try {
+            
+        } catch (error) {
+            
+        }
+    }
 
 	return (
 		<Flex align={"center"} justify={"center"}>
