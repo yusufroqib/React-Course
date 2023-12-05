@@ -35,7 +35,12 @@ export default function LoginCard() {
 
     const handleLogin = async () => {
         try {
-            console.log(inputs);
+            const res = await fetch("/api/users/login", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            })
         } catch (error) {
             showToast("Error", error, "error")
         }
