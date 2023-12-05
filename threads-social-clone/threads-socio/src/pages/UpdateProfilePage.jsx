@@ -27,6 +27,16 @@ export default function UpdateProfilePage() {
 	const fileRef = useRef(null);
 	const { handleImageChange, imgUrl } = usePreviewImg();
 
+    const handleSubmit = async(e) => {
+        e.preventDefault()
+
+        try {
+            
+        } catch (error) {
+            
+        }
+    }
+
 	return (
 		<form onSubmit={handleSubmit}>
 			<Flex align={"center"} justify={"center"} my={6}>
