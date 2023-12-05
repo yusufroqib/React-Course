@@ -1,5 +1,3 @@
-"use client";
-
 import {
 	Button,
 	Flex,
@@ -9,13 +7,9 @@ import {
 	Input,
 	Stack,
 	useColorModeValue,
-	HStack,
 	Avatar,
-	AvatarBadge,
-	IconButton,
 	Center,
 } from "@chakra-ui/react";
-import { SmallCloseIcon } from "@chakra-ui/icons";
 
 export default function UpdateProfilePage() {
 	return (
@@ -70,7 +64,7 @@ export default function UpdateProfilePage() {
 				<FormControl isRequired>
 					<FormLabel>Bio</FormLabel>
 					<Input
-						placeholder="your bio..."
+						placeholder="Your bio..."
 						_placeholder={{ color: "gray.500" }}
 						type="textarea"
 					/>
