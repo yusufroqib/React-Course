@@ -37,8 +37,11 @@ export default function UpdateProfilePage() {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json"
-                }
+                },
+                body: JSON.stringify({...inputs, profilePic: imgUrl})
             })
+            const data = await res.json()
+            console.log(data);
         } catch (error) {
             showToast("Error", error, "error")
         }
