@@ -14,6 +14,7 @@ import { useRef, useState } from "react";
 import { useRecoilState } from "recoil";
 import userAtom from "../atoms/userAtom";
 import usePreviewImg from "../hooks/usePreviewImg";
+import useShowToast from "../hooks/useShowToast";
 
 export default function UpdateProfilePage() {
 	const [user, setUser] = useRecoilState(userAtom);
@@ -26,6 +27,7 @@ export default function UpdateProfilePage() {
 	});
 	const fileRef = useRef(null);
 	const { handleImageChange, imgUrl } = usePreviewImg();
+    const showToast = useShowToast()
 
     const handleSubmit = async(e) => {
         e.preventDefault()
@@ -75,7 +77,7 @@ export default function UpdateProfilePage() {
 							</Center>
 						</Stack>
 					</FormControl>
-					<FormControl isRequired>
+					<FormControl >
 						<FormLabel>Full name</FormLabel>
 						<Input
 							placeholder="Your fullname"
@@ -85,7 +87,7 @@ export default function UpdateProfilePage() {
 							onChange={(e) => setInputs({ ...inputs, name: e.target.value })}
 						/>
 					</FormControl>
-					<FormControl isRequired>
+					<FormControl>
 						<FormLabel>User name</FormLabel>
 						<Input
 							placeholder="UserName"
@@ -97,7 +99,7 @@ export default function UpdateProfilePage() {
 							}
 						/>
 					</FormControl>
-					<FormControl isRequired>
+					<FormControl>
 						<FormLabel>Email address</FormLabel>
 						<Input
 							placeholder="your-email@example.com"
@@ -107,7 +109,7 @@ export default function UpdateProfilePage() {
 							onChange={(e) => setInputs({ ...inputs, email: e.target.value })}
 						/>
 					</FormControl>
-					<FormControl isRequired>
+					<FormControl>
 						<FormLabel>Bio</FormLabel>
 						<Input
 							placeholder="Your bio..."
@@ -117,7 +119,7 @@ export default function UpdateProfilePage() {
 							onChange={(e) => setInputs({ ...inputs, bio: e.target.value })}
 						/>
 					</FormControl>
-					<FormControl isRequired>
+					<FormControl>
 						<FormLabel>Password</FormLabel>
 						<Input
 							placeholder="password"
@@ -147,6 +149,7 @@ export default function UpdateProfilePage() {
 							_hover={{
 								bg: "green.500",
 							}}
+                            type="submit"
 						>
 							Submit
 						</Button>
