@@ -25,7 +25,7 @@ export default function UpdateProfilePage() {
         password: "",
     })
     const fileRef = useRef(null)
-    const {handleImageChange} = usePreviewImg()
+    const {handleImageChange, imgUrl} = usePreviewImg()
 
 	return (
 		<Flex align={"center"} justify={"center"} my={6}>
@@ -44,7 +44,7 @@ export default function UpdateProfilePage() {
 				<FormControl>
 					<Stack direction={["column", "row"]} spacing={6}>
 						<Center>
-							<Avatar size="xl" boxShadow={'md'} src={user.profilePic} />
+							<Avatar size="xl" boxShadow={'md'} src={imgUrl || user.profilePic} />
 						</Center>
 						<Center w="full">
 							<Button onClick={() => fileRef.current.click()} w="full">Change Avatar</Button>
