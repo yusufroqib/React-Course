@@ -26,6 +26,7 @@ const LogoutButton = () => {
             localStorage.removeItem("user-threads")
             setUser(null)
         } catch (error) {
+            showToast("Error", error, "error")
             
         }
     }
