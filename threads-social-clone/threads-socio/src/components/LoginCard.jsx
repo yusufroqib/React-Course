@@ -71,6 +71,7 @@ export default function LoginCard() {
 								_hover={{
 									bg: useColorModeValue("gray.600", "gray.800"),
 								}}
+                                onClick={handleLogin}
 							>
 								Login
 							</Button>
