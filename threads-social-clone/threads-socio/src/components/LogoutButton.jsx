@@ -27,7 +27,6 @@ const LogoutButton = () => {
             setUser(null)
         } catch (error) {
             showToast("Error", error, "error")
-            
         }
     }
   return (
