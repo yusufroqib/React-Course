@@ -12,6 +12,12 @@ const app = express();
 
 const PORT = process.env.PORT || 5000;
 
+cloudinary.config({
+	cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+	api_key: process.env.CLOUDINARY_API_KEY,
+	api_secret: process.env.CLOUDINARY_API_SECRET,
+})
+
 app.use(express.json({ limit: "50mb" })); //parse json data inside the request body
 app.use(express.urlencoded({ extended: true })); //parse form data inside the request body
 app.use(cookieParser());
