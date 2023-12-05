@@ -44,6 +44,11 @@ export default function LoginCard() {
             })
             const data = await res.json()
             console.log(data);
+
+            if(data.error) {
+                showToast("Error", data.error, "error")
+                return;
+            }
         } catch (error) {
             showToast("Error", error, "error")
         }
