@@ -16,7 +16,15 @@ const LogoutButton = () => {
                     "Content-Type": "application/json"
                 }
             })
+
             const data = await res.json()
+
+            if(data.error) {
+                showToast("Error", error, "error")
+                return;
+            }
+            localStorage.removeItem("user-threads")
+            setUser(null)
         } catch (error) {
             
         }
