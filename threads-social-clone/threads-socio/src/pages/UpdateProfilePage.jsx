@@ -17,10 +17,10 @@ import userAtom from "../atoms/userAtom";
 export default function UpdateProfilePage() {
     const [user, setUser] = useRecoilState(userAtom)
     const [inputs, setInputs] = useState({
-        name: "",
-        username: "",
-        email: "",
-        bio: "",
+        name: user.name,
+        username: user.username,
+        email: user.email,
+        bio: user.bio,
         password: "",
     })
 
@@ -55,6 +55,7 @@ export default function UpdateProfilePage() {
 						placeholder="Your fullname"
 						_placeholder={{ color: "gray.500" }}
 						type="text"
+                     
 					/>
 				</FormControl>
 				<FormControl isRequired>
@@ -63,6 +64,7 @@ export default function UpdateProfilePage() {
 						placeholder="UserName"
 						_placeholder={{ color: "gray.500" }}
 						type="text"
+                    
 					/>
 				</FormControl>
 				<FormControl isRequired>
