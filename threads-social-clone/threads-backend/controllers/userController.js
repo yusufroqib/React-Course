@@ -158,11 +158,13 @@ const updateUser = async (req, res) => {
 
 	const userId = req.user._id;
 
+	console.log(req.params.id);
+
 	try {
 		let user = await User.findById(userId);
 		if (!user) return res.status(400).json({ error: "User not found" });
 
-		if (req.params.id !== userId.toString())
+		if (req.params.id !== userId.toString()) 
 			return res.status(400).json({ error: "You cannot update other user's profile" })
 
 		if (password) {
