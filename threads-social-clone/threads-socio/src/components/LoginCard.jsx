@@ -39,8 +39,11 @@ export default function LoginCard() {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
-                }
+                },
+                body: JSON.stringify(inputs)
             })
+            const data = await res.json()
+            console.log(data);
         } catch (error) {
             showToast("Error", error, "error")
         }
