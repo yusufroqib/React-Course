@@ -23,6 +23,10 @@ import authScreenAtom from "../atoms/authAtom";
 export default function LoginCard() {
 	const [showPassword, setShowPassword] = useState(false);
 	const setAuthScreen = useSetRecoilState(authScreenAtom);
+    const [inputs, setInputs] = useState({
+        username: "",
+        password: "",
+    })
 
 	return (
 		<Flex align={"center"} justify={"center"}>
