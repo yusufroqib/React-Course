@@ -47,14 +47,14 @@ const UserHeader = ({user}) => {
                   <Avatar name={user.name} src={user.profilePic} size={{base: "md", md: "xl"}} />
                )}
                {!user.profilePic && (
-                  <Avatar name={user.name} src="https://bit.ly/broken-link" size={{base: "md", md: "xl"}} />
+                  <Avatar name={user.name} src="https://tinyurl.com/yjn6rj6y" size={{base: "md", md: "xl"}} />
                )}
             </Box>
          </Flex>
          <Text>{user.bio}</Text>
          <Flex w={"full"} justifyContent={"space-between"}>
             <Flex gap={2} alignItems={"center"}>
-               <Text color={"gray.light"}>3.2k followers</Text>
+               <Text color={"gray.light"}>{user.followers.length} followers</Text>
                <Box w={1} h={1} bg={"gray.light"} borderRadius={"50%"}></Box>
                <Link color={"gray.light"}>instagram.com</Link>
             </Flex>
