@@ -13,7 +13,7 @@ import useShowToast from "../hooks/useShowToast";
 
 const UserHeader = ({ user }) => {
 	const toast = useToast();
-	const currentUser = useRecoilValue(userAtom);
+	const currentUser = useRecoilValue(userAtom); 
    const [following, setFollowing] = useState(user.followers.includes(currentUser._id))
    const showToast = useShowToast()
 
