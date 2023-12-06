@@ -49,7 +49,6 @@ const UserHeader = ({user}) => {
                {!user.profilePic && (
                   <Avatar name={user.name} src="https://bit.ly/broken-link" size={{base: "md", md: "xl"}} />
                )}
-               
             </Box>
          </Flex>
          <Text>{user.bio}</Text>
