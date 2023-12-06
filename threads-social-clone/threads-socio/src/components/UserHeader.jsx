@@ -6,7 +6,7 @@ import { BsInstagram } from "react-icons/bs";
 import { CgMoreO } from "react-icons/cg";
 import { useToast } from "@chakra-ui/toast";
 
-const UserHeader = () => {
+const UserHeader = ({user}) => {
    const toast = useToast();
 
    const copyURL = () => {
@@ -27,10 +27,10 @@ const UserHeader = () => {
          <Flex justifyContent={"space-between"} w={"full"}>
             <Box>
                <Text fontSize={"2xl"} fontWeight={"bold"}>
-                  Aliu Musa
+                  {user.name}
                </Text>
                <Flex gap={2} alignItems={"center"}>
-                  <Text fontSize={"sm"}>aliumusa@99</Text>
+                  <Text fontSize={"sm"}>{user.username}</Text>
                   <Text
                      fontSize={"xs"}
                      bg={"gray.dark"}
@@ -43,10 +43,16 @@ const UserHeader = () => {
                </Flex>
             </Box>
             <Box>
-               <Avatar name="Aliu Musa" src="/directorPro.jpeg" size={{base: "md", md: "xl"}} />
+               {user.profilePic && (
+                  <Avatar name={user.name} src={user.profilePic} size={{base: "md", md: "xl"}} />
+               )}
+               {!user.profilePic && (
+                  <Avatar name={user.name} src="https://bit.ly/broken-link" size={{base: "md", md: "xl"}} />
+               )}
+               
             </Box>
          </Flex>
-         <Text>Founder, executive chairman and CEO of DLTAfrica</Text>
+         <Text>{user.bio}</Text>
          <Flex w={"full"} justifyContent={"space-between"}>
             <Flex gap={2} alignItems={"center"}>
                <Text color={"gray.light"}>3.2k followers</Text>
