@@ -185,9 +185,11 @@ const updateUser = async (req, res) => {
 		user.bio = bio || user.bio;
 		user.profilePic = profilePic || user.profilePic;
 
-		await user.save();
+		user = await user.save();
 
-		res.status(200).json({ message: "Profile updated successfully", user });
+		user.password = null
+
+		res.status(200).json( user );
 
 	} catch (error) {
 		res.status(500).json({ error: error.message }); //Internal server error

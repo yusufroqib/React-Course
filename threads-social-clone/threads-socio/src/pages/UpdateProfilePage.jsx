@@ -41,7 +41,13 @@ export default function UpdateProfilePage() {
                 body: JSON.stringify({...inputs, profilePic: imgUrl})
             })
             const data = await res.json()
-            console.log(data);
+            if(data.error) {
+                showToast("Error", data.error, "error")
+                return
+            }
+            showToast("Success", "Profile updated successfully", "success")
+            setUser(data)
+            localStorage.setItem("user-threads", JSON.stringify(data))
         } catch (error) {
             showToast("Error", error, "error")
         }
