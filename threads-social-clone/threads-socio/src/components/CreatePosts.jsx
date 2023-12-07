@@ -21,6 +21,7 @@ import { useRef, useState } from "react";
 import usePreviewImg from "../hooks/usePreviewImg";
 import { BsFillImageFill } from "react-icons/bs";
 import userAtom from "../atoms/userAtom";
+import { useRecoilValue } from "recoil";
 
 const MAX_CHAR = 500
 
@@ -31,6 +32,7 @@ const CreatePosts = () => {
 	const imageRef = useRef(null);
     const [remainingChar, setRemainingChar] = useState(MAX_CHAR)
     const [loading, setLoading] = useState(false)
+    const user = useRecoilValue(userAtom)
 
 	const handleTextChange = (e) => {
         const inputText = e.target.value;
