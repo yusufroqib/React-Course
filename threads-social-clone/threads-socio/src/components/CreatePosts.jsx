@@ -9,11 +9,24 @@ import {
 	ModalCloseButton,
 	Button,
 	useDisclosure,
+    FormControl,
+    Textarea,
+    Text,
 } from "@chakra-ui/react";
-import React from "react";
+import { useState } from "react";
+import usePreviewImg from "../hooks/usePreviewImg";
+import { BsFillImageFill } from "react-icons/bs";
+
 
 const CreatePosts = () => {
 	const { isOpen, onOpen, onClose } = useDisclosure();
+    const [postText, setPostText] = useState('')
+    const {handleImageChange, imgUrl} = usePreviewImg()
+
+    const handleTextChange = () => {
+
+    }
+
 	return (
 		<>
 			<Button
@@ -29,17 +42,28 @@ const CreatePosts = () => {
 			<Modal isOpen={isOpen} onClose={onClose}>
 				<ModalOverlay />
 				<ModalContent>
-					<ModalHeader>Modal Title</ModalHeader>
+					<ModalHeader>Create Post</ModalHeader>
 					<ModalCloseButton />
-					<ModalBody>
-                            Here we go
+					<ModalBody pd={6}>
+                            <FormControl>
+                                <Textarea
+                                    placeholder="Post content goes here"
+                                    onChange={handleTextChange}
+                                    value={postText}
+                                />
+                                <Text fontSize={"xs"} fontWeight={"bold"} textAlign={"right"} m={"1"} color={"gray.800"}>
+                                    500/500
+                                </Text>
+                                <input type="file" hidden ref={imageRef} onChange={handleImageChange} />
+                                <BsFillImageFill />
+                            </FormControl>
 					</ModalBody>
 
 					<ModalFooter>
 						<Button colorScheme="blue" mr={3} onClick={onClose}>
 							Close
 						</Button>
-                        
+
 					</ModalFooter>
 				</ModalContent>
 			</Modal>

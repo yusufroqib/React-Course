@@ -1,5 +1,4 @@
 import { Button } from '@chakra-ui/react'
-import React from 'react'
 import { AiOutlineLogout } from 'react-icons/ai'
 import { useSetRecoilState } from 'recoil'
 import userAtom from '../atoms/userAtom'
