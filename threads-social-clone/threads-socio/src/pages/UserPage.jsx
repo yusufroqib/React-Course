@@ -8,27 +8,28 @@ const UserPage = () => {
 	const [user, setUser] = useState(null);
 	const { username } = useParams();
 	const showToast = useShowToast();
+	const [loading, setLoading] = useState(true);
 
 	useEffect(() => {
 		const getUser = async () => {
 			try {
 				const res = await fetch(`api/users/profile/${username}`);
 				const data = await res.json();
-				if(data.error) {
-               showToast("Error", data.error, "error")
-               return;
-            }
-            setUser(data);
-
+				if (data.error) {
+					showToast("Error", data.error, "error");
+					return;
+				}
+				setUser(data);
 			} catch (error) {
-            showToast("Error", error, "error")
-         }
+				showToast("Error", error, "error");
+			} finally {
+				setLoading(false);
+			}
 		};
 		getUser();
 	}, [username, showToast]);
 
-	if(!user) return null
-
+	if (!user) return null;
 
 	return (
 		<>
