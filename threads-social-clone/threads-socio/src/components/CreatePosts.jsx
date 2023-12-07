@@ -75,8 +75,12 @@ const CreatePosts = () => {
 				setPosts([data, ...posts])
 			}
 			onClose()
+			// setPostText("")
+
 		} catch (error) {
 			showToast("Error", error, "error");
+		}finally{
+			setLoading(false)
 		}
 	};
 
