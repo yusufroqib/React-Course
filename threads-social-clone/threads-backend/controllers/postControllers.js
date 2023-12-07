@@ -9,7 +9,7 @@ const createPost = async (req, res) => {
 		if (!postedBy && !text) {
 			return res
 				.status(400)
-				.json({ message: "postedBy and text fields are required." });
+				.json({ error: "postedBy and text fields are required." });
 		}
 
 		const user = await User.findById(postedBy);
