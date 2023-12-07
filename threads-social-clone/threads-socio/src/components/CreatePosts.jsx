@@ -36,6 +36,9 @@ const CreatePosts = () => {
             const truncatedText = inputText.slice(0, MAX_CHAR);
             setPostText(truncatedText);
             setRemainingChar(0)
+        } else {
+            setPostText(inputText);
+            setRemainingChar(MAX_CHAR - inputText.length)
         }
     };
     const handleCreatePost = async() => {};
