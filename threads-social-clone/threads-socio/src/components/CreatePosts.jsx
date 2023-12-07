@@ -29,6 +29,7 @@ const CreatePosts = () => {
 	const { handleImageChange, imgUrl, setImgUrl } = usePreviewImg();
 	const imageRef = useRef(null);
     const [remainingChar, setRemainingChar] = useState(MAX_CHAR)
+    const [loading, setLoading] = useState(false)
 
 	const handleTextChange = (e) => {
         const inputText = e.target.value;
@@ -41,7 +42,9 @@ const CreatePosts = () => {
             setRemainingChar(MAX_CHAR - inputText.length)
         }
     };
-    const handleCreatePost = async() => {};
+    const handleCreatePost = async() => {
+        setLoading(true)
+    };
 
 	return (
 		<>
