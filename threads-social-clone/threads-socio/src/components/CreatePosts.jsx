@@ -12,8 +12,10 @@ import {
     FormControl,
     Textarea,
     Text,
+    Input,
+    Flex,
 } from "@chakra-ui/react";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import usePreviewImg from "../hooks/usePreviewImg";
 import { BsFillImageFill } from "react-icons/bs";
 
@@ -22,6 +24,7 @@ const CreatePosts = () => {
 	const { isOpen, onOpen, onClose } = useDisclosure();
     const [postText, setPostText] = useState('')
     const {handleImageChange, imgUrl} = usePreviewImg()
+    const imageRef = useRef(null) 
 
     const handleTextChange = () => {
 
@@ -54,9 +57,21 @@ const CreatePosts = () => {
                                 <Text fontSize={"xs"} fontWeight={"bold"} textAlign={"right"} m={"1"} color={"gray.800"}>
                                     500/500
                                 </Text>
-                                <input type="file" hidden ref={imageRef} onChange={handleImageChange} />
-                                <BsFillImageFill />
+                                <Input type="file" hidden ref={imageRef} onChange={handleImageChange} />
+                                <BsFillImageFill 
+                                    style={{marginLeft: "5px", cursor: "pointer"}}
+                                    size={16}
+                                    onClick={() => imageRef.current.click()}
+                                />
                             </FormControl>
+                            {imgUrl && (
+                                <Flex
+                                    mt={"full"}
+                                    position={"relative"}
+                                >
+
+                                </Flex>
+                            )}
 					</ModalBody>
 
 					<ModalFooter>
