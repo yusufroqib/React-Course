@@ -75,7 +75,8 @@ const CreatePosts = () => {
 				setPosts([data, ...posts]);
 			}
 			onClose();
-			// setPostText("")
+			setPostText("")
+			// setImgUrl("")
 		} catch (error) {
 			showToast("Error", error, "error");
 		} finally {
