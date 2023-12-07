@@ -79,7 +79,7 @@ export default function LoginCard() {
 				>
 					<Stack spacing={4}>
 						<FormControl isRequired>
-							<FormLabel>username</FormLabel>
+							<FormLabel>Username</FormLabel>
 							<Input
 								type="text"
 								value={inputs.username}
