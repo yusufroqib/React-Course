@@ -22,43 +22,54 @@ import usePreviewImg from "../hooks/usePreviewImg";
 import { BsFillImageFill } from "react-icons/bs";
 import userAtom from "../atoms/userAtom";
 import { useRecoilValue } from "recoil";
+import useShowToast from "../hooks/useShowToast";
 
-const MAX_CHAR = 500
+const MAX_CHAR = 500;
 
 const CreatePosts = () => {
 	const { isOpen, onOpen, onClose } = useDisclosure();
 	const [postText, setPostText] = useState("");
 	const { handleImageChange, imgUrl, setImgUrl } = usePreviewImg();
 	const imageRef = useRef(null);
-    const [remainingChar, setRemainingChar] = useState(MAX_CHAR)
-    const [loading, setLoading] = useState(false)
-    const user = useRecoilValue(userAtom)
+	const [remainingChar, setRemainingChar] = useState(MAX_CHAR);
+	const [loading, setLoading] = useState(false);
+	const user = useRecoilValue(userAtom);
+	const showToast = useShowToast();
 
 	const handleTextChange = (e) => {
-        const inputText = e.target.value;
-        if (inputText.length > MAX_CHAR) {
-            const truncatedText = inputText.slice(0, MAX_CHAR);
-            setPostText(truncatedText);
-            setRemainingChar(0)
-        } else {
-            setPostText(inputText);
-            setRemainingChar(MAX_CHAR - inputText.length)
-        }
-    };
-    const handleCreatePost = async() => {
-        setLoading(true)
-        try {
-            const res = await fetch("/api/posts/create", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({postedBy: user._id, text: postText, img: imgUrl})
-            })
-        } catch (error) {
-            
-        }
-    };
+		const inputText = e.target.value;
+		if (inputText.length > MAX_CHAR) {
+			const truncatedText = inputText.slice(0, MAX_CHAR);
+			setPostText(truncatedText);
+			setRemainingChar(0);
+		} else {
+			setPostText(inputText);
+			setRemainingChar(MAX_CHAR - inputText.length);
+		}
+	};
+	const handleCreatePost = async () => {
+		setLoading(true);
+		try {
+			const res = await fetch("/api/posts/create", {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify({
+					postedBy: user._id,
+					text: postText,
+					img: imgUrl,
+				}),
+			});
+			const data = await res.json();
+			if (data.error) {
+				showToast("Error", data.error, "error");
+				return;
+			}
+		} catch (error) {
+			showToast("Error", error, "error");
+		}
+	};
 
 	return (
 		<>
@@ -112,17 +123,22 @@ const CreatePosts = () => {
 									onClick={() => {
 										setImgUrl("");
 									}}
-                                    bg={"gray.800"}
-                                    position={"absolute"}
-                                    top={2}
-                                    right={2}
+									bg={"gray.800"}
+									position={"absolute"}
+									top={2}
+									right={2}
 								/>
 							</Flex>
 						)}
 					</ModalBody>
 
 					<ModalFooter>
-						<Button colorScheme="blue" mr={3} onClick={handleCreatePost} isLoading={loading}>
+						<Button
+							colorScheme="blue"
+							mr={3}
+							onClick={handleCreatePost}
+							isLoading={loading}
+						>
 							Post
 						</Button>
 					</ModalFooter>
