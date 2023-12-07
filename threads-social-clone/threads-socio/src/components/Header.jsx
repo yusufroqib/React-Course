@@ -1,4 +1,9 @@
-import { Flex, Image, useColorMode } from "@chakra-ui/react";
+import { Flex, Image, useColorMode, Link } from "@chakra-ui/react";
+import { useRecoilValue } from "recoil";
+import userAtom from "../atoms/userAtom";
+import {AiFillHome} from "react-icons/ai"
+import { Link as RouterLink } from "react-router-dom";
+import RxAvatar from "./RxAvatar";
 
 const Header = () => {
    const { colorMode, toggleColorMode } = useColorMode();
