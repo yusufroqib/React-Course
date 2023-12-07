@@ -20,6 +20,7 @@ import {
 import { useRef, useState } from "react";
 import usePreviewImg from "../hooks/usePreviewImg";
 import { BsFillImageFill } from "react-icons/bs";
+import userAtom from "../atoms/userAtom";
 
 const MAX_CHAR = 500
 
@@ -49,7 +50,8 @@ const CreatePosts = () => {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
-                }
+                },
+                body: JSON.stringify({postedBy: user._id, text: postText, img: imgUrl})
             })
         } catch (error) {
             
