@@ -28,7 +28,7 @@ const CreatePosts = () => {
 	const [postText, setPostText] = useState("");
 	const { handleImageChange, imgUrl, setImgUrl } = usePreviewImg();
 	const imageRef = useRef(null);
-    const [remainingChar, setRemainingChar] = useState(500)
+    const [remainingChar, setRemainingChar] = useState(MAX_CHAR)
 
 	const handleTextChange = (e) => {
         const inputText = e.target.value;
