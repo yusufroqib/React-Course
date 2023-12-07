@@ -1,10 +1,11 @@
 const User = require("../models/userModel");
 const Post = require("../models/postModel");
-import * as cloudinary from 'cloudinary';
+const cloudinary = require("cloudinary").v2;
 
 const createPost = async (req, res) => {
 	try {
-		const { postedBy, text, img } = req.body;
+		const { postedBy, text } = req.body;
+		let { img } = req.body;
 		if (!postedBy || !text) {
 			return res
 				.status(400)
@@ -25,8 +26,8 @@ const createPost = async (req, res) => {
 				.json({ message: `Text must be less than ${maxLength} characters` });
 		}
 
-		if(img) {
-			const uploadedResponse = await cloudinary.uploader.upload(img)
+		if (img) {
+			const uploadedResponse = await cloudinary.uploader.upload(img);
 			img = uploadedResponse.secure_url;
 		}
 
@@ -151,18 +152,20 @@ const getFeedPost = async (req, res) => {
 };
 
 const getUserPosts = async (req, res) => {
-	const {username} = req.params;
+	const { username } = req.params;
 	try {
-		const user = await User.findOne({username});
-		if(!user){
-			return res.status(404).json({message: "User not found"});
+		const user = await User.findOne({ username });
+		if (!user) {
+			return res.status(404).json({ message: "User not found" });
 		}
-		const posts = await Post.find({postedBy: user._id}).sort({ createdAt: -1 });
-		res.status(200).json({posts});
+		const posts = await Post.find({ postedBy: user._id }).sort({
+			createdAt: -1,
+		});
+		res.status(200).json({ posts });
 	} catch (error) {
-		res.status(500).json({error: error.message});
+		res.status(500).json({ error: error.message });
 	}
-}
+};
 
 module.exports = {
 	createPost,
@@ -171,5 +174,5 @@ module.exports = {
 	likeUnlikePost,
 	replyToPost,
 	getFeedPost,
-	getUserPosts
+	getUserPosts,
 };
