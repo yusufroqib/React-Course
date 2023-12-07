@@ -6,7 +6,7 @@ const createPost = async (req, res) => {
 	try {
 		const { postedBy, text } = req.body;
 		let { img } = req.body;
-		if (!postedBy || !text) {
+		if (!postedBy && !text) {
 			return res
 				.status(400)
 				.json({ message: "postedBy and text fields are required." });
@@ -15,7 +15,7 @@ const createPost = async (req, res) => {
 		const user = await User.findById(postedBy);
 
 		if (!user) {
-			return res.status(404).json({ message: "User not found." });
+			return res.status(404).json({ error: "User not found." });
 		}
 
 		const maxLength = 500;
