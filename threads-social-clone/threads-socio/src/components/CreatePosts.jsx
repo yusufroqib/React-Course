@@ -28,12 +28,14 @@ const CreatePosts = () => {
 	const [postText, setPostText] = useState("");
 	const { handleImageChange, imgUrl, setImgUrl } = usePreviewImg();
 	const imageRef = useRef(null);
+    const [remainingChar, setRemainingChar] = useState(500)
 
 	const handleTextChange = (e) => {
         const inputText = e.target.value;
         if (inputText.length > MAX_CHAR) {
             const truncatedText = inputText.slice(0, MAX_CHAR);
             setPostText(truncatedText);
+            setRemainingChar(0)
         }
     };
     const handleCreatePost = async() => {};
