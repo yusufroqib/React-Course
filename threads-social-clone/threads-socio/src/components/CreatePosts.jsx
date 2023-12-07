@@ -71,7 +71,7 @@ const CreatePosts = () => {
 								m={"1"}
 								color={"gray.800"}
 							>
-								500/500
+								{remainingChar}/{MAX_CHAR}
 							</Text>
 							<Input
 								type="file"
