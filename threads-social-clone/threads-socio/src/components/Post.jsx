@@ -29,8 +29,14 @@ import useShowToast from "../hooks/useShowToast";
           const data = await res.json()
           console.log(data)
           setUser(data)
+          if(data.error) {
+            showToast("Error", data.error, "error")
+            return;
+          }
         } catch (err) {
           showToast("Error", err.message, "error")
+        } finally {
+          setUser(null)
         }
       }
       getUser()
