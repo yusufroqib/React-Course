@@ -9,12 +9,17 @@ const HomePage = () => {
 
 	useEffect(() => {
 		const getFeedPosts = async () => {
+      setLoading(true)
+	
 			try {
 				const res = await fetch("/api/posts/feed");
 			} catch (err) {
 				showToast("Error", err.message, "error");
-			}
+			} finally {
+        setLoading(false)
+      }
 		};
+    getFeedPosts()
 	}, [showToast]);
 
 	return (
