@@ -47,6 +47,7 @@ export default function LoginCard() {
             })
             const data = await res.json()
             console.log(data);
+			setLoading(true)
 
             if(data.error) {  
                 showToast("Error", data.error, "error")
@@ -128,7 +129,7 @@ export default function LoginCard() {
 								}}
 								onClick={handleLogin}
 							>
-								Login
+								{loading ? "Loading..." : "Login"}
 							</Button>
 						</Stack>
 						<Stack pt={6}>
