@@ -35,12 +35,13 @@ import useShowToast from "../hooks/useShowToast";
           }
         } catch (err) {
           showToast("Error", err.message, "error")
-        } finally {
           setUser(null)
         }
       }
       getUser()
     }, [postedBy, showToast])
+
+    if(!user) return null
     
   
     return (
@@ -83,7 +84,7 @@ import useShowToast from "../hooks/useShowToast";
           <Flex flex={1} flexDir={"column"} gap={2}>
             <Flex w={"full"} justifyContent={"space-between"}>
               <Flex alignItems={"center"} w={"full"}>
-                <Text>Aliu Musa</Text>
+                <Text>{user.username}</Text>
                 <Image src="/verified.png" ml={1} w={4} h={4} />
               </Flex>
               <Flex
