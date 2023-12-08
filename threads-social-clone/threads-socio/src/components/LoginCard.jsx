@@ -37,6 +37,7 @@ export default function LoginCard() {
     const showToast = useShowToast()
 
     const handleLogin = async () => {
+		setLoading(true)
         try {
             const res = await fetch("/api/users/login", {
                 method: "POST",
@@ -47,7 +48,6 @@ export default function LoginCard() {
             })
             const data = await res.json()
             console.log(data);
-			setLoading(true)
 
             if(data.error) {  
                 showToast("Error", data.error, "error")
@@ -129,7 +129,7 @@ export default function LoginCard() {
 								}}
 								onClick={handleLogin}
 							>
-								{loading ? "Loading..." : "Login"}
+								{loading ? "Loggin in..." : "Login"}
 							</Button>
 						</Stack>
 						<Stack pt={6}>
