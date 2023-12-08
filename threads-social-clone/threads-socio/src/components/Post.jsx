@@ -15,12 +15,20 @@ import {
   import { Link } from "react-router-dom";
   import Actions from "./Actions";
   import { useEffect, useState } from "react";
+import useShowToast from "../hooks/useShowToast";
   
   const Post = ({ post, postedBy }) => {
     const [liked, setLiked] = useState(false);
+    const showToast = useShowToast()
 
     useEffect(() => {
-      
+      const getUser = async () => {
+        try {
+          
+        } catch (err) {
+          showToast("Error", err.message, "error")
+        }
+      }
     }, [userId])
     
   
