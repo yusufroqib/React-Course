@@ -14,10 +14,15 @@ import {
   import { BsThreeDots } from "react-icons/bs";
   import { Link } from "react-router-dom";
   import Actions from "./Actions";
-  import { useState } from "react";
+  import { useEffect, useState } from "react";
   
   const Post = ({ post, postedBy }) => {
     const [liked, setLiked] = useState(false);
+
+    useEffect(() => {
+      
+    }, [userId])
+    
   
     return (
       <Link to={"/aliumusa/post/1"}>
@@ -90,15 +95,15 @@ import {
               </Flex>
             </Flex>
   
-            <Text fontSize={"sm"}>{postTitle}</Text>
-            {postImg && (
+            <Text fontSize={"sm"}>{post.text}</Text>
+            {post.img && (
               <Box
                 overflow={"hidden"}
                 borderRadius={6}
                 border={"1px solid"}
                 borderColor={"gray.light"}
               >
-                <Image src={postImg} width={"full"} />
+                <Image src={post.img} width={"full"} />
               </Box>
             )}
             <Flex>
@@ -111,9 +116,9 @@ import {
               fontSize={"sm"}
               alignItems={"center"}
             >
-              <Text>{replies} replies</Text>
+              <Text>{post.replies.length} replies</Text>
               <Box w={0.5} h={0.5} bg={"gray.light"} borderRadius={"full"}></Box>
-              <Text>{likes} likes</Text>
+              <Text>{post.likes.length} likes</Text>
             </Flex>
           </Flex>
         </Flex>
