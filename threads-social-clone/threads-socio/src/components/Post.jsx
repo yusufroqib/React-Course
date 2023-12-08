@@ -19,17 +19,22 @@ import useShowToast from "../hooks/useShowToast";
   
   const Post = ({ post, postedBy }) => {
     const [liked, setLiked] = useState(false);
+    const [user, setUser] = useState(null)
     const showToast = useShowToast()
 
     useEffect(() => {
       const getUser = async () => {
         try {
-          
+          const res = await fetch(`/api/users/profile/${postedBy}`)
+          const data = await res.json()
+          console.log(data)
+          setUser(data)
         } catch (err) {
           showToast("Error", err.message, "error")
         }
       }
-    }, [userId])
+      getUser()
+    }, [postedBy, showToast])
     
   
     return (
