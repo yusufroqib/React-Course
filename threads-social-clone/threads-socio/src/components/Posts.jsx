@@ -16,7 +16,7 @@ import {
   import Actions from "./Actions";
   import { useState } from "react";
   
-  const Post = ({ likes, replies, postTitle, postImg }) => {
+  const Post = ({ post, postedBy }) => {
     const [liked, setLiked] = useState(false);
   
     return (
