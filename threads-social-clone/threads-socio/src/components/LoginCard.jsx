@@ -25,6 +25,7 @@ import userAtom from "../atoms/userAtom";
 
 
 export default function LoginCard() {
+	const [loading, setLoading] = useState(false)
 	const [showPassword, setShowPassword] = useState(false);
 	const setAuthScreen = useSetRecoilState(authScreenAtom);
     const setUser = useSetRecoilState(userAtom)
