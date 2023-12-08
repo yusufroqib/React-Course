@@ -5,6 +5,7 @@ import useShowToast from "../hooks/useShowToast";
 
 const HomePage = () => {
 	const showToast = useShowToast();
+  const [loading, setLoading] = useState(true)
 
 	useEffect(() => {
 		const getFeedPosts = async () => {
@@ -14,7 +15,7 @@ const HomePage = () => {
 				showToast("Error", err.message, "error");
 			}
 		};
-	}, []);
+	}, [showToast]);
 
 	return (
 		<div>
