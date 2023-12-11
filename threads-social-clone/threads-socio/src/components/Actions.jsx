@@ -83,8 +83,8 @@ const Actions = ({ post: post_ }) => {
 						strokeWidth="2"
 					></path>
 				</svg>
-            <RepostSVG/>
-            <ShareSVG/>
+				<RepostSVG />
+				<ShareSVG />
 			</Flex>
 			<Flex gap={2} color={"gray.light"} fontSize={"sm"} alignItems={"center"}>
 				<Text>{post.replies.length} replies</Text>
