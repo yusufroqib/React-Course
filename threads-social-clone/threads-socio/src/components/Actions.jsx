@@ -3,7 +3,6 @@ import {
 	Button,
 	Flex,
 	FormControl,
-	FormLabel,
 	Input,
 	Modal,
 	ModalBody,
@@ -13,6 +12,7 @@ import {
 	ModalHeader,
 	ModalOverlay,
 	Text,
+   useDisclosure,
 } from "@chakra-ui/react";
 import React, { useState } from "react";
 import { useRecoilValue } from "recoil";
@@ -27,6 +27,7 @@ const Actions = ({ post: post_ }) => {
 	const [reply, setReply] = useState("");
 	const [isReplying, setIsReplying] = useState(false);
 	const showToast = useShowToast();
+   const {isOpen, onOpen, onClose} = useDisclosure()
 
 	const handleLikeAndUnlike = async () => {
 		if (!user) {
