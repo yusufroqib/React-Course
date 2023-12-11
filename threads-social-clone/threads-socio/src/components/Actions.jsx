@@ -87,7 +87,9 @@ const Actions = ({ post: post_ }) => {
 			});
 			const data = await res.json();
 			setPost({ ...post, replies: [...post.replies, data] });
-			// setReply('')
+			showToast("Success", "Reply posted successfully", "success");
+			onClose();
+			setReply("");
 		} catch (error) {
 			showToast("Error", error.message, "error");
 		} finally {
@@ -150,18 +152,17 @@ const Actions = ({ post: post_ }) => {
 			<Modal isOpen={isOpen} onClose={onClose}>
 				<ModalOverlay />
 				<ModalContent>
-					<ModalHeader>Create your account</ModalHeader>
+					<ModalHeader></ModalHeader>
 					<ModalCloseButton />
 					<ModalBody pb={6}>
 						<FormControl>
-							<FormLabel>First name</FormLabel>
-							<Input ref={initialRef} placeholder="First name" />
+							<Input placeholder="Reply goes here..." />
 						</FormControl>
 					</ModalBody>
 
 					<ModalFooter>
 						<Button colorScheme="blue" mr={3}>
-							Save
+							Reply
 						</Button>
 					</ModalFooter>
 				</ModalContent>
