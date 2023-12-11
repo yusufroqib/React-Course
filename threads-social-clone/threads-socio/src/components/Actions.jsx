@@ -83,34 +83,6 @@ const Actions = ({ post: post_ }) => {
 						strokeWidth="2"
 					></path>
 				</svg>
-
-				<svg
-					aria-label="Share"
-					fill="currentColor"
-					height="20"
-					role="img"
-					viewBox="0 0 24 24"
-					width="20"
-				>
-					<title>Share</title>
-					<line
-						fill="none"
-						stroke="currentColor"
-						strokeLinejoin="round"
-						strokeWidth="2"
-						x1="22"
-						x2="9.218"
-						y1="3"
-						y2="10.083"
-					></line>
-					<polygon
-						fill="none"
-						points="11.698 20.334 22 3.001 2 3.001 9.218 10.084 11.698 20.334"
-						stroke="currentColor"
-						strokeLinejoin="round"
-						strokeWidth="2"
-					></polygon>
-				</svg>
 			</Flex>
 			<Flex gap={2} color={"gray.light"} fontSize={"sm"} alignItems={"center"}>
 				<Text>{post.replies.length} replies</Text>
@@ -139,4 +111,34 @@ const RepostSVG = () => {
 	);
 };
 
-const ShareSVG = () => {};
+const ShareSVG = () => {
+	return (
+		<svg
+			aria-label="Share"
+			fill="currentColor"
+			height="20"
+			role="img"
+			viewBox="0 0 24 24"
+			width="20"
+		>
+			<title>Share</title>
+			<line
+				fill="none"
+				stroke="currentColor"
+				strokeLinejoin="round"
+				strokeWidth="2"
+				x1="22"
+				x2="9.218"
+				y1="3"
+				y2="10.083"
+			></line>
+			<polygon
+				fill="none"
+				points="11.698 20.334 22 3.001 2 3.001 9.218 10.084 11.698 20.334"
+				stroke="currentColor"
+				strokeLinejoin="round"
+				strokeWidth="2"
+			></polygon>
+		</svg>
+	);
+};
