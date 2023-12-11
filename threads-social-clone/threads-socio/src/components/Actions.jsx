@@ -41,7 +41,10 @@ const Actions = ({ post: post_ }) => {
 			setLiked(!liked);
 		} catch (error) {
 			showToast("Error", error.message, "error");
-		}
+		} finally {
+         setIsLiking(false)
+      
+      }
 	};
 
 	return (
