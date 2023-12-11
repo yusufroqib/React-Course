@@ -1,4 +1,19 @@
-import { Box, Flex, Text } from "@chakra-ui/react";
+import {
+	Box,
+	Button,
+	Flex,
+	FormControl,
+	FormLabel,
+	Input,
+	Modal,
+	ModalBody,
+	ModalCloseButton,
+	ModalContent,
+	ModalFooter,
+	ModalHeader,
+	ModalOverlay,
+	Text,
+} from "@chakra-ui/react";
 import React, { useState } from "react";
 import { useRecoilValue } from "recoil";
 import userAtom from "../atoms/userAtom";
@@ -8,9 +23,9 @@ const Actions = ({ post: post_ }) => {
 	const user = useRecoilValue(userAtom);
 	const [post, setPost] = useState(post_);
 	const [liked, setLiked] = useState(post.likes.includes(user?._id));
-   const [isLiking, setIsLiking] = useState(false);
-   const [reply, setReply] = useState('');
-   const [isReplying, setIsReplying] = useState(false);
+	const [isLiking, setIsLiking] = useState(false);
+	const [reply, setReply] = useState("");
+	const [isReplying, setIsReplying] = useState(false);
 	const showToast = useShowToast();
 
 	const handleLikeAndUnlike = async () => {
@@ -22,8 +37,8 @@ const Actions = ({ post: post_ }) => {
 			);
 		}
 
-      if(isLiking) return;
-      setIsLiking(true)
+		if (isLiking) return;
+		setIsLiking(true);
 
 		try {
 			const res = await fetch("/api/posts/like/" + post._id, {
@@ -44,39 +59,41 @@ const Actions = ({ post: post_ }) => {
 		} catch (error) {
 			showToast("Error", error.message, "error");
 		} finally {
-         setIsLiking(false)
-      
-      }
+			setIsLiking(false);
+		}
 	};
 
-   const handleReply = async () => {
-      if(!user) {
-         return showToast("Error", "You must be logged in to reply to a post", "error")
-      }
+	const handleReply = async () => {
+		if (!user) {
+			return showToast(
+				"Error",
+				"You must be logged in to reply to a post",
+				"error"
+			);
+		}
 
-      if(isReplying) return;
-      setIsReplying(true)
+		if (isReplying) return;
+		setIsReplying(true);
 
-      try {
-         const res = await fetch("/api/posts/reply/" + post._id, {
-            method: "PUT",
-            headers: {
-               "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-               text: reply
-            })
-         });
-         const data = await res.json();
-         setPost({...post, replies: [...post.replies, data.reply]})
-         setReply('')
-      } catch (error) {
-         showToast("Error", error.message, "error")
-      } finally {
-         setIsReplying(false)
-      }
-   
-   }
+		try {
+			const res = await fetch("/api/posts/reply/" + post._id, {
+				method: "PUT",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify({
+					text: reply,
+				}),
+			});
+			const data = await res.json();
+			setPost({ ...post, replies: [...post.replies, data] });
+			// setReply('')
+		} catch (error) {
+			showToast("Error", error.message, "error");
+		} finally {
+			setIsReplying(false);
+		}
+	};
 
 	return (
 		<Flex flexDir={"column"}>
@@ -129,6 +146,26 @@ const Actions = ({ post: post_ }) => {
 				<Box w={0.5} h={0.5} bg={"gray.light"} borderRadius={"full"}></Box>
 				<Text>{post.likes.length} likes</Text>
 			</Flex>
+
+			<Modal isOpen={isOpen} onClose={onClose}>
+				<ModalOverlay />
+				<ModalContent>
+					<ModalHeader>Create your account</ModalHeader>
+					<ModalCloseButton />
+					<ModalBody pb={6}>
+						<FormControl>
+							<FormLabel>First name</FormLabel>
+							<Input ref={initialRef} placeholder="First name" />
+						</FormControl>
+					</ModalBody>
+
+					<ModalFooter>
+						<Button colorScheme="blue" mr={3}>
+							Save
+						</Button>
+					</ModalFooter>
+				</ModalContent>
+			</Modal>
 		</Flex>
 	);
 };
