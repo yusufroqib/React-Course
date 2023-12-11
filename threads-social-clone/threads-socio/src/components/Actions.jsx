@@ -10,7 +10,7 @@ const Actions = ({ post: post_ }) => {
 	const [liked, setLiked] = useState(post.likes.includes(user?._id));
 	const showToast = useShowToast();
 
-   
+
 	const handleLikeAndUnlike = async () => {
 		if (!user) {
 			return showToast(
@@ -135,3 +135,11 @@ const Actions = ({ post: post_ }) => {
 };
 
 export default Actions;
+
+const RepostSVG = () => {
+
+}
+
+const ShareSVG = () => {
+   
+}
