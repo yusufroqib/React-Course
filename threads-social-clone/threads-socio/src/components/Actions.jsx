@@ -64,7 +64,7 @@ const Actions = ({ post: post_ }) => {
                "Content-Type": "application/json",
             },
             body: JSON.stringify({
-               reply
+               text: reply
             })
          });
          const data = await res.json();
