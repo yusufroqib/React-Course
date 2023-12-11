@@ -1,8 +1,12 @@
 import { Flex } from "@chakra-ui/react";
 import React from "react";
+import { useRecoilValue } from "recoil";
+import userAtom from "../atoms/userAtom";
 
 const Actions = ({ post: post_}) => {
-   
+   const user = useRecoilValue(userAtom)
+   const [liked, setLiked] = useState(post.likes.includes(user?._id))
+
    return (
       <>
          <Flex cursor={"pointer"} gap={3} my={2} onClick={(e) => e.preventDefault()} flexDir={"column"}>
