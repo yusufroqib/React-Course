@@ -4,6 +4,7 @@ import UserPosts from "../components/UserPosts";
 import { useParams } from "react-router-dom";
 import useShowToast from "../hooks/useShowToast";
 import { Flex, Spinner } from "@chakra-ui/react";
+import Post from "../components/Post";
 
 const UserPage = () => {
 	const [user, setUser] = useState(null);
@@ -31,7 +32,7 @@ const UserPage = () => {
 		};
 
 		const getPosts = async () => {
-			setFetchingPosts(true)
+			setFetchingPosts(true);
 			try {
 				const res = await fetch(`api/posts/user/${username}`);
 				const data = await res.json();
@@ -46,7 +47,7 @@ const UserPage = () => {
 		};
 
 		getUser();
-		getPosts()
+		getPosts();
 	}, [username, showToast]);
 
 	if (!user && loading) {
@@ -60,6 +61,17 @@ const UserPage = () => {
 	return (
 		<>
 			<UserHeader user={user} />
+			{!fetchingPosts && posts.length === 0 && <h1>User has no posts</h1>}
+			{fetchingPosts && (
+				<Flex justifyContent={"center"}>
+					<Spinner size={"xl"} />
+				</Flex>
+			)}
+
+			{posts.map((post) => (
+				<Post key={post.id} post={post} postedBy={post.postedBy} />
+			))} 
+
 			{/* <UserPosts
 				likes={200}
 				replies={50}
