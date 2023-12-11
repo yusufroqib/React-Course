@@ -8,6 +8,7 @@ const Actions = ({ post: post_ }) => {
 	const user = useRecoilValue(userAtom);
 	const [post, setPost] = useState(post_);
 	const [liked, setLiked] = useState(post.likes.includes(user?._id));
+   const [isLiking, setIsLiking] = useState(false);
 	const showToast = useShowToast();
 
 	const handleLikeAndUnlike = async () => {
@@ -18,6 +19,9 @@ const Actions = ({ post: post_ }) => {
 				"error"
 			);
 		}
+
+      if(isLiking) return;
+      setIsLiking(true)
 
 		try {
 			const res = await fetch("/api/posts/like/" + post._id, {
