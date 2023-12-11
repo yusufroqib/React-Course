@@ -1,10 +1,11 @@
 import { Flex } from "@chakra-ui/react";
 import React from "react";
 
-const Actions = ({ liked, setLiked }) => {
+const Actions = ({ post: post_}) => {
+   
    return (
       <>
-         <Flex cursor={"pointer"} gap={3} my={2} onClick={(e) => e.preventDefault()}>
+         <Flex cursor={"pointer"} gap={3} my={2} onClick={(e) => e.preventDefault()} flexDir={"column"}>
             <svg
                aria-label="Unlike"
                fill={liked ? "rgb(237, 73, 86)" : "transparent"}
@@ -80,6 +81,16 @@ const Actions = ({ liked, setLiked }) => {
                   strokeWidth="2"
                ></polygon>
             </svg>
+            <Flex
+						gap={2}
+						color={"gray.light"}
+						fontSize={"sm"}
+						alignItems={"center"}
+					>
+						<Text>{post.replies.length} replies</Text>
+						<Box w={0.5} h={0.5} bg={"gray.light"} borderRadius={"full"}></Box>
+						<Text>{post.likes.length} likes</Text>
+					</Flex>
          </Flex>
       </>
    );

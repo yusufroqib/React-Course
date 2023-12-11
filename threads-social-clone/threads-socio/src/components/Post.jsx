@@ -112,11 +112,13 @@ const Post = ({ post, postedBy }) => {
 						</Flex>
 						<Flex
 							alignItems={"center"}
-              justifyContent={"space-around"}
+							justifyContent={"space-around"}
 							gap={4}
 							onClick={(e) => e.preventDefault()}
 						>
-							<Text fontSize={"xs"} width={36} textAlign={"right"}>{formatDistanceToNow(new Date(post.createdAt))} ago</Text>
+							<Text fontSize={"xs"} width={36} textAlign={"right"}>
+								{formatDistanceToNow(new Date(post.createdAt))} ago
+							</Text>
 							<Menu>
 								<MenuButton>
 									<BsThreeDots cursor={"pointer"} />
@@ -151,19 +153,10 @@ const Post = ({ post, postedBy }) => {
 						</Box>
 					)}
 					<Flex>
-						<Actions liked={liked} setLiked={setLiked} />
+						<Actions  />
 					</Flex>
 
-					<Flex
-						gap={2}
-						color={"gray.light"}
-						fontSize={"sm"}
-						alignItems={"center"}
-					>
-						<Text>{post.replies.length} replies</Text>
-						<Box w={0.5} h={0.5} bg={"gray.light"} borderRadius={"full"}></Box>
-						<Text>{post.likes.length} likes</Text>
-					</Flex>
+				
 				</Flex>
 			</Flex>
 		</Link>
