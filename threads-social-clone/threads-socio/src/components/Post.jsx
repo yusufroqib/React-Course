@@ -23,6 +23,7 @@ const Post = ({ post, postedBy }) => {
 	const [user, setUser] = useState(null);
 	const showToast = useShowToast();
 	const navigate = useNavigate();
+	console.log(post)
 
 	useEffect(() => {
 		const getUser = async () => {
