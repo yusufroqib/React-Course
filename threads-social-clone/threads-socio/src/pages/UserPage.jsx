@@ -31,6 +31,7 @@ const UserPage = () => {
 		};
 
 		const getPosts = async () => {
+			setFetchingPosts(true)
 			try {
 				const res = await fetch(`api/posts/user/${username}`);
 				const data = await res.json();
@@ -45,6 +46,7 @@ const UserPage = () => {
 		};
 
 		getUser();
+		getPosts()
 	}, [username, showToast]);
 
 	if (!user && loading) {
