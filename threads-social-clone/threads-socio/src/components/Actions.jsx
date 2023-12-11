@@ -12,7 +12,7 @@ import {
 	ModalHeader,
 	ModalOverlay,
 	Text,
-   useDisclosure,
+	useDisclosure,
 } from "@chakra-ui/react";
 import React, { useState } from "react";
 import { useRecoilValue } from "recoil";
@@ -27,7 +27,7 @@ const Actions = ({ post: post_ }) => {
 	const [reply, setReply] = useState("");
 	const [isReplying, setIsReplying] = useState(false);
 	const showToast = useShowToast();
-   const {isOpen, onOpen, onClose} = useDisclosure()
+	const { isOpen, onOpen, onClose } = useDisclosure();
 
 	const handleLikeAndUnlike = async () => {
 		if (!user) {
@@ -125,14 +125,15 @@ const Actions = ({ post: post_ }) => {
 				</svg>
 
 				<svg
-					aria-label="Reply"
+					aria-label="Comment"
 					fill="currentColor"
 					height="20"
 					role="img"
 					viewBox="0 0 24 24"
 					width="20"
+					onClick={onOpen}
 				>
-					<title>Reply</title>
+					<title>Comment</title>
 					<path
 						d="M20.656 17.008a9.993 9.993 0 1 0-3.59 3.615L22 22Z"
 						fill="none"
@@ -157,7 +158,11 @@ const Actions = ({ post: post_ }) => {
 					<ModalCloseButton />
 					<ModalBody pb={6}>
 						<FormControl>
-							<Input placeholder="Reply goes here..." />
+							<Input
+								placeholder="Reply goes here..."
+								value={reply}
+								onChange={(e) => setReply(e.target.value)}
+							/>
 						</FormControl>
 					</ModalBody>
 
