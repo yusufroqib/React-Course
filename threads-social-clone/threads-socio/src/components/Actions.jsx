@@ -16,14 +16,21 @@ const Actions = ({ post: post_ }) => {
       }
 
       try {
-         const res = await fetch(`/api/posts/like/${post._id}`, {
+         const res = await fetch("/api/posts/like/" + post._id, {
             method: "PUT",
             headers: {
                "Content-Type": "application/json"
             }
          })
          const data = await res.json()
-         console.log(data)
+         if(!liked) {
+            //Add the id of the user to the likes array...
+            setPost({...post, likes: [...post.likes, user._id]})
+         } else {
+            //Remove the id of the user from the likes array...
+            setPost({...post, likes: post.likes.filter(id => id !== user._id)})
+         }
+         setLiked(!liked)
       } catch (error) {
          showToast("Error", error.message, "error")
       }
