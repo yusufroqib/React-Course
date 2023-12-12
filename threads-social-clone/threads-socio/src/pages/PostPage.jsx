@@ -45,6 +45,27 @@ const PostPage = () => {
 		getPosts();
 	}, [showToast, pid]);
 
+  const handleDeletePost = async (e) => {
+		try {
+			e.preventDefault();
+			if (!window.confirm("Are you sure you want to delete this post?")) return;
+
+			const res = await fetch(`/api/posts/${post._id}`, {
+				method: "DELETE",
+			});
+
+			const data = await res.json();
+
+			if (data.error) {
+				showToast("Error", data.error, "error");
+				return;
+			}
+			showToast("Success", "Post deleted successfully", "success");
+		} catch (error) {
+			showToast("Error", error.message, "error");
+		}
+	};
+
 	if (!user && loading) {
 		return (
 			<Flex justifyContent={"center"}>
@@ -75,11 +96,11 @@ const PostPage = () => {
 					gap={4}
 					onClick={(e) => e.preventDefault()}
 				>
-					<Text fontSize={"xs"} width={36} textAlign={"right"}>
+					<Text fontSize={"xs"} width={36} textAlign={"right"} color={"gray.light"}>
 						{formatDistanceToNow(new Date(post.createdAt))} ago
 					</Text>
 					{currentUser?._id === user._id && (
-						<DeleteIcon size={20} onClick={handleDeletePost} />
+						<DeleteIcon cursor={"pointer"} size={20} onClick={handleDeletePost} />
 					)}
 				</Flex>
 			</Flex>

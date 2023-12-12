@@ -142,11 +142,11 @@ const Post = ({ post, postedBy }) => {
 							gap={4}
 							onClick={(e) => e.preventDefault()}
 						>
-							<Text fontSize={"xs"} width={36} textAlign={"right"}>
+							<Text fontSize={"xs"} width={36} textAlign={"right"} color={"gray.light"}>
 								{formatDistanceToNow(new Date(post.createdAt))} ago
 							</Text>
 							{currentUser?._id === user._id && (
-								<DeleteIcon size={20} onClick={handleDeletePost} />
+								<DeleteIcon cursor={"pointer"} size={20} onClick={handleDeletePost} />
 							)}
 							
 						</Flex>
