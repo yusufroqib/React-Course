@@ -18,13 +18,15 @@ import { useEffect, useState } from "react";
 import useShowToast from "../hooks/useShowToast";
 import { formatDistanceToNow } from "date-fns";
 import { DeleteIcon } from "@chakra-ui/icons";
-import { useRecoilValue } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import userAtom from "../atoms/userAtom";
+import postsAtom from "../atoms/postsAtom";
 
-const Post = ({ post, postedBy }) => {
+const Post = ({ post, postedBy}) => {
 	const [liked, setLiked] = useState(false);
 	const [user, setUser] = useState(null);
 	const showToast = useShowToast();
+	const [posts, setPosts] = useRecoilState(postsAtom)
 	const navigate = useNavigate();
 	const currentUser = useRecoilValue(userAtom);
 	// console.log(post)
@@ -166,7 +168,7 @@ const Post = ({ post, postedBy }) => {
 						</Box>
 					)}
 					<Flex gap={3} my={1}>
-						<Actions post={post} setPosts={setPosts} />
+						<Actions post={post}  />
 					</Flex>
 				</Flex>
 			</Flex>
