@@ -15,13 +15,14 @@ import {
 	useDisclosure,
 } from "@chakra-ui/react";
 import React, { useState } from "react";
-import { useRecoilValue } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import userAtom from "../atoms/userAtom";
 import useShowToast from "../hooks/useShowToast";
+import postsAtom from "../atoms/postsAtom";
 
-const Actions = ({ post: post_ }) => {
+const Actions = ({ post }) => {
 	const user = useRecoilValue(userAtom);
-	const [post, setPost] = useState(post_);
+	const [posts, setPosts] = useRecoilState(postsAtom);
 	const [liked, setLiked] = useState(post.likes.includes(user?._id));
 	const [isLiking, setIsLiking] = useState(false);
 	const [reply, setReply] = useState("");
@@ -51,10 +52,22 @@ const Actions = ({ post: post_ }) => {
 			const data = await res.json();
 			if (!liked) {
 				//Add the id of the user to the likes array...
-				setPost({ ...post, likes: [...post.likes, user._id] });
+				const updatedPosts = posts.map((p) => {
+					if (p._id === post._id) {
+						return { ...p, likes: [...p.likes, user._id] };
+					}
+					return p;
+				});
+				setPosts(updatedPosts);
 			} else {
 				//Remove the id of the user from the likes array...
-				setPost({ ...post, likes: post.likes.filter((id) => id !== user._id) });
+				const updatedPosts = posts.map((p) => {
+					if (p._id === post._id) {
+						return { ...p, likes: p.likes.filter((id) => id !== user._id) };
+					}
+					return p;
+				});
+            setPosts(updatedPosts);
 			}
 			setLiked(!liked);
 		} catch (error) {
