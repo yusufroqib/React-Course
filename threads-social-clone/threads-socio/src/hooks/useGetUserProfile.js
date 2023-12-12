@@ -20,10 +20,14 @@ const useGetUserProfile = () => {
 				setUser(data);
 			} catch (error) {
 				showToast("Error", error, "error");
-			}
+			} finally {
+                setLoading(false)
+            }
 		};
 		getUser();
-	}, [username]);
+	}, [username, showToast]);
+
+    return {loading, user}
 }
 
 export default useGetUserProfile
