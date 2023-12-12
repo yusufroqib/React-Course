@@ -12,12 +12,13 @@ import {
 } from "@chakra-ui/react";
 import Actions from "../components/Actions";
 import useShowToast from "../hooks/useShowToast";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import useGetUserProfile from "../hooks/useGetUserProfile";
 import { formatDistanceToNow } from "date-fns";
 import { DeleteIcon } from "@chakra-ui/icons";
 import { useRecoilValue } from "recoil";
 import userAtom from "../atoms/userAtom";
+import Comments from "../components/Comments";
 
 const PostPage = () => {
 	const { user, loading } = useGetUserProfile();
@@ -25,6 +26,7 @@ const PostPage = () => {
 	const showToast = useShowToast();
 	const { pid } = useParams();
 	const currentUser = useRecoilValue(userAtom);
+  const navigate = useNavigate()
 
 
 	useEffect(() => {
@@ -45,9 +47,8 @@ const PostPage = () => {
 		getPosts();
 	}, [showToast, pid]);
 
-  const handleDeletePost = async (e) => {
+  const handleDeletePost = async () => {
 		try {
-			e.preventDefault();
 			if (!window.confirm("Are you sure you want to delete this post?")) return;
 
 			const res = await fetch(`/api/posts/${post._id}`, {
@@ -61,6 +62,7 @@ const PostPage = () => {
 				return;
 			}
 			showToast("Success", "Post deleted successfully", "success");
+      navigate(`/${user.username}`)
 		} catch (error) {
 			showToast("Error", error.message, "error");
 		}
@@ -132,6 +134,11 @@ const PostPage = () => {
 			</Flex>
 
 			<Divider my={4} />
+			<Divider my={4}>
+        {post.replies.map(reply => (
+          <Comments key={reply._id} reply={reply} />
+        ))}
+      </Divider>
 
 			{/* <Comments username={'Ryan Florence'} likes={12} createdAt={'2 min ago'} userAvatar={'https://bit.ly/ryan-florence'} comment={"Keep it up!!"} /> */}
 		</>
