@@ -148,25 +148,7 @@ const Post = ({ post, postedBy }) => {
 							{currentUser?._id === user._id && (
 								<DeleteIcon size={20} onClick={handleDeletePost} />
 							)}
-							{/* <Menu>
-								<MenuButton>
-									<BsThreeDots cursor={"pointer"} />
-								</MenuButton>
-								<MenuList>
-									<MenuGroup>
-										<MenuItem color={"gray.light"}>Mute</MenuItem>
-									</MenuGroup>
-									<MenuDivider />
-									<MenuGroup>
-										<MenuItem color={"red"}>Block</MenuItem>
-										<MenuItem color={"gray.light"}>Hide</MenuItem>
-									</MenuGroup>
-									<MenuDivider />
-									<MenuGroup>
-										<MenuItem color={"red"}>Report</MenuItem>
-									</MenuGroup>
-								</MenuList>
-							</Menu> */}
+							
 						</Flex>
 					</Flex>
 
