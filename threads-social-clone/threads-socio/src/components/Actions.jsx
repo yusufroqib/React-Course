@@ -100,7 +100,12 @@ const Actions = ({ post }) => {
 			});
 			const data = await res.json();
          if(data.error) showToast("Error", data.error, "error");
-         const updatedPosts =
+         const updatedPosts = posts.map((p) => {
+					if (p._id === post._id) {
+						return { ...p, replies: [...p.replies, data] };
+					}
+					return p;
+				})
 			showToast("Success", "Reply posted successfully", "success");
 			onClose();
 			setReply("");
