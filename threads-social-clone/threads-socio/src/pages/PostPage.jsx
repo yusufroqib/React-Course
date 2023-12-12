@@ -24,7 +24,6 @@ import postsAtom from "../atoms/postsAtom";
 const PostPage = () => {
 	const { user, loading } = useGetUserProfile();
 	const [posts, setPosts] = useRecoilState(postsAtom);
-	const [post, setPost] = useState(null);
 	const showToast = useShowToast();
 	const { pid } = useParams();
 	const currentUser = useRecoilValue(userAtom);
@@ -70,7 +69,7 @@ const PostPage = () => {
 		}
 	};
 
-	if (!currentPost && loading) {
+	if (!user && loading) {
 		return (
 			<Flex justifyContent={"center"}>
 				<Spinner size={"xl"} />
@@ -78,7 +77,7 @@ const PostPage = () => {
 		);
 	}
 
-	if (!post) return null;
+	if (!currentPost) return null;
 
 	return (
 		<>
@@ -90,12 +89,12 @@ const PostPage = () => {
 			>
 				<Flex alignItems={"center"}>
 					<Avatar
-						src={currentPost.profilePic}
+						src={user.profilePic}
 						name={user.name}
 						size={"md"}
 						mr={2}
 					/>
-					<Text fontSize={"sm"}>{currentPost.username}</Text>
+					<Text fontSize={"sm"}>{user.username}</Text>
 					<Image src="/verified.png" h={4} w={4} ml={2} />
 				</Flex>
 
@@ -151,7 +150,7 @@ const PostPage = () => {
 
 			<Divider my={4} />
 			<Divider my={4} />
-			{currentPost.replies.map((reply) => (
+			{currentPost.replies.map((reply) => ( 
 				<Comments
 					key={reply._id}
 					reply={reply}
