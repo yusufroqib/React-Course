@@ -2,12 +2,6 @@ import {
 	Avatar,
 	Divider,
 	Flex,
-	Menu,
-	MenuButton,
-	MenuDivider,
-	MenuGroup,
-	MenuItem,
-	MenuList,
 	Text,
 } from "@chakra-ui/react";
 import React, { useState } from "react";
