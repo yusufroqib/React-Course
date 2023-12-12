@@ -136,7 +136,7 @@ const PostPage = () => {
 			<Divider my={4} />
 			<Divider my={4}/>
         {post.replies.map(reply => (
-          <Comments key={reply._id} reply={reply} />
+          <Comments key={reply._id} reply={reply} lastReply = {reply._id === post.replies[post.replies.length - 1]._id} />
         ))}
       
 
