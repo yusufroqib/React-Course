@@ -19,7 +19,7 @@ import Actions from "../components/Actions";
 import Comments from "../components/Comments";
 
 const PostPage = () => {
-  const [liked, setLiked] = useState(false);
+  // const [liked, setLiked] = useState(false);
   return (
     <>
       <Flex
@@ -42,7 +42,7 @@ const PostPage = () => {
           >
             2day
           </Text>
-          <Menu>
+          {/* <Menu>
             <MenuButton>
               <BsThreeDots cursor={"pointer"} onClick={e => e.preventDefault()} />
             </MenuButton>
@@ -60,7 +60,7 @@ const PostPage = () => {
                 <MenuItem color={"red"}>Report</MenuItem>
               </MenuGroup>
             </MenuList>
-          </Menu>
+          </Menu> */}
         </Flex>
       </Flex>
 
@@ -99,20 +99,6 @@ const PostPage = () => {
         userAvater={"https://bit.ly/ryan-florence"}
         likes={12}
         username={"JohnDoe"}
-      />
-      <Comments
-        comment={" This is an amazing post. Thanks for the update"}
-        userAvater={"/directorPro.jpeg"}
-        createdAt={"5 min ago"}
-        likes={13}
-        username={"Aliumusa"}
-      />
-      <Comments
-        comment={"Hello World!"}
-        createdAt={"10 min ago"}
-        userAvater={"https://bit.ly/ryan-florence"}
-        likes={18}
-        username={"Muha"}
       />
     </>
   );

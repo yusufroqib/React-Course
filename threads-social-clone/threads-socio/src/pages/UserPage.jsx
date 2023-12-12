@@ -69,7 +69,7 @@ const UserPage = () => {
 			)}
 
 			{posts.map((post) => (
-				<Post key={post.id} post={post} postedBy={post.postedBy} />
+				<Post key={post._id} post={post} postedBy={post.postedBy} />
 			))} 
 
 			{/* <UserPosts
