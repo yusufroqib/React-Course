@@ -5,24 +5,41 @@ import {
 	Divider,
 	Flex,
 	Image,
-	Menu,
-	MenuButton,
-	MenuDivider,
-	MenuGroup,
-	MenuItem,
-	MenuList,
+	Spinner,
 	Text,
 } from "@chakra-ui/react";
 import React, { useState, useEffect } from "react";
 import { BsThreeDots } from "react-icons/bs";
 import Actions from "../components/Actions";
 import Comments from "../components/Comments";
+import useGetUserProfile from "../hooks/useGetUserProfile";
+import useShowToast from "../hooks/useShowToast";
+import { useParams } from "react-router-dom";
 
 const PostPage = () => {
-	// const [liked, setLiked] = useState(false);
-	const [user, setUser] = useState(null);
+	const { user, loading } = useGetUserProfile();
+  const [post, setPost] = useState(null);
+  const showToast = useShowToast();
+  const {pid} = useParams()
 
-	
+  useEffect(() => {
+    const getPost = async () => {
+      try {
+        const res = await fetch(`api/posts/${pid}`);
+      } catch (error) {
+        showToast("Error", error.message, "error");
+      }
+      
+    }
+  },[])
+
+  if(!user && loading) {
+    return (
+      <Flex justifyContent={"center"}>
+        <Spinner size={"xl"}/>
+      </Flex>
+    )
+  }
 
 	return (
 		<>
@@ -33,8 +50,8 @@ const PostPage = () => {
 				justifyContent={"space-between"}
 			>
 				<Flex alignItems={"center"}>
-					<Avatar src="/aliumusa.jpeg" name="Aliu Musa" size={"md"} mr={2} />
-					<Text fontSize={"sm"}>Aliu Musa</Text>
+					<Avatar src={user.profilePic} name={user.name} size={"md"} mr={2} />
+					<Text fontSize={"sm"}>{user.username}</Text>
 					<Image src="/verified.png" h={4} w={4} ml={2} />
 				</Flex>
 				<Flex alignItems={"center"} gap={4}>
