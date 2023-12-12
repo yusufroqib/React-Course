@@ -67,7 +67,7 @@ const Actions = ({ post }) => {
 					}
 					return p;
 				});
-            setPosts(updatedPosts);
+				setPosts(updatedPosts);
 			}
 			setLiked(!liked);
 		} catch (error) {
@@ -78,13 +78,12 @@ const Actions = ({ post }) => {
 	};
 
 	const handleReply = async () => {
-		if (!user) {
+		if (!user)
 			return showToast(
 				"Error",
 				"You must be logged in to reply to a post",
 				"error"
 			);
-		}
 
 		if (isReplying) return;
 		setIsReplying(true);
@@ -100,7 +99,8 @@ const Actions = ({ post }) => {
 				}),
 			});
 			const data = await res.json();
-			setPost({ ...post, replies: [...post.replies, data] });
+         if(data.error) showToast("Error", data.error, "error");
+         const updatedPosts =
 			showToast("Success", "Reply posted successfully", "success");
 			onClose();
 			setReply("");
