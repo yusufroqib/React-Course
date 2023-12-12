@@ -121,12 +121,6 @@ const PostPage = () => {
 				<Actions post={post} />
 			</Flex>
 
-			{/* <Flex color={"gray.light"} gap={2} fontSize={"sm"} alignItems={"center"}>
-				<Text>{post.replies.length} replies</Text>
-				<Box w={0.5} h={0.5} bg={"gray.light"}></Box>
-				<Text>{post.likes.length} likes</Text>
-			</Flex> */}
-
 			<Divider my={4} />
 
 			<Flex justifyContent={"space-between"}>
