@@ -31,6 +31,7 @@ const PostPage = () => {
   const navigate = useNavigate()
 
 
+  const currentPost = posts[0]
 	useEffect(() => {
 		const getPosts = async () => {
 			try {
