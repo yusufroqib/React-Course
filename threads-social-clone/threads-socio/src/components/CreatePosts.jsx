@@ -16,6 +16,7 @@ import {
 	Flex,
 	Image,
 	CloseButton,
+	useColorModeValue,
 } from "@chakra-ui/react";
 import { useRef, useState } from "react";
 import usePreviewImg from "../hooks/usePreviewImg";
@@ -89,12 +90,12 @@ const CreatePosts = () => {
 			<Button
 				pos={"fixed"}
 				bottom={10}
-				right={10}
-				leftIcon={<AddIcon />}
-				bg={"gray"}
+				right={5}
+				bg={useColorModeValue("gray.300", "gray.dark")}
 				onClick={onOpen}
+				size={{base: "sm", sm: "lg"}}
 			>
-				Post
+				<AddIcon />
 			</Button>
 			<Modal isOpen={isOpen} onClose={onClose}>
 				<ModalOverlay />
