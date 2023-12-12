@@ -16,12 +16,14 @@ import { useNavigate, useParams } from "react-router-dom";
 import useGetUserProfile from "../hooks/useGetUserProfile";
 import { formatDistanceToNow } from "date-fns";
 import { DeleteIcon } from "@chakra-ui/icons";
-import { useRecoilValue } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import userAtom from "../atoms/userAtom";
 import Comments from "../components/Comments";
+import postsAtom from "../atoms/postsAtom";
 
 const PostPage = () => {
 	const { user, loading } = useGetUserProfile();
+  const[posts, setPosts] = useRecoilState(postsAtom)
 	const [post, setPost] = useState(null);
 	const showToast = useShowToast();
 	const { pid } = useParams();
@@ -38,14 +40,14 @@ const PostPage = () => {
 					showToast("Error", data.error, "error");
 					return;
 				}
-				setPost(data);
+				setPosts([data]);
 				console.log(data);
 			} catch (error) {
 				showToast("Error", error, "error");
 			}
 		};
 		getPosts();
-	}, [showToast, pid]);
+	}, [showToast, pid, setPosts]);
 
   const handleDeletePost = async () => {
 		try {
