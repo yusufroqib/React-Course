@@ -27,39 +27,38 @@ export default function UpdateProfilePage() {
 		password: "",
 	});
 	const fileRef = useRef(null);
-    const [updating, setUpdating] = useState(false)
+	const [updating, setUpdating] = useState(false);
 	const { handleImageChange, imgUrl } = usePreviewImg();
-    const showToast = useShowToast()
-	const navigate = useNavigate()
+	const showToast = useShowToast();
+	const navigate = useNavigate();
 
+	const handleSubmit = async (e) => {
+		e.preventDefault();
 
-    const handleSubmit = async(e) => {
-        e.preventDefault()
-
-        if (updating) return;
+		if (updating) return;
 		setUpdating(true);
-        try {
-            const res = await fetch(`/api/users/update/${user._id}`, {
-                method: "PUT",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({...inputs, profilePic: imgUrl})
-            })
-            const data = await res.json()
-            if(data.error) {
-                showToast("Error", data.error, "error")
-                return
-            }
-            showToast("Success", "Profile updated successfully", "success")
-            setUser(data)
-            localStorage.setItem("user-threads", JSON.stringify(data))
-        } catch (error) {
-            showToast("Error", error, "error")
-        } finally {
-            setUpdating(false)
-        }
-    }
+		try {
+			const res = await fetch(`/api/users/update/${user._id}`, {
+				method: "PUT",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify({ ...inputs, profilePic: imgUrl }),
+			});
+			const data = await res.json();
+			if (data.error) {
+				showToast("Error", data.error, "error");
+				return;
+			}
+			showToast("Success", "Profile updated successfully", "success");
+			setUser(data);
+			localStorage.setItem("user-threads", JSON.stringify(data));
+		} catch (error) {
+			showToast("Error", error, "error");
+		} finally {
+			setUpdating(false);
+		}
+	};
 
 	return (
 		<form onSubmit={handleSubmit}>
@@ -99,7 +98,7 @@ export default function UpdateProfilePage() {
 							</Center>
 						</Stack>
 					</FormControl>
-					<FormControl >
+					<FormControl>
 						<FormLabel>Full name</FormLabel>
 						<Input
 							placeholder="Your fullname"
@@ -172,8 +171,8 @@ export default function UpdateProfilePage() {
 							_hover={{
 								bg: "green.500",
 							}}
-                            type="submit"
-                            isLoading={updating}
+							type="submit"
+							isLoading={updating}
 						>
 							Submit
 						</Button>
