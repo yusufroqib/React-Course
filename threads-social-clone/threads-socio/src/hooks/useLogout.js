@@ -1,6 +1,6 @@
-import React from 'react'
-import { useToast } from '@chakra-ui/react'
 import useShowToast from './useShowToast'
+import { useSetRecoilState } from 'recoil'
+import userAtom from '../atoms/userAtom'
 
 const useLogout = () => {
     const setUser = useSetRecoilState(userAtom)
@@ -27,6 +27,7 @@ const useLogout = () => {
             showToast("Error", error, "error")
         }
     }
+    return logout
 }
 
 export default useLogout
