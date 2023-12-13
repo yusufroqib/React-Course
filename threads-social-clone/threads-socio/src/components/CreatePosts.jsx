@@ -76,7 +76,7 @@ const CreatePosts = () => {
 				setPosts([data, ...posts]);
 			}
 			onClose();
-			setPostText("")
+			setPostText("");
 			// setImgUrl("")
 		} catch (error) {
 			showToast("Error", error, "error");
@@ -93,7 +93,7 @@ const CreatePosts = () => {
 				right={5}
 				bg={useColorModeValue("gray.300", "gray.dark")}
 				onClick={onOpen}
-				size={{base: "sm", sm: "lg"}}
+				size={{ base: "sm", sm: "lg" }}
 			>
 				<AddIcon />
 			</Button>
