@@ -50,7 +50,7 @@ const UserPage = () => {
 
 		getPosts();
 	}, [username, showToast, setPosts]);
-	console.log('posts is here and recoil state', posts)
+	// console.log('posts is here and recoil state', posts)
 
 	if (!user && loading) {
 		return (
