@@ -151,7 +151,7 @@ export default function UpdateProfilePage() {
 							onChange={(e) =>
 								setInputs({ ...inputs, password: e.target.value })
 							}
-						/>
+						/> 
 					</FormControl>
 					<Stack spacing={6} direction={["column", "row"]}>
 						<Button
