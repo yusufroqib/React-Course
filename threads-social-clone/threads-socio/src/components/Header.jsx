@@ -1,4 +1,4 @@
-import { useSetRecoilState } from 'recoil';
+import { useSetRecoilState } from "recoil";
 import { Flex, Image, useColorMode, Link, Button } from "@chakra-ui/react";
 import { useRecoilValue } from "recoil";
 import userAtom from "../atoms/userAtom";
@@ -7,7 +7,7 @@ import { RxAvatar } from "react-icons/rx";
 import { Link as RouterLink } from "react-router-dom";
 import { FiLogOut } from "react-icons/fi";
 import useLogout from "../hooks/useLogout";
-import authScreenAtom from '../atoms/authAtom';
+import authScreenAtom from "../atoms/authAtom";
 
 const Header = () => {
 	const { colorMode, toggleColorMode } = useColorMode();
@@ -23,11 +23,11 @@ const Header = () => {
 				</Link>
 			)}
 			{!user && (
-				<Link as={RouterLink} to="/auth"  onClick={() => setAuthScreen("login")}>
+				<Link as={RouterLink} to="/auth" onClick={() => setAuthScreen("login")}>
 					Login
 				</Link>
 			)}
-			
+
 			<Image
 				cursor="pointer"
 				alt="logo"
@@ -47,7 +47,11 @@ const Header = () => {
 				</Flex>
 			)}
 			{!user && (
-				<Link as={RouterLink} to="/auth"  onClick={() => setAuthScreen("signup")}>
+				<Link
+					as={RouterLink}
+					to="/auth"
+					onClick={() => setAuthScreen("signup")}
+				>
 					Sign Up
 				</Link>
 			)}
