@@ -31,13 +31,11 @@ const Header = () => {
 			/>
 
 			{user && (
-				<Flex>
+				<Flex alignItems={"center"} gap={4}>
 					<Link as={RouterLink} to={`/${user.username}`}>
 						<RxAvatar fontSize={24} />
 					</Link>
-					<Button
-						alignItems={"center"}
-					>
+					<Button size={"xs"}>
 						<FiLogOut size={20} />
 					</Button>
 				</Flex>
