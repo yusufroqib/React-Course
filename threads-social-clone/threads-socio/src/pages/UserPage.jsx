@@ -10,10 +10,10 @@ import { useRecoilState } from "recoil";
 import postsAtom from "../atoms/postsAtom";
 
 const UserPage = () => {
-	const {user, loading} = useGetUserProfile()
+	const { user, loading } = useGetUserProfile();
 	const { username } = useParams();
 	const showToast = useShowToast();
-	const [posts, setPosts] = useRecoilState(postsAtom)
+	const [posts, setPosts] = useRecoilState(postsAtom);
 	const [fetchingPosts, setFetchingPosts] = useState(false);
 
 	useEffect(() => {
@@ -71,9 +71,8 @@ const UserPage = () => {
 			)}
 
 			{posts.map((post) => (
-				<Post key={post._id} post={post} postedBy={post.postedBy}/>
-			))} 
-
+				<Post key={post._id} post={post} postedBy={post.postedBy} />
+			))}
 		</>
 	);
 };
