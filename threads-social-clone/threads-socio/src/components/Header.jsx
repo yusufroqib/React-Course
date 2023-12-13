@@ -27,11 +27,7 @@ const Header = () => {
 					Login
 				</Link>
 			)}
-			{/* {!user && (
-				<Link as={RouterLink} to="/auth" onClick={() => setAuthScreen("login")}>
-					Login
-				</Link>
-			)} */}
+			
 			<Image
 				cursor="pointer"
 				alt="logo"
