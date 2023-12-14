@@ -156,7 +156,6 @@ const PostPage = () => {
 				/>
 			))}
 
-			{/* <Comments username={'Ryan Florence'} likes={12} createdAt={'2 min ago'} userAvatar={'https://bit.ly/ryan-florence'} comment={"Keep it up!!"} /> */}
 		</>
 	);
 };
