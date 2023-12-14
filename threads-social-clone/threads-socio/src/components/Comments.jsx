@@ -10,7 +10,6 @@ import Actions from "./Actions";
 
 const Comments = ({ reply, lastReply }) => {
 	const [liked, setLiked] = useState(false);
-  // console.log(reply)
 	return (
 		<>
 			<Flex gap={4} my={2} py={2} w={"full"}>
