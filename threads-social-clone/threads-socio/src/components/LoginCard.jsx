@@ -132,7 +132,6 @@ export default function LoginCard() {
 								onClick={handleLogin}
 								isLoading={loading}
 							>
-								{/* {loading ? "Logging in..." : "Login"} */}
 								Login
 							</Button>
 						</Stack>
