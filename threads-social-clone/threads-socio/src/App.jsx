@@ -12,7 +12,6 @@ import CreatePosts from "./components/CreatePosts";
 
 function App() {
 	const user = useRecoilValue(userAtom);
-	// console.log(user);
 
 	return (
 		<Container maxW="620px">
